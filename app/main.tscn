@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5kk3dugot5lb"]
+
+[ext_resource type="Script" uid="uid://daplqxmjfp6tp" path="res://app/main.gd" id="1_yblnd"]
+[ext_resource type="PackedScene" uid="uid://l3ys5qoek1v5" path="res://core/hud/hud.tscn" id="2_s58fy"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_yblnd")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_s58fy")]

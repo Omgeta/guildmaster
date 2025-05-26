@@ -14,6 +14,12 @@ config/name="guildmaster"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameState="*res://core/state/game_state.gd"
+RNG="*res://shared/RNG.gd"
+SpriteCache="*res://core/characters/sprite_cache.gd"
+
 [rendering]
 
 renderer/rendering_method="mobile"

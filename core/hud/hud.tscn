@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://l3ys5qoek1v5"]
+
+[ext_resource type="Script" uid="uid://bjsm5c1uy4wt" path="res://core/hud/hud.gd" id="1_70e1l"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_70e1l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 57.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="GachaButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Gacha"
+
+[node name="MissionsButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Missions
+"
+
+[node name="CharactersButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Characters
+"
+
+[connection signal="pressed" from="HBoxContainer/GachaButton" to="." method="_on_gacha_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/MissionsButton" to="." method="_on_missions_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
