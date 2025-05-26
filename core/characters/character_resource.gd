@@ -8,7 +8,15 @@ class_name CharacterResource
 @export var _stats: Dictionary
 @export var _sprite_ids: Dictionary
 
-static func init(name: String, origin: OriginResource, alignment: String, cclass: String, stats: Dictionary, sprite_ids: Dictionary) -> CharacterResource:
+
+static func init(
+	name: String,
+	origin: OriginResource,
+	alignment: String,
+	cclass: String,
+	stats: Dictionary,
+	sprite_ids: Dictionary
+) -> CharacterResource:
 	var instance = CharacterResource.new()
 	instance._name = name
 	instance._origin = origin

@@ -1,11 +1,9 @@
 extends Node
 
-const ANIM_MAP = [
-	{ "idle": 1, "push": 2, "pull": 2, "jump": 3},
-	{ "walk": 6, "run": 2}
-]
+const ANIM_MAP = [{"idle": 1, "push": 2, "pull": 2, "jump": 3}, {"walk": 6, "run": 2}]
 const FRAME_SIZE := Vector2(64, 64)
 const DIRECTIONS := ["down", "up", "right", "left"]
+
 
 static func setup_animated_layer(sprite: AnimatedSprite2D, texture: Texture):
 	var sprite_frames := SpriteFrames.new()
@@ -21,7 +19,9 @@ static func setup_animated_layer(sprite: AnimatedSprite2D, texture: Texture):
 
 				var row = map_index * 4 + dir_index
 				for i in range(frame_count):
-					var region = Rect2(i * FRAME_SIZE.x, row * FRAME_SIZE.y, FRAME_SIZE.x, FRAME_SIZE.y)
+					var region = Rect2(
+						i * FRAME_SIZE.x, row * FRAME_SIZE.y, FRAME_SIZE.x, FRAME_SIZE.y
+					)
 					var atlas = AtlasTexture.new()
 					atlas.atlas = texture
 					atlas.region = region
@@ -29,4 +29,3 @@ static func setup_animated_layer(sprite: AnimatedSprite2D, texture: Texture):
 
 	sprite.frames = sprite_frames
 	sprite.play("idle_down")
-	

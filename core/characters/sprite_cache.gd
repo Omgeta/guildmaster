@@ -5,12 +5,12 @@ const ACCESSORY := "accessory"
 const BODY := "body"
 const HAIR := "hair"
 const OUTFIT := "outfit"
-static var MAP: Dictionary[String, Dictionary] = {
-	ACCESSORY: {}, BODY: {}, HAIR: {}, OUTFIT: {}
-}
+static var MAP: Dictionary[String, Dictionary] = {ACCESSORY: {}, BODY: {}, HAIR: {}, OUTFIT: {}}
+
 
 static func get_canonical_name(basename: String) -> String:
 	return "_".join(basename.rsplit("_").slice(-2, -1))
+
 
 func _ready() -> void:
 	for cat in MAP:
@@ -26,9 +26,11 @@ func _ready() -> void:
 					MAP[cat][id] = load(fullpath)
 				file = dir.get_next()
 			dir.list_dir_end()
-			
+
+
 func get_texture(category: String, id: String) -> Texture:
 	return MAP.get(category, {}).get(id)
-	
+
+
 func random_sprite(category: String) -> String:
 	return MAP.get(category, {}).keys().pick_random()
