@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cmvxonc7y7hvh"]
+
+[ext_resource type="Script" uid="uid://btu3ks1xx353v" path="res://core/characters/origin_resource.gd" id="1_xi285"]
+
+[resource]
+resource_name = "origin"
+script = ExtResource("1_xi285")

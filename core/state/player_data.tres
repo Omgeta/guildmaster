@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=4 format=3 uid="uid://ccthg2l6dqd3o"]
+
+[ext_resource type="Script" uid="uid://j7lttrmuwbh4" path="res://core/characters/character_resource.gd" id="1_kkcxx"]
+[ext_resource type="Script" uid="uid://btu3ks1xx353v" path="res://core/characters/origin_resource.gd" id="2_nuq27"]
+[ext_resource type="Script" uid="uid://bm0jvw6c4mk1g" path="res://core/state/player_data.gd" id="3_r1qcr"]
+
+[resource]
+script = ExtResource("3_r1qcr")
+currency = 0
+characters = Array[ExtResource("1_kkcxx")]([])
+origins = Array[ExtResource("2_nuq27")]([])
