@@ -1,14 +1,26 @@
-extends Resource
-class_name CharacterResource
+## Resource class representing a single character's data.
+class_name CharacterResource extends Resource
 
+## Character’s full display name (e.g., "Ayla Thorne")
 @export var _name: String
+
+## The origin this character belongs to
 @export var _origin: OriginResource
+
+## Alignment of the character (e.g., "Chaotic", "Orderly", "Neutral")
 @export var _alignment: String
+
+## Class type of the character (e.g., "Warrior", "Magician", "Rogue")
 @export var _class: String
+
+## Character stats, such as HP, ATK, DEF
 @export var _stats: Dictionary
+
+## Dictionary mapping sprite categories (e.g., "hair", "body") to sprite IDs
 @export var _sprite_ids: Dictionary
 
 
+## Static constructor to initialize a CharacterResource with specific parameters.
 static func init(
 	name: String,
 	origin: OriginResource,
