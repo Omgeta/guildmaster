@@ -1,7 +1,5 @@
 ## ![Guildmaster](assets/logo/default.png)
 
----
-
 Guildmaster is a gacha idle RPG built in Godot for Orbital 2025.
 
 ## Features
