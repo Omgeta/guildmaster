@@ -32,13 +32,13 @@ static func compute_alignment(tags: Array[String]) -> String:
 ## Computes the class distribution based on tag_class_bias mappings in the keywords file.
 ## If no bias is found, returns an even distribution.
 static func compute_class_distribution(tags: Array[String]) -> Dictionary[String, int]:
-	var base := {"Warrior": 0, "Magician": 0, "Rogue": 0}
+	var base: Dictionary[String, int] = {"Warrior": 0, "Magician": 0, "Rogue": 0}
 	var found_bias := false
 	for tag in tags:
 		if ORIGIN_KEYWORDS["tag_class_bias"].has(tag):
 			var bias = ORIGIN_KEYWORDS["tag_class_bias"][tag]
 			for k in bias:
-				base[k] += bias[k]
+				base[k] += int(bias[k])
 			found_bias = true
 	if not found_bias:
 		return {"Warrior": 33, "Magician": 33, "Rogue": 33}
