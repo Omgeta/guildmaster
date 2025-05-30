@@ -15,17 +15,12 @@ const ORIGIN_LOWER := 15
 const ORIGIN_UPPER := 20
 
 
-## Called when the node enters the scene tree.
-## Loads the game data if it exists, or initializes it for new players.
-func _ready() -> void:
-	load_game()
-
-
 ## Loads player data from disk if it exists.
 ## Otherwise, initializes a new player with random origins and default currency.
-func load_game():
+func load_game() -> bool:
 	if FileAccess.file_exists(SAVE_PATH):
 		player_data = ResourceLoader.load(SAVE_PATH)
+		return true
 	else:
 		# First-time player setup
 		var OriginFactory = preload("res://core/characters/origin_factory.gd")
@@ -33,6 +28,7 @@ func load_game():
 			BASE_CURRENCY, OriginFactory.generate_origins(ORIGIN_LOWER, ORIGIN_UPPER), []
 		)
 		save_game()
+		return false
 
 
 ## Saves the current player data to disk.
