@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmg1mnwgu1qff"]
 
-[ext_resource type="Script" uid="uid://dkdqivogpuqce" path="res://core/cutscenes/cutscene_template.gd" id="1_sus82"]
+[ext_resource type="Script" uid="uid://dkdqivogpuqce" path="res://core/screens/cutscenes/cutscene_template.gd" id="1_sus82"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_otksd"]
 
 [node name="CutsceneTemplate" type="Control"]

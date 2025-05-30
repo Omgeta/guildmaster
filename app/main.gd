@@ -26,16 +26,20 @@ func _on_splash_screen_scene_finished() -> void:
 	var new_game := not GameState.load_game()
 
 	if new_game:
-		var cutscene = load("res://core/cutscenes/cutscene_template.tscn").instantiate().init(
-			(
-				[
-					{"text": "You wake up in a desolate land, with only a tower infront of you."},
-					{"text": "Your instincts scream at you."},
-					{"text": "You must climb, or you won't be able to return to your world."},
-					{"text": "Suddenly, a light appears from behind you."},
-					{"text": "You turn to see the light take shape into a human..."}
-				]
-				as Array[Dictionary]
+		var cutscene = (
+			load("res://core/screens/cutscenes/cutscene_template.tscn")
+			. instantiate()
+			. init(
+				(
+					[
+						{"text": "You wake up in a desolate land, with a tower infront of you."},
+						{"text": "Your instincts scream at you."},
+						{"text": "You must climb, or you won't be able to return to your world."},
+						{"text": "Suddenly, a light appears from behind you."},
+						{"text": "You turn to see the light take shape into a human..."}
+					]
+					as Array[Dictionary]
+				)
 			)
 		)
 		cutscene.connect("cutscene_finished", fade_to_main_game)
