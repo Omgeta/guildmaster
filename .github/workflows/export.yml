@@ -1,0 +1,63 @@
+name: Export Godot
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  export:
+    name: Export Game
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Godot
+        uses: firebelley/setup-godot@v1
+        with:
+          godot-version: "4.4.1"
+          use-mono: false
+
+      - name: Export HTML5
+        run: godot --headless --export-release "HTML5" build/web/index.html
+
+      - name: Export Windows
+        run: godot --headless --export-release "Windows Desktop" build/windows/Guildmaster.exe
+
+      - name: Zip Windows Export
+        run: |
+          cd build/windows
+          zip -r ../Guildmaster-windows.zip .
+
+      - name: Zip HTML5 Export
+        run: |
+          cd build/web
+          zip -r ../Guildmaster-web.zip .
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: exported-game
+          path: build/
+
+      - name: Publish to itch.io
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.2
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: web
+          ITCH_GAME: guildmaster
+          ITCH_USER: omgeta
+          PACKAGE: build/web
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          files: |
+            build/Guildmaster-web.zip
+            build/Guildmaster-windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
