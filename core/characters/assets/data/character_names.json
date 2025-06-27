@@ -1,4 +1,26 @@
 {
-  "first_names": ["Aerin", "Kael", "Mira", "Thorne", "Lira", "Dax", "Nyra", "Bren", "Eira", "Jalen"],
-  "last_names": ["Stormborn", "Nightshade", "Emberfell", "Ironhart", "Duskrend", "Ravencrest", "Moonveil", "Wyrmwood"]
+  "first_names": [
+	"Aerin", "Kael", "Mira", "Thorne", "Lira", "Dax", "Nyra", "Bren", "Eira", "Jalen",
+	"Rowan", "Sylas", "Kira", "Theren", "Alaric", "Lyra", "Zane", "Elira", "Riven", "Soren",
+	"Talia", "Kalen", "Vesper", "Neris", "Orin", "Seris", "Draven", "Selene", "Corin", "Azar",
+	"Isolde", "Fenric", "Ylva", "Vael", "Myra", "Cael", "Talon", "Arin", "Zira", "Lorien",
+	"Rhea", "Noctis", "Ashen", "Delara", "Malric", "Thalia", "Zeph", "Kairen", "Vanya", "Oryn",
+	"Alira", "Galen", "Sorin", "Velra", "Tavric", "Meira", "Darian", "Nyelle", "Rovik", "Ysolde",
+	"Elandra", "Thornean", "Virel", "Maelis", "Jareth", "Eris", "Kaelen", "Naeris", "Zevara", "Orien",
+	"Fael", "Ireth", "Calyra", "Sareth", "Thalor", "Liora", "Varin", "Evos", "Talindra", "Rivenne",
+	"Ysera", "Kareth", "Laziel", "Myrren", "Aelric", "Zelra", "Vaen", "Torin", "Aerith", "Xanriel"
+  ],
+  "last_names": [
+	"Stormborn", "Nightshade", "Emberfell", "Ironhart", "Duskrend", "Ravencrest", "Moonveil", "Wyrmwood",
+	"Shadowfen", "Darkmoor", "Silverbranch", "Flamebrand", "Windrider", "Stormgaze", "Ashfall", "Driftthorn",
+	"Hollowmere", "Brightspire", "Duskwhisper", "Frostwarden", "Blackthorn", "Starforge", "Gravebloom", "Wolfshade",
+	"Winterglen", "Sunflare", "Oakenshield", "Blightvale", "Mistwalker", "Thundersoul", "Moonshadow", "Virethorn",
+	"Redmaw", "Nightbloom", "Ironbark", "Skystone", "Emberglen", "Stormveil", "Farsight", "Gloomspire",
+	"Ivyrend", "Whitemourn", "Soulcrest", "Duskwatch", "Fangfall", "Mythgrove", "Cragborne", "Shadebrook",
+	"Frostmere", "Silverbane", "Thornkeep", "Ashgrove", "Grimvale", "Stormhollow", "Netherdeep", "Blackspire",
+	"Duskhollow", "Flamewatch", "Emberhollow", "Goldentide", "Rimevale", "Shadowreach", "Frostglade", "Darkreach",
+	"Sunhollow", "Wyrmglen", "Brightbloom", "Moonforge", "Crystalmere", "Ironspire", "Darkweald", "Gloomvale",
+	"Starwhisper", "Mournfall", "Stoneveil", "Hollowglen", "Mythspire", "Redthorn", "Voidshard", "Nightreach",
+	"Brightvale", "Stormrend", "Gravespire", "Moonbarrow", "Netherglen", "Ashthorn", "Blackglen", "Thornspire"
+  ]
 }
