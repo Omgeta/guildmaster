@@ -20,7 +20,7 @@ const ORIGIN_UPPER := 20
 func load_game() -> bool:
 	if FileAccess.file_exists(SAVE_PATH):
 		player_data = ResourceLoader.load(SAVE_PATH)
-		return true
+		return false
 	else:
 		# First-time player setup
 		var OriginFactory = preload("res://core/characters/origin_factory.gd")
