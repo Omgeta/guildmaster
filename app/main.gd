@@ -32,11 +32,23 @@ func _on_splash_screen_scene_finished() -> void:
 			. init(
 				(
 					[
-						{"text": "You wake up in a desolate land, with a tower infront of you."},
+						{"text": "You wake up in a desolate land, with a tower in front of you."},
 						{"text": "Your instincts scream at you."},
 						{"text": "You must climb, or you won't be able to return to your world."},
 						{"text": "Suddenly, a light appears from behind you."},
-						{"text": "You turn to see the light take shape into a human..."}
+						{"text": "You turn to see the light take shape into a human..."},
+						{
+							"text":
+							'"Welcome, Seeker," they say. "You are not the first, and you won\'t be the last."'
+						},
+						{"text": '"The tower grants power — but it demands something in return."'},
+						{"text": "You ask, 'What must I give up?'"},
+						{"text": 'The figure smiles. "Everything you’re unwilling to lose."'},
+						{"text": '"But fear not. Allies await. The guild will guide you."'},
+						{
+							"text":
+							"As they vanish, a sigil glows before you — a gateway to the first floor of the tower..."
+						}
 					]
 					as Array[Dictionary]
 				)
