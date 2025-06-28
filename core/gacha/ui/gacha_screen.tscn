@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://da67lq3iu01gv"]
+
+[ext_resource type="Script" uid="uid://catskoy28jlsh" path="res://core/gacha/ui/gacha_screen.gd" id="1_isfep"]
+[ext_resource type="PackedScene" uid="uid://bc2mqi47bn2eq" path="res://core/gacha/ui/pull_animation.tscn" id="2_l28y1"]
+
+[node name="GachaScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_isfep")
+
+[node name="BannerSelector" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -217.0
+offset_right = 335.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="BannerList" type="VBoxContainer" parent="BannerSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PullPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.5
+offset_top = -85.0
+offset_right = 199.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SinglePullButton" type="Button" parent="PullPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 89.0
+offset_bottom = 15.5
+grow_vertical = 2
+text = "Single"
+
+[node name="MultiPullButton" type="Button" parent="PullPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "Multi
+"
+
+[node name="PullAnimationLayer" parent="." instance=ExtResource("2_l28y1")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PullPanel/SinglePullButton" to="." method="_on_single_pull_button_pressed"]
+[connection signal="pressed" from="PullPanel/MultiPullButton" to="." method="_on_multi_pull_button_pressed"]

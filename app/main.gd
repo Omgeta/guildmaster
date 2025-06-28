@@ -49,5 +49,5 @@ func _on_splash_screen_scene_finished() -> void:
 
 
 func fade_to_main_game():
-	var next_scene = load("res://core/screens/gacha/gacha_screen.tscn").instantiate()
+	var next_scene = preload("res://core/gacha/ui/gacha_screen.tscn").instantiate()
 	await fade_to_scene(next_scene)

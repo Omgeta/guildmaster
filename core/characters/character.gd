@@ -15,7 +15,7 @@ func apply_animated_layers(sprite_ids: Dictionary[String, String]):
 		# Assumes each sprite node is named using PascalCase of the category name
 		var sprite_node: AnimatedSprite2D = get_node(cat.capitalize())
 		CharacterSpriteBuilder.setup_animated_layer(
-			sprite_node, SpriteCache.get_texture(cat, sprite_ids[cat])
+			sprite_node, SpriteCache.MAP.get(cat, {}).get(sprite_ids[cat])
 		)
 
 

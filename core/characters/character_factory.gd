@@ -37,12 +37,12 @@ static func random_sprite_ids() -> Dictionary[String, String]:
 	var res: Dictionary[String, String] = {}
 
 	for cat in NECESSARY_SPRITES:
-		res[cat] = SpriteCache.random_sprite(cat)
+		res[cat] = SpriteCache.MAP.get(cat, {}).keys().pick_random()
 
 	for cat in OPTIONAL_SPRITES:
 		var p = OPTIONAL_SPRITES[cat]
 		if randf() < p:
-			res[cat] = SpriteCache.random_sprite(cat)
+			res[cat] = SpriteCache.MAP.get(cat, {}).keys().pick_random()
 
 	return res
 
