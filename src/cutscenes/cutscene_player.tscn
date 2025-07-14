@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://8p87q4ndhseo"]
+
+[ext_resource type="Script" uid="uid://o4edfly50fue" path="res://src/cutscenes/cutscene_player.gd" id="1_n6x6k"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_b8kow"]
+
+[node name="CutscenePlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n6x6k")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b8kow")
+theme_override_font_sizes/font_size = 16
+text = "Cutscene Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

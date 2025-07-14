@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BannerData" load_steps=4 format=3 uid="uid://3oixa72efirr"]
+
+[ext_resource type="Script" uid="uid://cc6326atdl7yo" path="res://src/menus/gacha/prefabs/standard/standard_pull_logic.gd" id="1_3hftq"]
+[ext_resource type="Texture2D" uid="uid://7c5x4sruwijk" path="res://src/menus/gacha/prefabs/premium/premium.png" id="1_ehyvs"]
+[ext_resource type="Script" uid="uid://8blkhmp8qulr" path="res://src/menus/gacha/banner_data.gd" id="2_pnxck"]
+
+[resource]
+script = ExtResource("2_pnxck")
+id = "premium"
+display_name = "Premium"
+image = ExtResource("1_ehyvs")
+pull_logic = ExtResource("1_3hftq")
+min_rarity = 3
+pull_cost = 300
+tag_bias = []
+enabled = true
+metadata/_custom_type_script = "uid://8blkhmp8qulr"

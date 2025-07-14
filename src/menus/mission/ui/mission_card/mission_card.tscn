@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bln73s5cx446f"]
+
+[ext_resource type="Texture2D" uid="uid://w1ivhc2sm5ue" path="res://src/menus/assets/sprites/Button/Button_52x14.png" id="1_73qk4"]
+[ext_resource type="Script" uid="uid://des2v28dmtchl" path="res://src/menus/mission/ui/mission_card/mission_card.gd" id="2_n25tq"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_p1efc"]
+
+[node name="MissionCard" type="TextureButton"]
+custom_minimum_size = Vector2(227, 74)
+offset_right = 227.0
+offset_bottom = 74.0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_73qk4")
+stretch_mode = 5
+script = ExtResource("2_n25tq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185022
+anchor_top = 0.162162
+anchor_right = 0.84141
+anchor_bottom = 0.847094
+theme_override_colors/font_color = Color(0.457714, 0.359578, 0.191935, 1)
+theme_override_fonts/font = ExtResource("2_p1efc")
+theme_override_font_sizes/font_size = 32
+text = "Floor 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

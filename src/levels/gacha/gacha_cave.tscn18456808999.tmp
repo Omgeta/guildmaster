@@ -1,0 +1,156 @@
+[gd_scene load_steps=21 format=3 uid="uid://v21t7u88gjhg"]
+
+[ext_resource type="PackedScene" uid="uid://mxqtfw0fyis5" path="res://src/levels/gacha/assets/3d/cave/grotto_cavern_cave.glb" id="1_2vr2n"]
+[ext_resource type="Script" uid="uid://ifsxeamdvfbj" path="res://src/levels/gacha/gacha_cave.gd" id="1_h3nu3"]
+[ext_resource type="PackedScene" uid="uid://de53ks26apt33" path="res://src/levels/gacha/assets/3d/portal/old_portal.glb" id="2_h3nu3"]
+[ext_resource type="PackedScene" uid="uid://c64b3cxkn0pf0" path="res://src/levels/gacha/assets/3d/torch/torch.glb" id="4_ikbl2"]
+
+[sub_resource type="Curve" id="Curve_2vr2n"]
+_data = [Vector2(0, 0.720755), 0.0, 0.0, 0, 0, Vector2(0.783251, 0.54717), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h3nu3"]
+curve = SubResource("Curve_2vr2n")
+
+[sub_resource type="Gradient" id="Gradient_fnmid"]
+offsets = PackedFloat32Array(0, 0.472727, 0.551515, 1)
+colors = PackedColorArray(0, 0.72549, 0.768627, 1, 0.472727, 0.855258, 0.878004, 1, 0.552941, 0.466667, 0.898039, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ikbl2"]
+gradient = SubResource("Gradient_fnmid")
+
+[sub_resource type="Curve" id="Curve_2jo54"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.995074, 0.516981), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qcqyn"]
+curve = SubResource("Curve_2jo54")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2vr2n"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.3
+scale_curve = SubResource("CurveTexture_qcqyn")
+color_ramp = SubResource("GradientTexture1D_ikbl2")
+alpha_curve = SubResource("CurveTexture_h3nu3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vr2n"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_2vr2n"]
+material = SubResource("StandardMaterial3D_2vr2n")
+size = Vector2(0.25, 0.25)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ey0fm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_d4oqp"]
+panorama = SubResource("CompressedTexture2D_ey0fm")
+
+[sub_resource type="Sky" id="Sky_g8sei"]
+sky_material = SubResource("PanoramaSkyMaterial_d4oqp")
+
+[sub_resource type="Environment" id="Environment_ltswk"]
+background_mode = 2
+sky = SubResource("Sky_g8sei")
+tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_bloom = 0.05
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ci2oj"]
+
+[sub_resource type="Shader" id="Shader_2vr2n"]
+code = "shader_type canvas_item;
+
+uniform vec4 color: source_color;
+uniform float multiplier = 0.2;
+uniform float softness = 3.0;
+
+void fragment() {
+	float value = distance(UV, vec2(0.5));
+	COLOR = vec4(color.rgb, smoothstep(multiplier, softness, value));
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3nu3"]
+shader = SubResource("Shader_2vr2n")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/multiplier = 0.1
+shader_parameter/softness = 0.9
+
+[node name="GachaCave" type="Node3D"]
+script = ExtResource("1_h3nu3")
+show_time = null
+pop_time = null
+fade_time = null
+
+[node name="Cave" parent="." instance=ExtResource("1_2vr2n")]
+transform = Transform3D(-2.18557e-07, 0, -2.383, 0, 5, 0, 5, 0, -1.04164e-07, 0, 5, -1)
+
+[node name="Portal" parent="." instance=ExtResource("2_h3nu3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33342, -2.94631, 0.005)
+
+[node name="SpawnPoint" type="Marker3D" parent="Portal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149496, 0.923331, 0)
+
+[node name="PortalParticles" type="GPUParticles3D" parent="Portal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.263595, 0.862964, 0.0252174)
+amount = 1000
+lifetime = 0.7
+process_material = SubResource("ParticleProcessMaterial_2vr2n")
+draw_pass_1 = SubResource("QuadMesh_2vr2n")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ltswk")
+camera_attributes = SubResource("CameraAttributesPractical_ci2oj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.674302, 0.563197, 0.477625, 0, 0.64679, -0.762668, -0.738455, -0.514269, -0.436132, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 3.5
+directional_shadow_split_1 = 0.0
+directional_shadow_blend_splits = true
+
+[node name="Torch" parent="." instance=ExtResource("4_ikbl2")]
+transform = Transform3D(-4.22079e-08, 0.0369576, 0.999317, 1.16161e-09, 0.999317, -0.0369576, -1, -3.99089e-10, -4.2222e-08, -10.5753, -1.64716, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torch"]
+transform = Transform3D(1, 2.77556e-16, 7.10543e-15, 5.55112e-17, 1, 1.68504e-17, -1.42109e-14, 1.68503e-17, 1, 0.0277374, 0.391113, 0.247516)
+light_color = Color(0.752941, 0.529412, 0, 1)
+light_size = 1.0
+light_specular = 1.0
+omni_range = 15.0
+omni_attenuation = 0.05
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4266, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(-4.2222e-08, -0.258819, 0.965926, -1.13133e-08, 0.965926, 0.258819, -1, 8.88178e-16, -4.37114e-08, 5.92082, 4, 0)
+projection = 1
+current = true
+size = 9.0
+near = 0.01
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraRig/Camera3D"]
+
+[node name="ColorRect" type="ColorRect" parent="CameraRig/Camera3D/CanvasLayer"]
+material = SubResource("ShaderMaterial_h3nu3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

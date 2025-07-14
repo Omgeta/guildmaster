@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://l1gaobdpfp1i"]
+
+[ext_resource type="PackedScene" uid="uid://cvepxrfeji0i" path="res://src/menus/assets/prefabs/ui_pill_1.tscn" id="1_bysr7"]
+[ext_resource type="Script" uid="uid://bej1icdq6ojhf" path="res://src/menus/gacha/ui/pull_buttons/button_single.gd" id="1_ktlis"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_wxwgu"]
+[ext_resource type="Script" uid="uid://clh6ot2rwcwtw" path="res://src/menus/gacha/ui/pull_buttons/button_multi.gd" id="4_jv568"]
+
+[node name="PullButtons" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 45)
+layout_direction = 2
+offset_right = 20.0
+offset_bottom = 8.0
+theme_override_constants/separation = 16
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSingle" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_ktlis")
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" parent="ButtonSingle" instance=ExtResource("1_bysr7")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="ButtonSingle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wxwgu")
+theme_override_font_sizes/font_size = 28
+text = "Pull x 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonMulti" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("4_jv568")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="Background" parent="ButtonMulti" instance=ExtResource("1_bysr7")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="ButtonMulti"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wxwgu")
+theme_override_font_sizes/font_size = 28
+text = "Pull x 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="ButtonSingle" to="ButtonSingle" method="_on_button_down"]
+[connection signal="button_up" from="ButtonSingle" to="ButtonSingle" method="_on_button_up"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu0y6smoidwwj"]
+
+[ext_resource type="PackedScene" uid="uid://v21t7u88gjhg" path="res://src/levels/gacha/gacha_cave.tscn" id="1_u8bn6"]
+[ext_resource type="PackedScene" uid="uid://l1gaobdpfp1i" path="res://src/menus/gacha/ui/pull_buttons/pull_buttons.tscn" id="2_g6y2b"]
+[ext_resource type="PackedScene" uid="uid://dcbyrhb1we83e" path="res://src/menus/gacha/ui/banner_carousel/banner_carousel.tscn" id="3_fxtcr"]
+[ext_resource type="Script" uid="uid://8blkhmp8qulr" path="res://src/menus/gacha/banner_data.gd" id="4_jv4xj"]
+[ext_resource type="Resource" uid="uid://bbmslpepfelv2" path="res://src/menus/gacha/prefabs/standard/standard.tres" id="5_36sg7"]
+[ext_resource type="Resource" uid="uid://3oixa72efirr" path="res://src/menus/gacha/prefabs/premium/premium.tres" id="6_d35nn"]
+
+[node name="Gacha" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GachaStage" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_u8bn6")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PullButtons" parent="." instance=ExtResource("2_g6y2b")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373264
+anchor_top = 0.839506
+anchor_right = 0.626736
+anchor_bottom = 0.930556
+offset_right = 8.0
+offset_bottom = -14.0
+pivot_offset = Vector2(150, 22.5)
+
+[node name="BannerCarousel" parent="." instance=ExtResource("3_fxtcr")]
+layout_mode = 1
+banners = Array[ExtResource("4_jv4xj")]([ExtResource("5_36sg7"), ExtResource("6_d35nn")])
+slide_time = null

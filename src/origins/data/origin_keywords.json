@@ -1,0 +1,53 @@
+{
+  "prefixes": [
+	{ "name": "Knights", "tags": ["military", "honor", "order"] },
+	{ "name": "Fangs", "tags": ["feral", "chaos", "rogue"] },
+	{ "name": "Scribes", "tags": ["magic", "neutral", "wisdom"] },
+	{ "name": "Wardens", "tags": ["defense", "order", "vigilance"] },
+	{ "name": "Watchers", "tags": ["neutral", "wisdom", "magic"] },
+	{ "name": "Hands", "tags": ["order", "discipline", "crafting"] },
+	{ "name": "Chorus", "tags": ["chaos", "mystic", "collective"] },
+	{ "name": "Veil", "tags": ["stealth", "mystery", "neutral"] },
+	{ "name": "Scions", "tags": ["heritage", "discipline", "honor"] },
+	{ "name": "Wolves", "tags": ["feral", "pack", "chaos"] }
+  ],
+
+  "connectors": [
+	"of the", "from", "under", "beyond", "within", "beside", "upon", "among", "beneath", "above"
+  ],
+
+  "suffixes": [
+	{ "name": "Void", "tags": ["chaos", "arcane", "dark"] },
+	{ "name": "Ashen Hollow", "tags": ["chaos", "death", "forgotten"] },
+	{ "name": "Sunveil", "tags": ["light", "order", "radiance"] },
+	{ "name": "Ironspire", "tags": ["fortress", "discipline", "warrior"] },
+	{ "name": "Thornmere", "tags": ["nature", "rogue", "neutral"] },
+	{ "name": "Duskwatch", "tags": ["stealth", "twilight", "neutral"] },
+	{ "name": "Whispering Fen", "tags": ["swamp", "magic", "rogue"] },
+	{ "name": "Starfell", "tags": ["celestial", "mystic", "order"] },
+	{ "name": "Frostmarch", "tags": ["cold", "discipline", "military"] },
+	{ "name": "Wyrmgate", "tags": ["dragon", "ancient", "magic"] }
+  ],
+
+  "tag_class_bias": {
+	"military":    { "Warrior": 60, "Rogue": 20, "Mage": 20 },
+	"honor":       { "Warrior": 50, "Mage": 30, "Rogue": 20 },
+	"order":       { "Warrior": 40, "Mage": 30, "Rogue": 30 },
+	"chaos":       { "Rogue": 50, "Mage": 40, "Warrior": 10 },
+	"neutral":     { "Rogue": 34, "Mage": 33, "Warrior": 33 },
+	"magic":       { "Mage": 70, "Rogue": 20, "Warrior": 10 },
+	"rogue":       { "Rogue": 60, "Warrior": 30, "Mage": 10 },
+	"stealth":     { "Rogue": 60, "Mage": 30, "Warrior": 10 },
+	"defense":     { "Warrior": 50, "Mage": 30, "Rogue": 20 },
+	"wisdom":      { "Mage": 60, "Warrior": 20, "Rogue": 20 },
+	"discipline":  { "Warrior": 50, "Mage": 30, "Rogue": 20 },
+	"twilight":    { "Rogue": 50, "Mage": 40, "Warrior": 10 },
+	"radiance":    { "Mage": 50, "Warrior": 30, "Rogue": 20 },
+	"arcane":      { "Mage": 60, "Rogue": 30, "Warrior": 10 },
+	"swamp":       { "Rogue": 50, "Mage": 40, "Warrior": 10 },
+	"crafting":    { "Warrior": 40, "Mage": 40, "Rogue": 20 },
+	"pack":        { "Rogue": 50, "Warrior": 40, "Mage": 10 },
+	"celestial":   { "Mage": 60, "Warrior": 20, "Rogue": 20 },
+	"dragon":      { "Warrior": 50, "Mage": 40, "Rogue": 10 }
+  }
+}
