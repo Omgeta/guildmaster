@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BannerData" load_steps=4 format=3 uid="uid://bbmslpepfelv2"]
+
+[ext_resource type="Texture2D" uid="uid://cdua2hgf1l7ky" path="res://src/menus/gacha/prefabs/standard/standard.png" id="1_0dic5"]
+[ext_resource type="Script" uid="uid://8blkhmp8qulr" path="res://src/menus/gacha/banner_data.gd" id="1_7xtgt"]
+[ext_resource type="Script" uid="uid://cc6326atdl7yo" path="res://src/menus/gacha/prefabs/standard/standard_pull_logic.gd" id="1_we26x"]
+
+[resource]
+script = ExtResource("1_7xtgt")
+id = "standard"
+display_name = "Standard"
+image = ExtResource("1_0dic5")
+pull_logic = ExtResource("1_we26x")
+min_rarity = 1
+pull_cost = 100
+tag_bias = []
+enabled = true
+metadata/_custom_type_script = "uid://8blkhmp8qulr"

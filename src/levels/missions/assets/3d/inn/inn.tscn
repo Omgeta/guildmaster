@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvix3r2vhpvh4"]
+
+[ext_resource type="PackedScene" uid="uid://f4mbc17pxf62" path="res://src/levels/missions/assets/3d/inn/theInn.FBX.fbx" id="1_ssrd1"]
+[ext_resource type="Texture2D" uid="uid://cg8s3hrtx16wq" path="res://src/levels/missions/assets/3d/inn/theInn_texture_diffuse_color.png" id="2_6rsby"]
+[ext_resource type="Texture2D" uid="uid://cs3v11mbfgb1l" path="res://src/levels/missions/assets/3d/inn/emissive.png" id="3_eabhv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haxsp"]
+albedo_texture = ExtResource("2_6rsby")
+emission_enabled = true
+emission_texture = ExtResource("3_eabhv")
+backlight_enabled = true
+
+[node name="Inn" instance=ExtResource("1_ssrd1")]
+
+[node name="TheInn" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_haxsp")

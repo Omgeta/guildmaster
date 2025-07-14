@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="CutsceneResource" load_steps=13 format=3 uid="uid://b75hbxqtee6e4"]
+
+[ext_resource type="Script" uid="uid://88114vdfe28f" path="res://src/cutscenes/cutscene_entry.gd" id="1_q6hg5"]
+[ext_resource type="Script" uid="uid://df0w1s1lunluc" path="res://src/cutscenes/cutscene_resource.gd" id="2_pbgfw"]
+
+[sub_resource type="Resource" id="Resource_q6hg5"]
+script = ExtResource("1_q6hg5")
+text = "You wake up in a desolate land, with a tower in front of you.
+Your instincts scream at you."
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_pbgfw"]
+script = ExtResource("1_q6hg5")
+text = "You must climb, or you won't be able to return to your world."
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_g2ihi"]
+script = ExtResource("1_q6hg5")
+text = "Suddenly, a light appears from behind you..."
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_g1i3c"]
+script = ExtResource("1_q6hg5")
+text = "You turn to see the light take shape into a human…"
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_6yjwu"]
+script = ExtResource("1_q6hg5")
+text = "\"Welcome, Seeker,\" they say. \"You are not the first, and you won't be the last."
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_tlann"]
+script = ExtResource("1_q6hg5")
+text = "'\"The tower grants power - but it demands something in return.\""
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_85rst"]
+script = ExtResource("1_q6hg5")
+text = "You ask, 'What must I give up?'"
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_xiwm5"]
+script = ExtResource("1_q6hg5")
+text = "The figure smiles. \"Everything you’re unwilling to lose.\""
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_8oiy1"]
+script = ExtResource("1_q6hg5")
+text = "\"But fear not. Allies await. The guild will guide you.\""
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[sub_resource type="Resource" id="Resource_tk4y7"]
+script = ExtResource("1_q6hg5")
+text = "As they vanish, a sigil glows before you - a gateway to the first floor of the tower…"
+auto_advance = false
+hold_time = 1.5
+metadata/_custom_type_script = "uid://88114vdfe28f"
+
+[resource]
+script = ExtResource("2_pbgfw")
+entries = Array[ExtResource("1_q6hg5")]([SubResource("Resource_q6hg5"), SubResource("Resource_pbgfw"), SubResource("Resource_g2ihi"), SubResource("Resource_g1i3c"), SubResource("Resource_6yjwu"), SubResource("Resource_tlann"), SubResource("Resource_85rst"), SubResource("Resource_xiwm5"), SubResource("Resource_8oiy1"), SubResource("Resource_tk4y7")])
+skippable = true
+metadata/_custom_type_script = "uid://df0w1s1lunluc"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://l1gaobdpfp1i"]
+
+[ext_resource type="Script" uid="uid://fx77kfwid535" path="res://src/menus/gacha/ui/pull_buttons/pull_buttons.gd" id="1_ktlis"]
+[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/assets/prefabs/button_single/button_single.tscn" id="2_jv568"]
+
+[node name="PullButtons" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 45)
+layout_direction = 2
+anchors_preset = -1
+anchor_right = 0.0868056
+anchor_bottom = 0.0279707
+offset_right = 300.0
+offset_bottom = 41.875
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+script = ExtResource("1_ktlis")
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSingle" parent="." instance=ExtResource("2_jv568")]
+layout_mode = 2
+
+[node name="ButtonMulti" parent="." instance=ExtResource("2_jv568")]
+layout_mode = 2
+
+[connection signal="pressed" from="ButtonSingle" to="." method="_on_single"]
+[connection signal="pressed" from="ButtonMulti" to="." method="_on_multi"]

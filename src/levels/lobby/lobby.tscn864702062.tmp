@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://bc6c3bbdt8m4m"]
+
+[ext_resource type="ArrayMesh" uid="uid://bcxm8ywxvejj3" path="res://src/levels/lobby/assets/3d/platform.obj" id="1_8gfuf"]
+[ext_resource type="Script" uid="uid://ctnxgr1fqp8ya" path="res://src/levels/lobby/lobby.gd" id="1_qisat"]
+[ext_resource type="Texture2D" uid="uid://dl3ilgkqbwsc4" path="res://src/levels/lobby/assets/2d/milky_way.png" id="3_qisat"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_qisat"]
+vertices = PackedVector3Array(-2.79896, 1.27834, -2.69266, -2.79896, 1.27834, 2.80734, 2.70104, 1.27834, 2.80734, 2.70104, 1.27834, -2.69266, -1.57396, 1.77834, -1.46766, 1.45614, 1.77834, 1.57024, -1.56389, 1.77834, 1.54826, 1.44607, 1.77834, -1.44569)
+polygons = [PackedInt32Array(2, 5, 3), PackedInt32Array(3, 4, 0), PackedInt32Array(0, 6, 1), PackedInt32Array(1, 5, 2), PackedInt32Array(5, 7, 3), PackedInt32Array(4, 6, 0), PackedInt32Array(3, 7, 4), PackedInt32Array(6, 5, 1), PackedInt32Array(5, 6, 7), PackedInt32Array(4, 7, 6)]
+agent_height = 0.3
+agent_radius = 0.15
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qisat"]
+panorama = ExtResource("3_qisat")
+
+[sub_resource type="Sky" id="Sky_g8sei"]
+sky_material = SubResource("PanoramaSkyMaterial_qisat")
+
+[sub_resource type="Environment" id="Environment_3vcal"]
+background_mode = 2
+sky = SubResource("Sky_g8sei")
+tonemap_mode = 2
+tonemap_exposure = 1.1
+ssao_enabled = true
+ssil_enabled = true
+glow_enabled = true
+glow_bloom = 0.05
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2nntr"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 50.0
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("1_qisat")
+
+[node name="CameraRig" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 10, 8, 10)
+projection = 1
+size = 3.0
+near = 0.001
+far = 100.0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_qisat")
+
+[node name="Floor" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.538958, 0.278341, -1.43266)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
+mesh = ExtResource("1_8gfuf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 3.5
+directional_shadow_split_1 = 0.0
+directional_shadow_blend_splits = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3vcal")
+camera_attributes = SubResource("CameraAttributesPractical_2nntr")
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="Spawns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.538958, 0.742136, -1.43266)
+
+[node name="Marker3D" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.436387, 1.20574, 3.27101)
+
+[node name="Marker3D2" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364727, 1.1885, 0.305773)
+
+[node name="Marker3D3" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27369, 1.25882, 0.660465)
+
+[node name="Marker3D4" type="Marker3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67829, 1.53614, 3.0952)

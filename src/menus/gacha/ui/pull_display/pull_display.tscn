@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4u5akh5rwyps"]
+
+[ext_resource type="Script" uid="uid://caqp4tq6c6ow5" path="res://src/menus/gacha/ui/pull_display/pull_display.gd" id="1_imun2"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="1_iuwip"]
+
+[node name="PullDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(580, 320)
+mouse_filter = 1
+script = ExtResource("1_imun2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.350694
+anchor_top = 0.23071
+anchor_right = 0.647569
+anchor_bottom = 0.293981
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(176, 19.5)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_iuwip")
+theme_override_font_sizes/font_size = 30
+text = "Firstname Lastname 5★"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.371962
+anchor_top = 0.287037
+anchor_right = 0.624566
+anchor_bottom = 0.345679
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(149.5, 22)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_iuwip")
+theme_override_font_sizes/font_size = 30
+text = "Class"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bottom" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.326389
+anchor_top = 0.694444
+anchor_right = 0.673611
+anchor_bottom = 0.753086
+offset_top = 3.05176e-05
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 20)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_iuwip")
+theme_override_font_sizes/font_size = 30
+text = "Origin"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

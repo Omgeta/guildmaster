@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://4fdx6lkx5qrq"]
+
+[ext_resource type="Script" uid="uid://ifsxeamdvfbj" path="res://src/levels/gacha/gacha_cave.gd" id="1_m7lmn"]
+[ext_resource type="PackedScene" uid="uid://cvix3r2vhpvh4" path="res://src/levels/missions/assets/3d/inn/inn.tscn" id="2_xm80x"]
+
+[sub_resource type="Sky" id="Sky_4godr"]
+
+[sub_resource type="Environment" id="Environment_ltswk"]
+background_mode = 1
+sky = SubResource("Sky_4godr")
+tonemap_mode = 2
+tonemap_exposure = 0.8
+ssao_radius = 0.01
+ssil_radius = 2.55
+glow_enabled = true
+glow_intensity = 3.0
+glow_bloom = 0.1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ci2oj"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 3.53
+dof_blur_near_distance = 0.46
+
+[sub_resource type="Shader" id="Shader_2vr2n"]
+code = "shader_type canvas_item;
+
+uniform vec4 color: source_color;
+uniform float multiplier = 0.2;
+uniform float softness = 3.0;
+
+void fragment() {
+	float value = distance(UV, vec2(0.5));
+	COLOR = vec4(color.rgb, smoothstep(multiplier, softness, value));
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3nu3"]
+shader = SubResource("Shader_2vr2n")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/multiplier = 0.6
+shader_parameter/softness = 0.9
+
+[node name="GalleryBackground" type="Node3D"]
+script = ExtResource("1_m7lmn")
+
+[node name="Inn" parent="." instance=ExtResource("2_xm80x")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -14.0804, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.994151, 0.0712798, -0.0811361, 0, 0.751264, 0.660002, 0.107999, 0.656141, -0.74687, -6.14105, 7.60011, 1.1967)
+shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 3.5
+directional_shadow_split_1 = 0.0
+directional_shadow_blend_splits = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ltswk")
+camera_attributes = SubResource("CameraAttributesPractical_ci2oj")
+
+[node name="CameraRig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0618945, 4.37333, 0.019196)
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(-0.173648, 0.0858316, -0.98106, 0, 0.996195, 0.0871557, 0.984808, 0.0151344, -0.172987, 1.85706, -0.970759, 2.30569)
+projection = 1
+current = true
+size = 1.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraRig/Camera3D"]
+
+[node name="ColorRect" type="ColorRect" parent="CameraRig/Camera3D/CanvasLayer"]
+material = SubResource("ShaderMaterial_h3nu3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

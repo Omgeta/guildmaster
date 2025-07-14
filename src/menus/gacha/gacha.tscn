@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu0y6smoidwwj"]
+
+[ext_resource type="Script" uid="uid://dcn8nlgsbdugh" path="res://src/menus/gacha/gacha.gd" id="1_d35nn"]
+[ext_resource type="PackedScene" uid="uid://v21t7u88gjhg" path="res://src/levels/gacha/gacha_cave.tscn" id="1_u8bn6"]
+[ext_resource type="PackedScene" uid="uid://l1gaobdpfp1i" path="res://src/menus/gacha/ui/pull_buttons/pull_buttons.tscn" id="2_g6y2b"]
+[ext_resource type="PackedScene" uid="uid://x806s713g56u" path="res://src/menus/gacha/ui/banner_viewer/banner_viewer.tscn" id="3_fxtcr"]
+[ext_resource type="Script" uid="uid://8blkhmp8qulr" path="res://src/menus/gacha/banner_data.gd" id="4_jv4xj"]
+[ext_resource type="Resource" uid="uid://bbmslpepfelv2" path="res://src/menus/gacha/prefabs/standard/standard.tres" id="5_36sg7"]
+[ext_resource type="Resource" uid="uid://3oixa72efirr" path="res://src/menus/gacha/prefabs/premium/premium.tres" id="6_d35nn"]
+[ext_resource type="PackedScene" uid="uid://yupcsm3r4k5w" path="res://src/menus/gacha/ui/currency_container/currency_container.tscn" id="7_36sg7"]
+[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/assets/prefabs/button_back/button_back.tscn" id="8_r45s6"]
+[ext_resource type="PackedScene" uid="uid://c4u5akh5rwyps" path="res://src/menus/gacha/ui/pull_display/pull_display.tscn" id="10_f4qci"]
+
+[node name="Gacha" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d35nn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GachaStage" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_u8bn6")]
+
+[node name="PullDisplay" parent="." instance=ExtResource("10_f4qci")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+mouse_filter = 2
+
+[node name="MainContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BannerViewer" parent="MainContainer" instance=ExtResource("3_fxtcr")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197917
+anchor_top = 0.194444
+anchor_right = 0.809896
+anchor_bottom = 0.743827
+banners = Array[ExtResource("4_jv4xj")]([ExtResource("5_36sg7"), ExtResource("6_d35nn")])
+
+[node name="PullButtons" parent="MainContainer" instance=ExtResource("2_g6y2b")]
+layout_mode = 1
+anchor_left = 0.326389
+anchor_top = 0.807099
+anchor_right = 0.673611
+anchor_bottom = 0.899691
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="ButtonBack" parent="MainContainer" instance=ExtResource("8_r45s6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.872396
+anchor_top = 0.0864198
+anchor_right = 0.907986
+anchor_bottom = 0.149691
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CurrencyContainer" parent="MainContainer" instance=ExtResource("7_36sg7")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.753472
+anchor_top = 0.0802469
+anchor_right = 0.854167
+anchor_bottom = 0.157407
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ResultsContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5
