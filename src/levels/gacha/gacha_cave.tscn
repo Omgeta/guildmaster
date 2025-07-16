@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://v21t7u88gjhg"]
 
 [ext_resource type="PackedScene" uid="uid://mxqtfw0fyis5" path="res://src/levels/gacha/assets/3d/cave/grotto_cavern_cave.glb" id="1_2vr2n"]
-[ext_resource type="Script" uid="uid://ifsxeamdvfbj" path="res://src/levels/gacha/gacha_cave.gd" id="1_h3nu3"]
+[ext_resource type="Script" path="res://src/levels/gacha/gacha_cave.gd" id="1_h3nu3"]
 [ext_resource type="PackedScene" uid="uid://de53ks26apt33" path="res://src/levels/gacha/assets/3d/portal/old_portal.glb" id="2_h3nu3"]
 [ext_resource type="PackedScene" uid="uid://c64b3cxkn0pf0" path="res://src/levels/gacha/assets/3d/torch/torch.glb" id="4_ikbl2"]
 

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="CutsceneResource" load_steps=13 format=3 uid="uid://b75hbxqtee6e4"]
+[gd_resource type="Resource" script_class="CutsceneData" load_steps=13 format=3 uid="uid://b75hbxqtee6e4"]
 
 [ext_resource type="Script" uid="uid://88114vdfe28f" path="res://src/cutscenes/cutscene_entry.gd" id="1_q6hg5"]
-[ext_resource type="Script" uid="uid://df0w1s1lunluc" path="res://src/cutscenes/cutscene_data.gd" id="2_pbgfw"]
+[ext_resource type="Script" uid="uid://df0w1s1lunluc" path="res://src/cutscenes/cutscene_data.gd" id="2_q6hg5"]
 
 [sub_resource type="Resource" id="Resource_q6hg5"]
 script = ExtResource("1_q6hg5")
@@ -75,7 +75,6 @@ hold_time = 1.5
 metadata/_custom_type_script = "uid://88114vdfe28f"
 
 [resource]
-script = ExtResource("2_pbgfw")
+script = ExtResource("2_q6hg5")
 entries = Array[ExtResource("1_q6hg5")]([SubResource("Resource_q6hg5"), SubResource("Resource_pbgfw"), SubResource("Resource_g2ihi"), SubResource("Resource_g1i3c"), SubResource("Resource_6yjwu"), SubResource("Resource_tlann"), SubResource("Resource_85rst"), SubResource("Resource_xiwm5"), SubResource("Resource_8oiy1"), SubResource("Resource_tk4y7")])
 skippable = true
-metadata/_custom_type_script = "uid://df0w1s1lunluc"

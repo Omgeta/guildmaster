@@ -17,18 +17,19 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SpawnManager="*res://src/globals/SpawnManager.gd"
+SceneLoader="*res://src/globals/SceneLoader.gd"
+RNG="*res://src/globals/RNG.gd"
 SpriteDB="*res://src/globals/SpriteDB.gd"
 ItemDB="*res://src/globals/ItemDB.gd"
-RNG="*res://src/globals/RNG.gd"
-SceneLoader="*res://src/globals/SceneLoader.gd"
 OriginDB="*res://src/globals/OriginDB.gd"
 MissionDB="*res://src/globals/MissionDB.gd"
 SaveManager="*res://src/globals/save/SaveManager.gd"
 MissionManager="*res://src/globals/MissionManager.gd"
-SpawnManager="*res://src/globals/SpawnManager.gd"
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [editor_plugins]

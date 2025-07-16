@@ -19,5 +19,5 @@ xp_reward = 75
 id = "bandit_king"
 display_name = "Bandit King"
 base_stats = SubResource("Resource_1aahd")
-tags = ["bandit", "chaotic"]
+tags = []
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

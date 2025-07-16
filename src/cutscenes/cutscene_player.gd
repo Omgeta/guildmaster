@@ -14,7 +14,7 @@ const FAST_MULT := 0.20  # factor to speed up by
 @onready var bgm: AudioStreamPlayer = $BGM
 @onready var timer: Timer = $Timer
 @onready var tween: Tween = create_tween()
-@export var cutscene: CutsceneResource
+@export var cutscene: CutsceneData
 
 var _idx: int = 0  # track current entry
 var _char_idx: int = 0  # track current char

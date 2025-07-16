@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://b2erlhffdbnho"]
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://dssunnw3mlqj"]
 
-[ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_1fmcr"]
+[ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_xe4aa"]
 
 [resource]
-script = ExtResource("1_1fmcr")
+script = ExtResource("1_xe4aa")
 heal_hp = 15
 buffs = Array[String]([])
 id = "heal_potion"
