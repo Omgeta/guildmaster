@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cdpkximlvfp0j"]
+
+[ext_resource type="Script" uid="uid://bxpjwrgua8liq" path="res://src/core/entities/enemies/enemy_data.gd" id="1_p2ym2"]
+
+[resource]
+script = ExtResource("1_p2ym2")
+drop_table = []
+xp_reward = 10
+id = ""
+display_name = ""
+tags = []
+metadata/_custom_type_script = "uid://bxpjwrgua8liq"

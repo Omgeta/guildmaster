@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://cx6h3wvvhw7ow"]
+
+[ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_nh58l"]
+
+[resource]
+script = ExtResource("1_nh58l")
+heal_hp = 0
+buffs = Array[String]([])
+id = ""
+name = ""
+description = ""
+rarity = 1
+stack_limit = 99
+metadata/_custom_type_script = "uid://cn8hm7ftsvunw"

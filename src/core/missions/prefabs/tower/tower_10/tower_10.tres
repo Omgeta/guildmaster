@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MissionData" load_steps=3 format=3 uid="uid://comxk6ahm0v7y"]
+
+[ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_73eer"]
+[ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_qt0vk"]
+
+[resource]
+script = ExtResource("2_qt0vk")
+id = ""
+display_name = ""
+type = 0
+prerequisite_id = ""
+duration_sec = 600
+enemy_spawns = Array[ExtResource("1_73eer")]([])
+slots_required = 4
+bonus_rewards = []
+metadata/_custom_type_script = "uid://3jfimk51slkh"
