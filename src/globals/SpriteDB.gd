@@ -1,6 +1,6 @@
 extends Node
 
-const MANIFEST_FILE := "res://src/entities/sprites/sprite_manifest.cfg"
+const MANIFEST_FILE := "res://src/core/entities/sprites/sprite_manifest.cfg"
 const ANIM_MAP := [{"idle": 1, "push": 2, "pull": 2, "jump": 3}, {"walk": 6, "run": 2}]  # rows 0-3, 4-7
 const FRAME_SIZE := Vector2i(64, 64)
 const DIRECTIONS := ["down", "up", "right", "left"]

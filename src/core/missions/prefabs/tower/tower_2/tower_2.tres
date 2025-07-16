@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="MissionData" load_steps=5 format=3 uid="uid://b2sbd7wyhi43g"]
+
+[ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_1rsuw"]
+[ext_resource type="Resource" uid="uid://e5pl0f0q37oh" path="res://src/core/entities/enemies/prefabs/goblins/goblin.tres" id="2_vlkrp"]
+[ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="3_kp73m"]
+
+[sub_resource type="Resource" id="Resource_utjrv"]
+script = ExtResource("1_1rsuw")
+enemy_data = ExtResource("2_vlkrp")
+count = 2
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
+
+[resource]
+script = ExtResource("3_kp73m")
+id = "tower_2"
+display_name = "Floor 2"
+type = 0
+prerequisite_id = "tower_1"
+duration_sec = 120
+enemy_spawns = Array[ExtResource("1_1rsuw")]([SubResource("Resource_utjrv")])
+slots_required = 4
+bonus_rewards = []
+metadata/_custom_type_script = "uid://3jfimk51slkh"

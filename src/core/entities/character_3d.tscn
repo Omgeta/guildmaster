@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://fv7ckbpapn2j"]
+
+[ext_resource type="Script" uid="uid://cxbvnhdcbacn" path="res://src/core/entities/character_3d.gd" id="1_nhgau"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nhgau"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_wtakg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhgau"]
+height = 0.3
+radius = 0.15
+
+[node name="Character3D" type="CharacterBody3D"]
+script = ExtResource("1_nhgau")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_max_distance = 10.01
+avoidance_enabled = true
+radius = 1.0
+neighbor_distance = 10.0
+use_3d_avoidance = true
+
+[node name="Billboard" type="Node3D" parent="."]
+
+[node name="Accessory" type="AnimatedSprite3D" parent="Billboard"]
+texture_filter = 0
+render_priority = 4
+
+[node name="Hair" type="AnimatedSprite3D" parent="Billboard"]
+texture_filter = 0
+render_priority = 3
+
+[node name="Outfit" type="AnimatedSprite3D" parent="Billboard"]
+texture_filter = 0
+render_priority = 2
+
+[node name="Body" type="AnimatedSprite3D" parent="Billboard"]
+texture_filter = 0
+render_priority = 1
+sprite_frames = SubResource("SpriteFrames_nhgau")
+
+[node name="ShadowPlane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaceholderMesh_wtakg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_nhgau")
+
+[node name="Timer" type="Timer" parent="."]

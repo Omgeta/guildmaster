@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OriginData" load_steps=2 format=3 uid="uid://cb3uhggpo40g4"]
+
+[ext_resource type="Script" uid="uid://btu3ks1xx353v" path="res://src/core/origins/origin_data.gd" id="1_rbcdu"]
+
+[resource]
+script = ExtResource("1_rbcdu")
+id = "14257b21-06e9-446e-a306-148e778a2d98"
+display_name = "Shadowsworn"
+base_rank = 5
+frequency = 10
+tags = Array[String]([])
+alignment = "Chaotic"
+class_dist = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 100
+})
+metadata/_custom_type_script = "uid://btu3ks1xx353v"

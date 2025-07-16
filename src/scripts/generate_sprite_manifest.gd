@@ -1,7 +1,7 @@
 @tool
 extends EditorScript
 
-const SHEETS_ROOT := "res://src/entities/sprites"
+const SHEETS_ROOT := "res://src/core/entities/sprites"
 const MANIFEST := SHEETS_ROOT + "/sprite_manifest.cfg"
 const VALID_EXT := "png"
 

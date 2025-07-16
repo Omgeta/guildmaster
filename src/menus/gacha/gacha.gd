@@ -1,6 +1,6 @@
 extends Control
 
-const CHARACTER_SCN := preload("res://src/entities/character_3d.tscn")
+const CHARACTER_SCN := preload("res://src/core/entities/character_3d.tscn")
 const LOBBY_PCK := preload("res://src/menus/lobby/lobby.tscn")
 const FADE_TIME := 0.20
 

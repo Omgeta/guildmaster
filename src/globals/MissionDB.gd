@@ -1,6 +1,6 @@
 extends Node
 
-const ORIGINS_PATH = "res://src/missions/prefabs/"
+const ORIGINS_PATH = "res://src/core/missions/prefabs/"
 
 var _map: Dictionary[String, MissionData] = {}
 

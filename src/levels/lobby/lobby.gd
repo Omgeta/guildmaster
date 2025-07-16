@@ -1,6 +1,6 @@
 extends Node3D
 
-const CHARACTER_PCK: PackedScene = preload("res://src/entities/character_3d.tscn")
+const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d.tscn")
 const GACHA_PCK: PackedScene = preload("res://src/menus/gacha/gacha.tscn")
 const TITLE_PCK: PackedScene = preload("res://src/menus/title/title.tscn")
 
