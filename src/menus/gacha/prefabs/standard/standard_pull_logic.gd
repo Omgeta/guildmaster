@@ -1,6 +1,6 @@
 extends GachaPullLogic
 
-const ADV_FACTORY := preload("res://src/entities/adventurers/adventurer_factory.gd")
+const ADV_FACTORY := preload("res://src/core/entities/adventurers/adventurer_factory.gd")
 
 
 func pull(banner: BannerData, count: int) -> Array[AdventurerData]:

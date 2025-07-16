@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://bklvh1uc753dw"]
+
+[ext_resource type="Script" uid="uid://bql4dlrv1v4d2" path="res://src/core/entities/character_stats.gd" id="1_ek1q6"]
+[ext_resource type="Script" uid="uid://bxpjwrgua8liq" path="res://src/core/entities/enemies/enemy_data.gd" id="2_vswao"]
+
+[sub_resource type="Resource" id="Resource_pyk4j"]
+script = ExtResource("1_ek1q6")
+hp = 35
+atk = 8
+dex = 5
+mag = 5
+def = 15
+metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
+
+[resource]
+script = ExtResource("2_vswao")
+drop_table = []
+xp_reward = 20
+id = "goblin_elite"
+display_name = "Goblin Elite"
+base_stats = SubResource("Resource_pyk4j")
+tags = ["goblin"]
+metadata/_custom_type_script = "uid://bxpjwrgua8liq"

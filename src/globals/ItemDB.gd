@@ -1,6 +1,6 @@
 extends Node
 
-const ITEMS_PATH := "res://src/items/prefabs"
+const ITEMS_PATH := "res://src/core/items/prefabs"
 
 var _by_id: Dictionary = {}
 var _by_type: Dictionary = {}

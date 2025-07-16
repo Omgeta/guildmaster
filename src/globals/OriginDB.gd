@@ -1,7 +1,7 @@
 ## Only for prefab Origins
 extends Node
 
-const ORIGINS_PATH = "res://src/origins/prefabs"
+const ORIGINS_PATH = "res://src/core/origins/prefabs"
 
 var _map: Dictionary[String, OriginData] = {}
 
