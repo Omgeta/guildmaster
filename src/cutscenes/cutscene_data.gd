@@ -1,5 +1,5 @@
 extends Resource
-class_name CutsceneResource
+class_name CutsceneData
 
 @export var entries: Array[CutsceneEntry] = []
 @export var background_music: AudioStream
