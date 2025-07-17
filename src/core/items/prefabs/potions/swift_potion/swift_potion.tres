@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://d4gq4xmgoviyt"]
+
+[ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_d88kq"]
+
+[resource]
+script = ExtResource("1_d88kq")
+heal_hp = 0
+buffs = Array[String](["add +20 dex "])
+id = "swift_potion"
+name = "Swift Potion"
+description = "A crude potion that raises dexterity.
+"
+rarity = 1
+stack_limit = 99
+metadata/_custom_type_script = "uid://cn8hm7ftsvunw"

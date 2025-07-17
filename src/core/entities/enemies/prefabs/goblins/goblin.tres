@@ -7,9 +7,9 @@
 script = ExtResource("1_08vvh")
 hp = 20
 atk = 5
-dex = 5
+dex = 10
 mag = 5
-def = 10
+def = 5
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]

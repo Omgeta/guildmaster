@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://bs5horewl4y6n"]
+
+[ext_resource type="Script" uid="uid://bxpjwrgua8liq" path="res://src/core/entities/enemies/enemy_data.gd" id="1_0wqqe"]
+[ext_resource type="Script" uid="uid://bql4dlrv1v4d2" path="res://src/core/entities/character_stats.gd" id="1_fnkmq"]
+
+[sub_resource type="Resource" id="Resource_nrsic"]
+script = ExtResource("1_fnkmq")
+hp = 200
+atk = 40
+dex = 10
+mag = 5
+def = 25
+metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
+
+[resource]
+script = ExtResource("1_0wqqe")
+drop_table = []
+xp_reward = 200
+id = "demon_king"
+display_name = "Demon King"
+base_stats = SubResource("Resource_nrsic")
+tags = []
+metadata/_custom_type_script = "uid://bxpjwrgua8liq"
