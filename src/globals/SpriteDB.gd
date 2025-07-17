@@ -1,6 +1,8 @@
 extends Node
 
-const MANIFEST_FILE := "res://src/core/entities/sprites/sprite_manifest.cfg"
+const MANIFEST_FILE := "res://src/manifest.cfg"
+const SPRITES_SECTION := "sprites"
+
 const ANIM_MAP := [{"idle": 1, "push": 2, "pull": 2, "jump": 3}, {"walk": 6, "run": 2}]  # rows 0-3, 4-7
 const FRAME_SIZE := Vector2i(64, 64)
 const DIRECTIONS := ["down", "up", "right", "left"]
@@ -15,23 +17,23 @@ signal loaded  # fired once when all sheets are preloaded
 
 
 func _ready():
-	var flat := _load_manifest()  # flat map from cfg
+	var flat := _scan_manifest(MANIFEST_FILE, SPRITES_SECTION)  # flat map from cfg
 	_total = flat.size()
 	_thread = Thread.new()
 	_thread.start(_preload.bind(flat))
 	print("SpriteDB: loaded %d sprites" % flat.size())
 
 
-func _load_manifest() -> Dictionary:
+func _scan_manifest(manifest: String, section: String) -> Dictionary:
 	var cfg := ConfigFile.new()
-	var err := cfg.load(MANIFEST_FILE)
+	var err := cfg.load(manifest)
 	if err != OK:
 		push_error("SpriteDB: cannot load manifest - %s" % error_string(err))
 		return {}
 
 	var flat := {}
-	for id in cfg.get_section_keys("sheets"):  # every key is a full id
-		flat[id] = cfg.get_value("sheets", id, "")
+	for id in cfg.get_section_keys(section):  # every key is a full id
+		flat[id] = cfg.get_value(section, id, "")
 	return flat
 
 

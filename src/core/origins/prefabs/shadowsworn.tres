@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rbcdu")
-id = "14257b21-06e9-446e-a306-148e778a2d98"
+id = "shadowsworn"
 display_name = "Shadowsworn"
 base_rank = 5
 frequency = 10

@@ -1,33 +1,27 @@
 extends Node
 
-const ITEMS_PATH := "res://src/core/items/prefabs"
+const MANIFEST_FILE = "res://src/manifest.cfg"
+const ITEMS_SECTION = "items"
 
-var _by_id: Dictionary = {}
-var _by_type: Dictionary = {}
+var _by_id: Dictionary[String, ItemData] = {}
+var _by_type: Dictionary[String, Array] = {}
 
 
+## lifetime
 func _ready() -> void:
-	_scan_dir(ITEMS_PATH)
-	print("ItemDB: loaded %d items" % _by_id.size())
-
-
-func _scan_dir(folder: String) -> void:
-	var dir := DirAccess.open(folder)
-	if dir == null:
-		push_error("ItemDB: Cannot open %s" % folder)
+	var cfg := ConfigFile.new()
+	var err := cfg.load(MANIFEST_FILE)
+	if err != OK:
+		push_error("ItemDB: Failed to load manifest - %s" % error_string(err))
 		return
-	dir.list_dir_begin()
-	var filename := dir.get_next()
-	while filename != "":
-		if dir.current_is_dir():
-			if filename.begins_with("."):
-				filename = dir.get_next()
-				continue
-			_scan_dir("%s/%s" % [folder, filename])
-		elif filename.get_extension() == "tres":
-			_register_item("%s/%s" % [folder, filename])
-		filename = dir.get_next()
-	dir.list_dir_end()
+	if not cfg.has_section(ITEMS_SECTION):
+		push_warning("ItemDB: No [%s] section found in manifest" % ITEMS_SECTION)
+		return
+	for id in cfg.get_section_keys(ITEMS_SECTION):
+		var path: String = cfg.get_value(ITEMS_SECTION, id)
+		_register_item(path)
+
+	print("ItemDB: loaded %d items" % _by_id.size())
 
 
 func _register_item(res_path: String) -> void:
