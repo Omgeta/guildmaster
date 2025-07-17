@@ -50,17 +50,14 @@ func _scan(path: String, category: String, out: Dictionary) -> void:
 
 
 func _register_sprite(root: String, filename: String, out: Dictionary) -> void:
-	# filename: "outfit/char_a_p1_1out_pfpn_v05.png"
-	var rel = (root + "/" + filename).replace(ROOTS["sprites"] + "/", "")
-	# rel e.g. "outfit/char_a_p1_1out_pfpn_v05.png"
-	var parts = rel.get_basename().split("_")
-	var canon = parts[-2] + "_" + parts[-1] if parts.size() >= 2 else rel.get_basename()
-	var category = rel.get_slice("/", 0)  # "outfit"
+	var parts = filename.get_basename().split("_")
+	var canon = parts[-2] + "_" + parts[-1] if parts.size() >= 2 else filename.get_basename()
+	var category = root.rsplit("/", 1)[-1]  # "outfit"
 	var id = "%s/%s" % [category, canon]
 	if out.has(id):
 		push_warning("duplicate sprite id %s" % id)
 	else:
-		out[id] = "res://src/entities/sprites/%s" % rel
+		out[id] = (root + "/" + filename)
 
 
 func _register_resource(path: String, out: Dictionary) -> void:
