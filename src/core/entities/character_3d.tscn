@@ -1,14 +1,158 @@
-[gd_scene load_steps=5 format=3 uid="uid://fv7ckbpapn2j"]
+[gd_scene load_steps=27 format=3 uid="uid://fv7ckbpapn2j"]
 
 [ext_resource type="Script" uid="uid://cxbvnhdcbacn" path="res://src/core/entities/character_3d.gd" id="1_nhgau"]
+[ext_resource type="Texture2D" uid="uid://b0cfcwg37awn2" path="res://src/core/entities/sprites/accessory/char_a_p1_2clo_lnpl_v01.png" id="2_dnrxe"]
+[ext_resource type="Texture2D" uid="uid://q0w8m2sbaftc" path="res://src/core/entities/sprites/hair/char_a_p1_4har_bob1_v00.png" id="3_xep5s"]
+[ext_resource type="Texture2D" uid="uid://cmh36tl6boh26" path="res://src/core/entities/sprites/outfit/char_a_p1_1out_alch_v01.png" id="4_j4d2t"]
+[ext_resource type="Texture2D" uid="uid://durd70fw2be3w" path="res://src/core/entities/sprites/body/char_a_p1_0bas_demn_v02.png" id="5_7wtnf"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nhgau"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_62g7b"]
+atlas = ExtResource("2_dnrxe")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_wtakg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_isaas"]
+atlas = ExtResource("2_dnrxe")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qike2"]
+atlas = ExtResource("2_dnrxe")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bebkm"]
+atlas = ExtResource("2_dnrxe")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_21ivf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62g7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isaas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qike2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bebkm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bur4"]
+atlas = ExtResource("3_xep5s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrums"]
+atlas = ExtResource("3_xep5s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fjib"]
+atlas = ExtResource("3_xep5s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1b4h"]
+atlas = ExtResource("3_xep5s")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_crftp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bur4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrums")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fjib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1b4h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xh6p"]
+atlas = ExtResource("4_j4d2t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fsg6"]
+atlas = ExtResource("4_j4d2t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tccn3"]
+atlas = ExtResource("4_j4d2t")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw1uq"]
+atlas = ExtResource("4_j4d2t")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibaqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xh6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fsg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tccn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw1uq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj511"]
+atlas = ExtResource("5_7wtnf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3shm"]
+atlas = ExtResource("5_7wtnf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cutpq"]
+atlas = ExtResource("5_7wtnf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ifkb"]
+atlas = ExtResource("5_7wtnf")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awgcm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj511")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3shm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cutpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ifkb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nhgau"]
 height = 0.3
-radius = 0.15
+radius = 0.0756836
 
 [node name="Character3D" type="CharacterBody3D"]
 script = ExtResource("1_nhgau")
@@ -16,33 +160,45 @@ script = ExtResource("1_nhgau")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_max_distance = 10.01
 avoidance_enabled = true
-radius = 1.0
+radius = 0.01
 neighbor_distance = 10.0
 use_3d_avoidance = true
 
 [node name="Billboard" type="Node3D" parent="."]
 
 [node name="Accessory" type="AnimatedSprite3D" parent="Billboard"]
+sorting_offset = 0.003
+cast_shadow = 0
+billboard = 2
+alpha_cut = 2
 texture_filter = 0
-render_priority = 4
+sprite_frames = SubResource("SpriteFrames_21ivf")
 
 [node name="Hair" type="AnimatedSprite3D" parent="Billboard"]
+sorting_offset = 0.002
+cast_shadow = 0
+billboard = 2
+alpha_cut = 2
 texture_filter = 0
-render_priority = 3
+sprite_frames = SubResource("SpriteFrames_crftp")
 
 [node name="Outfit" type="AnimatedSprite3D" parent="Billboard"]
+sorting_offset = 0.001
+cast_shadow = 0
+billboard = 2
+alpha_cut = 2
 texture_filter = 0
-render_priority = 2
+sprite_frames = SubResource("SpriteFrames_ibaqx")
 
 [node name="Body" type="AnimatedSprite3D" parent="Billboard"]
+cast_shadow = 0
+billboard = 2
+alpha_cut = 2
 texture_filter = 0
-render_priority = 1
-sprite_frames = SubResource("SpriteFrames_nhgau")
-
-[node name="ShadowPlane" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaceholderMesh_wtakg")
+sprite_frames = SubResource("SpriteFrames_awgcm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
 shape = SubResource("CylinderShape3D_nhgau")
 
 [node name="Timer" type="Timer" parent="."]

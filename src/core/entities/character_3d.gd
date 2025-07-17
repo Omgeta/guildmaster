@@ -28,7 +28,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_update_sprite_animation()
-	_orient_billboard()
 
 	if _agent.is_navigation_finished():
 		velocity = Vector3.ZERO
@@ -70,14 +69,9 @@ func _dir_to_string() -> String:
 	local.y = 0
 
 	if abs(local.x) > abs(local.z):  #mostly left / right
-		return "right" if local.x < 0 else "left"
+		return "right" if local.x > 0 else "left"
 	else:  # mostly forward / back
 		return "up" if local.z < 0 else "down"
-
-
-func _orient_billboard() -> void:
-	if _cam3d:
-		_billboard.look_at(_cam3d.global_position, Vector3.UP)
 
 
 func wander(nav: NavigationRegion3D):
