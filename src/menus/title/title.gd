@@ -2,7 +2,7 @@ extends Control
 
 signal scene_loaded
 
-const INTRO_CS_RES := preload("res://src/cutscenes/prefabs/intro/intro_cutscene.tres")
+const INTRO_CS_RES := preload("res://src/core/cutscenes/prefabs/intro/intro_cutscene.tres")
 
 const FADE_TIME := 2.5
 const PULSE_TIME := 1.2
@@ -56,7 +56,7 @@ func _load_game() -> void:
 
 
 func _start_intro_cutscene() -> void:
-	var player = load("res://src/cutscenes/cutscene_player.tscn").instantiate()
+	var player = load("res://src/core/cutscenes/cutscene_player.tscn").instantiate()
 	player.cutscene = INTRO_CS_RES
 	player.cutscene_finished.connect(_on_intro_finished)
 	SceneLoader.change_to(player)
