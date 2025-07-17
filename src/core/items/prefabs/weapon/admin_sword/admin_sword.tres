@@ -10,10 +10,10 @@ atk_bonus = 999
 dex_bonus = 0
 mag_bonus = 0
 def_bonus = 0
-id = ""
-name = ""
-description = "A sword that one shots everything
+id = "admin_sword"
+name = "Admin Sword"
+description = "A sword that one shots everything.
 "
 rarity = 5
-stack_limit = 99
+stack_limit = 1
 metadata/_custom_type_script = "uid://cjsveser3stbx"

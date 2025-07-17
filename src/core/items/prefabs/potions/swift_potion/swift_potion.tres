@@ -8,7 +8,7 @@ heal_hp = 0
 buffs = Array[String](["add +20 dex "])
 id = "swift_potion"
 name = "Swift Potion"
-description = "A crude potion that adds +20 dexterity to rogue characters
+description = "A crude potion that raises dexterity.
 "
 rarity = 1
 stack_limit = 99

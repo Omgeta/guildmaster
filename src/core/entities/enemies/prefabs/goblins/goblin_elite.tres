@@ -19,5 +19,5 @@ xp_reward = 20
 id = "goblin_elite"
 display_name = "Goblin Elite"
 base_stats = SubResource("Resource_pyk4j")
-tags = ["goblin"]
+tags = []
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"
