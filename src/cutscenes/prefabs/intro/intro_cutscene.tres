@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CutsceneData" load_steps=13 format=3 uid="uid://b75hbxqtee6e4"]
 
 [ext_resource type="Script" uid="uid://88114vdfe28f" path="res://src/cutscenes/cutscene_entry.gd" id="1_q6hg5"]
-[ext_resource type="Script" uid="uid://df0w1s1lunluc" path="res://src/cutscenes/cutscene_data.gd" id="2_q6hg5"]
+[ext_resource type="Script" path="res://src/cutscenes/cutscene_data.gd" id="2_q6hg5"]
 
 [sub_resource type="Resource" id="Resource_q6hg5"]
 script = ExtResource("1_q6hg5")

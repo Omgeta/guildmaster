@@ -1,16 +1,30 @@
-[gd_resource type="Resource" script_class="MissionData" load_steps=3 format=3 uid="uid://cgn8mmbndnkxw"]
+[gd_resource type="Resource" script_class="MissionData" load_steps=7 format=3 uid="uid://cgn8mmbndnkxw"]
 
 [ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_ufggg"]
+[ext_resource type="Resource" uid="uid://cdpkximlvfp0j" path="res://src/core/entities/enemies/prefabs/demons/lower demon/lower_demon.tres" id="2_gyw32"]
 [ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_rfg05"]
+[ext_resource type="Resource" uid="uid://bklvh1uc753dw" path="res://src/core/entities/enemies/prefabs/goblins/goblin_elite.tres" id="3_3ct3y"]
+
+[sub_resource type="Resource" id="Resource_q14pl"]
+script = ExtResource("1_ufggg")
+enemy_data = ExtResource("2_gyw32")
+count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
+
+[sub_resource type="Resource" id="Resource_hf565"]
+script = ExtResource("1_ufggg")
+enemy_data = ExtResource("3_3ct3y")
+count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
 
 [resource]
 script = ExtResource("2_rfg05")
-id = ""
-display_name = ""
+id = "tower_6"
+display_name = "Floor 6"
 type = 0
-prerequisite_id = ""
-duration_sec = 600
-enemy_spawns = Array[ExtResource("1_ufggg")]([])
-slots_required = 4
+prerequisite_id = "tower_5"
+duration_sec = 120
+enemy_spawns = Array[ExtResource("1_ufggg")]([SubResource("Resource_q14pl"), SubResource("Resource_hf565")])
+slots_required = 3
 bonus_rewards = []
 metadata/_custom_type_script = "uid://3jfimk51slkh"

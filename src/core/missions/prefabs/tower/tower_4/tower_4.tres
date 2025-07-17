@@ -1,16 +1,30 @@
-[gd_resource type="Resource" script_class="MissionData" load_steps=3 format=3 uid="uid://brgpc45ek3wsg"]
+[gd_resource type="Resource" script_class="MissionData" load_steps=7 format=3 uid="uid://brgpc45ek3wsg"]
 
 [ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_13cgn"]
 [ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_u3uht"]
+[ext_resource type="Resource" uid="uid://dy5tx0lccbe3a" path="res://src/core/entities/enemies/prefabs/undead/ghoul/ghoul.tres" id="2_y38kk"]
+[ext_resource type="Resource" uid="uid://cvyep6gmvwqxr" path="res://src/core/entities/enemies/prefabs/undead/skelton/skeleton.tres" id="3_bwtst"]
+
+[sub_resource type="Resource" id="Resource_xgwjl"]
+script = ExtResource("1_13cgn")
+enemy_data = ExtResource("2_y38kk")
+count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
+
+[sub_resource type="Resource" id="Resource_fw3r8"]
+script = ExtResource("1_13cgn")
+enemy_data = ExtResource("3_bwtst")
+count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
 
 [resource]
 script = ExtResource("2_u3uht")
-id = ""
-display_name = ""
+id = "tower_4"
+display_name = "Floor 4"
 type = 0
-prerequisite_id = ""
-duration_sec = 600
-enemy_spawns = Array[ExtResource("1_13cgn")]([])
-slots_required = 4
+prerequisite_id = "tower_3"
+duration_sec = 90
+enemy_spawns = Array[ExtResource("1_13cgn")]([SubResource("Resource_xgwjl"), SubResource("Resource_fw3r8")])
+slots_required = 3
 bonus_rewards = []
 metadata/_custom_type_script = "uid://3jfimk51slkh"

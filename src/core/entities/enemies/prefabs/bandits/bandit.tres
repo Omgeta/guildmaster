@@ -5,17 +5,17 @@
 
 [sub_resource type="Resource" id="Resource_1aahd"]
 script = ExtResource("1_r1rsd")
-hp = 25
+hp = 20
 atk = 5
-dex = 10
+dex = 5
 mag = 5
-def = 15
+def = 10
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("1_gddhn")
 drop_table = []
-xp_reward = 15
+xp_reward = 10
 id = "bandit"
 display_name = "Bandit"
 base_stats = SubResource("Resource_1aahd")

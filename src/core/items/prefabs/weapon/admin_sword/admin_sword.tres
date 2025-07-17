@@ -5,12 +5,15 @@
 [resource]
 script = ExtResource("1_eqnou")
 slot = &"weapon"
-atk_bonus = 0
-def_bonus = 0
 hp_bonus = 0
+atk_bonus = 999
+dex_bonus = 0
+mag_bonus = 0
+def_bonus = 0
 id = ""
 name = ""
-description = ""
-rarity = 1
+description = "A sword that one shots everything
+"
+rarity = 5
 stack_limit = 99
 metadata/_custom_type_script = "uid://cjsveser3stbx"

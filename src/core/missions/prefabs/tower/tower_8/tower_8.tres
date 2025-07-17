@@ -1,16 +1,23 @@
-[gd_resource type="Resource" script_class="MissionData" load_steps=3 format=3 uid="uid://bq32v6n4serff"]
+[gd_resource type="Resource" script_class="MissionData" load_steps=5 format=3 uid="uid://bq32v6n4serff"]
 
 [ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_rfifw"]
 [ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_b52bq"]
+[ext_resource type="Resource" uid="uid://3j8jufux3mg7" path="res://src/core/entities/enemies/prefabs/demons/upper_demon/upper_demon.tres" id="2_mxldc"]
+
+[sub_resource type="Resource" id="Resource_jv7k8"]
+script = ExtResource("1_rfifw")
+enemy_data = ExtResource("2_mxldc")
+count = 2
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
 
 [resource]
 script = ExtResource("2_b52bq")
-id = ""
-display_name = ""
+id = "tower_8"
+display_name = "Floor 8"
 type = 0
-prerequisite_id = ""
-duration_sec = 600
-enemy_spawns = Array[ExtResource("1_rfifw")]([])
-slots_required = 4
+prerequisite_id = "tower_7"
+duration_sec = 120
+enemy_spawns = Array[ExtResource("1_rfifw")]([SubResource("Resource_jv7k8")])
+slots_required = 3
 bonus_rewards = []
 metadata/_custom_type_script = "uid://3jfimk51slkh"

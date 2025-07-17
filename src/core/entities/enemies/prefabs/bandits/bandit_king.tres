@@ -6,10 +6,10 @@
 [sub_resource type="Resource" id="Resource_1aahd"]
 script = ExtResource("1_jv0ya")
 hp = 150
-atk = 25
+atk = 30
 dex = 15
 mag = 5
-def = 15
+def = 20
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
