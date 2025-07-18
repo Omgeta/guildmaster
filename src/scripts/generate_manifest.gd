@@ -5,7 +5,7 @@ const VALID_EXT := "tres"
 const SPRITE_EXT := "png"
 const OUT_CFG := "res://src/manifest.cfg"
 const ROOTS := {
-	"sprites": "res://src/core/entities/sprites",  # adjust if your sprites live elsewhere
+	"sprites": "res://src/core/entities/assets/sprites",  # adjust if your sprites live elsewhere
 	"items": "res://src/core/items/prefabs",
 	"enemies": "res://src/core/entities/enemies/prefabs",
 	"missions": "res://src/core/missions/prefabs",

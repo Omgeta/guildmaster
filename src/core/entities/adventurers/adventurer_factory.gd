@@ -5,7 +5,7 @@ const NECESSARY := ["body", "outfit", "hair"]
 const OPTIONAL: Dictionary[String, float] = {"accessory": 0.30}
 
 const FIRST_NAME_ONLY_CHANCE := 0.30
-const NAMES := preload("res://src/core/entities/data/character_names.json").data
+const NAMES := preload("res://src/core/entities/assets/data/character_names.json").data
 
 const Class = AdventurerData.Class
 const BASE_STATS: Dictionary[Class, Dictionary] = {
