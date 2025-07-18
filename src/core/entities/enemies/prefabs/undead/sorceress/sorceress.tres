@@ -19,5 +19,5 @@ xp_reward = 40
 id = "sorceress"
 display_name = "Sorceress"
 base_stats = SubResource("Resource_7imj1")
-tags = []
+tags = Array[int]([2, 1])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

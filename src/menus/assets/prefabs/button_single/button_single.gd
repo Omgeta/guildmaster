@@ -9,8 +9,8 @@ func _ready() -> void:
 	_label.text = label
 
 
-func set_label(label: String):
-	_label.text = label
+func set_label(text: String):
+	_label.text = text
 
 
 func set_disabled_(value: bool):
@@ -27,3 +27,8 @@ func _on_down():
 func _on_up():
 	modulate = Color.WHITE
 	_label.modulate = Color.WHITE
+
+
+func _on_entered():
+	modulate = Color(0.85, 0.85, 0.85)
+	_label.modulate = Color(0.85, 0.85, 0.85)

@@ -1,16 +1,22 @@
 extends Node
 class_name AdventurerFactory
 
-const AdventurerClass = AdventurerData.AdventurerClass
-const NAMES := preload("res://src/core/entities/data/character_names.json").data
-const FIRST_NAME_ONLY_CHANCE := 0.30
 const NECESSARY := ["body", "outfit", "hair"]
 const OPTIONAL: Dictionary[String, float] = {"accessory": 0.30}
-const BASE_STATS: Dictionary[AdventurerClass, Dictionary] = {
-	AdventurerClass.Warrior: {"hp": 100, "atk": 25, "dex": 15, "mag": 15, "def": 5},
-	AdventurerClass.Mage: {"hp": 100, "atk": 15, "dex": 25, "mag": 25, "def": 5},
-	AdventurerClass.Rogue: {"hp": 100, "atk": 15, "dex": 15, "mag": 15, "def": 5}
+
+const FIRST_NAME_ONLY_CHANCE := 0.30
+const NAMES := preload("res://src/core/entities/data/character_names.json").data
+
+const Class = AdventurerData.Class
+const BASE_STATS: Dictionary[Class, Dictionary] = {
+	Class.Warrior: {"hp": 100, "atk": 25, "dex": 15, "mag": 15, "def": 5},
+	Class.Mage: {"hp": 100, "atk": 15, "dex": 25, "mag": 25, "def": 5},
+	Class.Rogue: {"hp": 100, "atk": 15, "dex": 15, "mag": 15, "def": 5}
 }
+
+const MAX_RARITY = 5
+const MIN_RARITY = 1
+const DEF_DECAY = 0.5
 
 const uuid_util = preload("res://addons/uuid/uuid.gd")
 
@@ -18,21 +24,21 @@ const uuid_util = preload("res://addons/uuid/uuid.gd")
 static func create_from_origin(origin: OriginData) -> AdventurerData:
 	var data := AdventurerData.new()
 
+	# character data
 	data.id = uuid_util.v4()
 	data.display_name = _random_name()
-	data.rarity = _get_rarity(origin.base_rank)
-	data.level = 1
-	data.class_ = origin.random_class()
-	data.tags = origin.tags.duplicate(true)
-	data.origin = origin
 	data.base_stats = _compute_stats(data.class_, origin.base_rank)
 	data.character_sprites = _random_sprite_resource()
+	data.tags = _get_tags_subset(origin.tags)
+
+	# adventurer data
+	data.level = 1
+	data.rarity = _get_rarity(origin.base_rank)
+	data.class_ = _random_class(origin.class_dist)
+	data.alignment = origin.alignment
+	data.origin = origin
 
 	return data
-
-
-static func _get_rarity(rank: int) -> int:
-	return RNG.randi_range(rank, 5)
 
 
 static func _random_name() -> String:
@@ -43,31 +49,64 @@ static func _random_name() -> String:
 	return "%s %s" % [first, last]
 
 
+static func _get_tags_subset(tags: Array[CharacterData.Tag]) -> Array[CharacterData.Tag]:
+	tags = tags.duplicate(true)
+	tags.shuffle()
+	return tags.slice(0, RNG.randi_range(0, tags.size() - 1))
+
+
+static func _get_rarity(rank: int, decay: float = DEF_DECAY) -> int:
+	# create array of exponential odds
+	var steps := MAX_RARITY - rank
+	var raw := []
+	for i in range(steps + 1):
+		raw.append(pow(decay, i))
+
+	# normalize to probabilities
+	var total := 0.0
+	for w in raw:
+		total += w
+	for i in range(raw.size()):
+		raw[i] /= total
+
+	# pick one via accumulated probability
+	var roll := RNG.randf()
+	var acc := 0.0
+	for i in range(raw.size()):
+		acc += raw[i]
+		if roll <= acc:
+			return rank + i
+
+	# fallback if something weird happens idk
+	return MAX_RARITY
+
+
 static func _random_sprite_resource() -> CharacterSprites:
 	var res := CharacterSprites.new()
 
 	# required layers
 	for cat in NECESSARY:
-		res.set(cat, _rand_sprite_id(cat))
+		res.set(cat, _random_sprite_id(cat))
 
 	# optional layers
 	for cat in OPTIONAL:
 		if RNG.randf() < OPTIONAL[cat]:
-			res.set(cat, _rand_sprite_id(cat))
+			res.set(cat, _random_sprite_id(cat))
 	return res
 
 
-static func _rand_sprite_id(category: String) -> String:
+static func _random_sprite_id(category: String) -> String:
 	return SpriteDB.get_random_in_category(category)
 
 
-static func _compute_stats(char_class: AdventurerClass, rank: int) -> CharacterStats:
+static func _compute_stats(char_class: Class, rarity: int) -> CharacterStats:
+	var factor := pow(rarity, log(2.5) / log(5))
 	var base := BASE_STATS[char_class]
 	var s := CharacterStats.new()
-	var factor := 0.6 + 0.1 * rank  # TODO: change scaling
-	s.hp = int(base.hp * factor)
-	s.atk = int(base.atk * factor)
-	s.dex = int(base.dex * factor)
-	s.mag = int(base.mag * factor)
-	s.def = int(base.def * factor)
+	for stat in base:
+		s[stat] = int(base[stat] * factor)
 	return s
+
+
+static func _random_class(class_dist: Dictionary[Class, int]) -> Class:
+	return RNG.choose_weighted(class_dist)

@@ -19,5 +19,5 @@ xp_reward = 200
 id = "demon_king"
 display_name = "Demon King"
 base_stats = SubResource("Resource_nrsic")
-tags = []
+tags = Array[int]([5, 6])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

@@ -19,5 +19,5 @@ xp_reward = 10
 id = "ghoul"
 display_name = "Ghoul"
 base_stats = SubResource("Resource_javt1")
-tags = []
+tags = Array[int]([2])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

@@ -34,7 +34,7 @@ func randf_range(a: float, b: float) -> float:
 	return _rng.randf_range(a, b)
 
 
-func choose(arr: Array) -> Variant:
+func choose(arr: Array[Variant]) -> Variant:
 	return arr[_rng.randi_range(0, arr.size() - 1)]
 
 

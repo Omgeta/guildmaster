@@ -1,8 +1,6 @@
 extends Node3D
 
 const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d.tscn")
-const GACHA_PCK: PackedScene = preload("res://src/menus/gacha/gacha.tscn")
-const TITLE_PCK: PackedScene = preload("res://src/menus/title/title.tscn")
 
 @export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
@@ -17,7 +15,6 @@ var _orbit_angle: float = 0
 
 
 func _ready() -> void:
-	
 	_spawn_roster.call_deferred()
 	SaveManager.roster_changed.connect(_refresh_roster)
 

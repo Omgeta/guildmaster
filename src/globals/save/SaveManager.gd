@@ -35,7 +35,8 @@ func get_flag(flag: String) -> bool:
 
 
 func get_origins(copy := true) -> Array[OriginData]:
-	return _state.origins.duplicate(true) if copy else _state.origins
+	var own_origins = _state.origins.duplicate(true) if copy else _state.origins
+	return own_origins + OriginDB.all()  # change depending on save state
 
 
 func get_mission_states(copy := true) -> Dictionary[String, MissionState]:
@@ -168,7 +169,8 @@ func load_slot(path := SAVE_PATH) -> bool:
 			)
 			_state.mission_states[mission.id] = st
 
-		_state.origins = OriginFactory.create_random_origins()
+		var origin_fac = load("res://src/core/origins/origin_factory.gd").new()
+		_state.origins = origin_fac.create_random_origins()
 		RNG.set_seed(int(Time.get_unix_time_from_system()))
 		_state.rng_seed = RNG.get_seed()
 

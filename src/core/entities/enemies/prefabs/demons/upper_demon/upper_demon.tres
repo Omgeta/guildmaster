@@ -19,5 +19,5 @@ xp_reward = 25
 id = "upper_demon"
 display_name = "Upper Demon"
 base_stats = SubResource("Resource_kwmws")
-tags = []
+tags = Array[int]([5])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

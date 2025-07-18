@@ -19,5 +19,5 @@ xp_reward = 10
 id = "lower_demon"
 display_name = "Lower Demon"
 base_stats = SubResource("Resource_wpxwe")
-tags = []
+tags = Array[int]([5])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

@@ -42,7 +42,7 @@ func _register_origin(res_path: String) -> void:
 
 ## getters
 func get_by_id(id: String) -> OriginData:
-	return _map[id]
+	return _map[id].duplicate(true)
 
 
 func has(id: String) -> bool:
@@ -50,4 +50,4 @@ func has(id: String) -> bool:
 
 
 func all() -> Array[OriginData]:
-	return _map.values()
+	return _map.values().duplicate(true)

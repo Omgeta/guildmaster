@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://fv7ckbpapn2j"]
 
 [ext_resource type="Script" uid="uid://cxbvnhdcbacn" path="res://src/core/entities/character_3d.gd" id="1_nhgau"]
-[ext_resource type="Texture2D" uid="uid://b0cfcwg37awn2" path="res://src/core/entities/sprites/accessory/char_a_p1_2clo_lnpl_v01.png" id="2_dnrxe"]
-[ext_resource type="Texture2D" uid="uid://q0w8m2sbaftc" path="res://src/core/entities/sprites/hair/char_a_p1_4har_bob1_v00.png" id="3_xep5s"]
-[ext_resource type="Texture2D" uid="uid://cmh36tl6boh26" path="res://src/core/entities/sprites/outfit/char_a_p1_1out_alch_v01.png" id="4_j4d2t"]
-[ext_resource type="Texture2D" uid="uid://durd70fw2be3w" path="res://src/core/entities/sprites/body/char_a_p1_0bas_demn_v02.png" id="5_7wtnf"]
+[ext_resource type="Texture2D" uid="uid://cm8o8uthhbo8j" path="res://src/core/entities/sprites/accessory/char_a_p1_2clo_lnpl_v01.png" id="2_dnrxe"]
+[ext_resource type="Texture2D" uid="uid://dudrj000qs2yv" path="res://src/core/entities/sprites/hair/char_a_p1_4har_bob1_v00.png" id="3_xep5s"]
+[ext_resource type="Texture2D" uid="uid://doecw6w0aktas" path="res://src/core/entities/sprites/outfit/char_a_p1_1out_alch_v01.png" id="4_j4d2t"]
+[ext_resource type="Texture2D" uid="uid://cs5lvqnpprbsu" path="res://src/core/entities/sprites/body/char_a_p1_0bas_demn_v02.png" id="5_7wtnf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62g7b"]
 atlas = ExtResource("2_dnrxe")

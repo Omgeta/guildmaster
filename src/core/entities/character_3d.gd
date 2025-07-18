@@ -9,7 +9,6 @@ const MAX_WAIT := 3
 @export var cam: Node3D
 
 @onready var _agent: NavigationAgent3D = $NavigationAgent3D
-@onready var _billboard: Node3D = $Billboard
 @onready var _layers := [$Billboard/Body, $Billboard/Outfit, $Billboard/Hair, $Billboard/Accessory]
 @onready var _timer := $Timer
 

@@ -19,5 +19,5 @@ xp_reward = 10
 id = "bandit_queen"
 display_name = "Bandit Queen"
 base_stats = SubResource("Resource_7614b")
-tags = []
+tags = Array[int]([4, 6, 1])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"
