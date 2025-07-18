@@ -26,7 +26,7 @@ func _ready() -> void:
 	_btn_back.pressed.connect(_return_to_lobby)
 
 	# keep currencycounter updated
-	SaveManager.gold_changed.connect(func(): _refresh_afford())
+	SaveManager.gold_changed.connect(func(_old, _new): _refresh_afford())
 
 
 func _input(event: InputEvent) -> void:

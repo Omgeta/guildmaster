@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctbyk2qp466xg"]
+[gd_scene load_steps=7 format=3 uid="uid://ctbyk2qp466xg"]
 
-[ext_resource type="Script" uid="uid://ifsxeamdvfbj" path="res://src/levels/gacha/gacha_cave.gd" id="1_i2n3o"]
 [ext_resource type="PackedScene" uid="uid://b6x133wnjms3q" path="res://src/levels/gallery/assets/3d/tavern/tavern.glb" id="2_jurla"]
 
 [sub_resource type="Sky" id="Sky_4godr"]
@@ -49,7 +48,6 @@ shader_parameter/multiplier = 0.1
 shader_parameter/softness = 0.9
 
 [node name="GalleryBackground" type="Node3D"]
-script = ExtResource("1_i2n3o")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ltswk")
