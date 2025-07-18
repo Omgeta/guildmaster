@@ -19,5 +19,5 @@ xp_reward = 25
 id = "skeleton"
 display_name = "Skeleton"
 base_stats = SubResource("Resource_a4drh")
-tags = []
+tags = Array[int]([2])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

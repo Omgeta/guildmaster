@@ -1,6 +1,6 @@
 extends Node
 
-const Class = AdventurerData.AdventurerClass
+const Class = AdventurerData.Class
 
 const _class_to_color: Dictionary[Class, Color] = {
 	Class.Warrior: Color.RED,

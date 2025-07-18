@@ -19,5 +19,5 @@ xp_reward = 10
 id = "goblin"
 display_name = "Goblin"
 base_stats = SubResource("Resource_e2pss")
-tags = []
+tags = Array[int]([3])
 metadata/_custom_type_script = "uid://bxpjwrgua8liq"

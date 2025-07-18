@@ -19,9 +19,8 @@ func pull(banner: BannerData, count: int) -> Array[AdventurerData]:
 
 
 func _build_origin_pool(banner: BannerData) -> Array[OriginData]:
-	var list := SaveManager.get_origins() + OriginDB.all()
 	var pool: Array[OriginData] = []
-	for o in list:
+	for o in SaveManager.get_origins():
 		if o.base_rank < banner.min_rarity:  # rarity floor enforced
 			continue
 		if banner.tag_bias.size() > 0 and not _has_overlap(banner.tag_bias, o.tags):
@@ -38,7 +37,4 @@ func _has_overlap(a: PackedStringArray, b: PackedStringArray) -> bool:
 
 
 func _pick_origin(pool: Array[OriginData]) -> OriginData:
-	var weighted_dict: Dictionary[OriginData, int] = {}
-	for o in pool:
-		weighted_dict[o] = o.frequency
-	return RNG.choose_weighted(weighted_dict)
+	return RNG.choose(pool)

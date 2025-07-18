@@ -33,4 +33,5 @@ vertical_alignment = 1
 
 [connection signal="button_down" from="." to="." method="_on_down"]
 [connection signal="button_up" from="." to="." method="_on_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_up"]

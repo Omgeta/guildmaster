@@ -1,0 +1,234 @@
+[gd_resource type="Resource" script_class="OriginKeywords" load_steps=35 format=3 uid="uid://btunowalgcedc"]
+
+[ext_resource type="Script" uid="uid://175dpxh0acmh" path="res://src/core/origins/origin_name_part.gd" id="1_xatdv"]
+[ext_resource type="Script" uid="uid://b17ydgcahgkt5" path="res://src/core/origins/origin_keywords.gd" id="2_o7co5"]
+[ext_resource type="Script" uid="uid://cev5ysh56jjvv" path="res://src/core/origins/tag_class_bias.gd" id="3_3ayh4"]
+
+[sub_resource type="Resource" id="Resource_xatdv"]
+script = ExtResource("1_xatdv")
+name = "Knights"
+tags = Array[int]([5])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_o7co5"]
+script = ExtResource("1_xatdv")
+name = "Fangs"
+tags = Array[int]([2])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_3ayh4"]
+script = ExtResource("1_xatdv")
+name = "Scribes"
+tags = Array[int]([6])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_rrgvh"]
+script = ExtResource("1_xatdv")
+name = "Wardens"
+tags = Array[int]([5])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_7uhex"]
+script = ExtResource("1_xatdv")
+name = "Watchers"
+tags = Array[int]([6, 8])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_rpt5w"]
+script = ExtResource("1_xatdv")
+name = "Hands"
+tags = Array[int]([7])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_mru1r"]
+script = ExtResource("1_xatdv")
+name = "Chorus"
+tags = Array[int]([8, 6])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_kux1g"]
+script = ExtResource("1_xatdv")
+name = "Veil"
+tags = Array[int]([8])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_whqxr"]
+script = ExtResource("1_xatdv")
+name = "Scions"
+tags = Array[int]([4])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_lkwj3"]
+script = ExtResource("1_xatdv")
+name = "Wolves"
+tags = Array[int]([2])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_s86i6"]
+script = ExtResource("1_xatdv")
+name = "Void"
+tags = Array[int]([6, 8])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_e24ha"]
+script = ExtResource("1_xatdv")
+name = "Ashen Hollow"
+tags = Array[int]([6, 9])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_0c56o"]
+script = ExtResource("1_xatdv")
+name = "Sunveil"
+tags = Array[int]([5, 9])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_tgnwx"]
+script = ExtResource("1_xatdv")
+name = "Ironspire"
+tags = Array[int]([5])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_wo3hk"]
+script = ExtResource("1_xatdv")
+name = "Thornmere"
+tags = Array[int]([5])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_imeu1"]
+script = ExtResource("1_xatdv")
+name = "Duskwatch"
+tags = Array[int]([5, 2])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_pqu4t"]
+script = ExtResource("1_xatdv")
+name = "Whispering Fen"
+tags = Array[int]([8])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_l5t6r"]
+script = ExtResource("1_xatdv")
+name = "Starfell"
+tags = Array[int]([9])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_kt2gt"]
+script = ExtResource("1_xatdv")
+name = "Frostmarch"
+tags = Array[int]([5])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_51r2h"]
+script = ExtResource("1_xatdv")
+name = "Wyrmgate"
+tags = Array[int]([5, 6])
+metadata/_custom_type_script = "uid://175dpxh0acmh"
+
+[sub_resource type="Resource" id="Resource_gb0l7"]
+script = ExtResource("3_3ayh4")
+tag = 0
+biases = Dictionary[int, int]({
+0: 40,
+1: 40,
+2: 20
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_mln85"]
+script = ExtResource("3_3ayh4")
+tag = 1
+biases = Dictionary[int, int]({
+0: 70,
+1: 30
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_up3pl"]
+script = ExtResource("3_3ayh4")
+tag = 2
+biases = Dictionary[int, int]({
+0: 40,
+1: 10,
+2: 50
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_7dg48"]
+script = ExtResource("3_3ayh4")
+tag = 3
+biases = Dictionary[int, int]({
+0: 30,
+1: 70
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_lekmb"]
+script = ExtResource("3_3ayh4")
+tag = 4
+biases = Dictionary[int, int]({
+0: 50,
+1: 50
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_amfgb"]
+script = ExtResource("3_3ayh4")
+tag = 5
+biases = Dictionary[int, int]({
+0: 75,
+1: 25
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_ivygk"]
+script = ExtResource("3_3ayh4")
+tag = 6
+biases = Dictionary[int, int]({
+0: 10,
+1: 90
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_2ynhm"]
+script = ExtResource("3_3ayh4")
+tag = 7
+biases = Dictionary[int, int]({
+0: 70,
+2: 30
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_odgwe"]
+script = ExtResource("3_3ayh4")
+tag = 8
+biases = Dictionary[int, int]({
+1: 60,
+2: 40
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_bj4ua"]
+script = ExtResource("3_3ayh4")
+tag = 9
+biases = Dictionary[int, int]({
+0: 60,
+1: 40
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[sub_resource type="Resource" id="Resource_8qf1r"]
+script = ExtResource("3_3ayh4")
+tag = 10
+biases = Dictionary[int, int]({
+0: 40,
+1: 60
+})
+metadata/_custom_type_script = "uid://cev5ysh56jjvv"
+
+[resource]
+script = ExtResource("2_o7co5")
+prefixes = Array[ExtResource("1_xatdv")]([SubResource("Resource_xatdv"), SubResource("Resource_o7co5"), SubResource("Resource_3ayh4"), SubResource("Resource_rrgvh"), SubResource("Resource_7uhex"), SubResource("Resource_rpt5w"), SubResource("Resource_mru1r"), SubResource("Resource_kux1g"), SubResource("Resource_whqxr"), SubResource("Resource_lkwj3")])
+connectors = Array[String](["of the", "from", "under", "beyond", "within", "beside", "upon", "among", "beneath", "above"])
+suffixes = Array[ExtResource("1_xatdv")]([SubResource("Resource_s86i6"), SubResource("Resource_e24ha"), SubResource("Resource_0c56o"), SubResource("Resource_tgnwx"), SubResource("Resource_wo3hk"), SubResource("Resource_imeu1"), SubResource("Resource_pqu4t"), SubResource("Resource_l5t6r"), SubResource("Resource_kt2gt"), SubResource("Resource_51r2h")])
+tag_class_biases = Array[ExtResource("3_3ayh4")]([SubResource("Resource_gb0l7"), SubResource("Resource_mln85"), SubResource("Resource_up3pl"), SubResource("Resource_7dg48"), SubResource("Resource_lekmb"), SubResource("Resource_amfgb"), SubResource("Resource_ivygk"), SubResource("Resource_2ynhm"), SubResource("Resource_odgwe"), SubResource("Resource_bj4ua"), SubResource("Resource_8qf1r")])
+metadata/_custom_type_script = "uid://b17ydgcahgkt5"

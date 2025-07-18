@@ -6,10 +6,9 @@
 script = ExtResource("1_rbcdu")
 id = "shadowsworn"
 display_name = "Shadowsworn"
-base_rank = 5
-frequency = 10
-tags = Array[String]([])
-alignment = "Chaotic"
+base_rank = 4
+tags = Array[int]([])
+alignment = 1
 class_dist = Dictionary[int, int]({
 0: 0,
 1: 0,
