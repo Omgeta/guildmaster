@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://cre2kdlod3tks"
 [resource]
 script = ExtResource("2_y4o7h")
 id = "tower_5"
-display_name = "floor_5"
+display_name = "Floor 5"
 type = 0
 prerequisite_id = "tower_4"
 duration_sec = 150
