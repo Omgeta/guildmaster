@@ -25,7 +25,7 @@ func _show_one(
 	var c := prefab.instantiate()
 	c.data = data
 	c.cam = _cam
-	c.scale = Vector3.ZERO
+	c.scale = Vector3.ZERO * 0.0001
 	c.position = _spawn.global_position
 	add_child(c)
 

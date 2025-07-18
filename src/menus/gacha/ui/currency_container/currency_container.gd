@@ -5,7 +5,7 @@ extends Control
 
 func _ready() -> void:
 	_refresh()
-	SaveManager.gold_changed.connect(func(): _refresh())  # listen for updates
+	SaveManager.gold_changed.connect(func(_old, _new): _refresh())  # listen for updates
 
 
 func set_label(label: String) -> void:
