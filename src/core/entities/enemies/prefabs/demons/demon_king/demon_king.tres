@@ -16,6 +16,7 @@ metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 script = ExtResource("1_0wqqe")
 drop_table = []
 xp_reward = 200
+gold_reward = 10
 id = "demon_king"
 display_name = "Demon King"
 base_stats = SubResource("Resource_nrsic")
