@@ -98,7 +98,7 @@ func _finish_mission(id: String):
 		if adv in killed:
 			SaveManager.remove_adventurer(adv.id)
 		else:
-			adv.reward_xp(xp_per_survivor)
+			# adv.reward_xp(xp_per_survivor)
 			adv.in_mission = false
 
 	# unlock next tower level

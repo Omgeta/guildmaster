@@ -4,7 +4,10 @@ extends Node
 static func simulate(
 	party: Array[AdventurerData], mission: MissionData
 ) -> Dictionary[String, Variant]:
-	var result = {"success": false, "killed": [], "rewards": [], "xp": 0}
+	var success := false
+	var killed: Array[AdventurerData] = []
+	var rewards: Array[String] = []
+	var xp := 0
 
 	# check for success
 	# simple deterministic check: sum party ATK vs sum enemy DEF
@@ -18,25 +21,25 @@ static func simulate(
 		var enemy := spawn.enemy_data
 		enemy_power += (enemy.base_stats.def) * spawn.count
 
-	result.success = party_power >= enemy_power
+	success = party_power >= enemy_power
 
 	# get casualties
 	# simple: if you fail, kill the first two members bcos why not
 	# TODO: make this fair too
-	if not result.success:
+	if not success:
 		var to_kill = int(party.size() / 2)
 		for i in range(to_kill):
-			result.killed.append(party[i])
+			killed.append(party[i])
 
 	# generate loot, exp
 	# TODO: modify to add bonus rewards
 	for spawn in mission.enemy_spawns:
 		var enemy = spawn.enemy_data
-		result.xp += enemy.xp_reward * spawn.count
+		xp += enemy.xp_reward * spawn.count
 		for i in spawn.count:
-			result.rewards.append(_roll_enemy_drops(enemy))
+			rewards.append_array(_roll_enemy_drops(enemy))
 
-	return result
+	return {"success": success, "killed": killed, "rewards": rewards, "xp": xp}
 
 
 static func _roll_enemy_drops(enemy: EnemyData) -> Array[String]:
