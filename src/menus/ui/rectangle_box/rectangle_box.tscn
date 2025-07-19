@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://v8r6r2eg6afa"]
 
-[ext_resource type="Texture2D" uid="uid://cvjx5tpfnydhh" path="res://src/menus/assets/sprites/RectangleBox/RectangleBox.png" id="1_o2cw4"]
+[ext_resource type="Texture2D" uid="uid://cvjx5tpfnydhh" path="res://src/menus/assets/2d/RectangleBox/RectangleBox.png" id="1_o2cw4"]
 
 [node name="NinePatchRect" type="NinePatchRect"]
 offset_right = 40.0

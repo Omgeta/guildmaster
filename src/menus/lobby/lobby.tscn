@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btfjfb8xbmj2k" path="res://src/menus/lobby/lobby.gd" id="1_f463r"]
 [ext_resource type="PackedScene" uid="uid://bc6c3bbdt8m4m" path="res://src/levels/lobby/lobby.tscn" id="1_pm53w"]
-[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/assets/prefabs/button_single/button_single.tscn" id="2_myvp6"]
+[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/ui/button_single/button_single.tscn" id="2_myvp6"]
 
 [node name="Lobby" type="Control"]
 layout_mode = 3

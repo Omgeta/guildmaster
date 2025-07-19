@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1pv4ouhwwss7"
-path="res://.godot/imported/UIPill2.png-e49567409365afb55bd16a785c9aa6c2.ctex"
+uid="uid://fmaqpb7d6b5t"
+path="res://.godot/imported/SlotFull.png-43542414c6faa5dd48d3fc4cc0bcba29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/sprites/UIPill2/UIPill2.png"
-dest_files=["res://.godot/imported/UIPill2.png-e49567409365afb55bd16a785c9aa6c2.ctex"]
+source_file="res://src/menus/assets/2d/Slots/SlotFull.png"
+dest_files=["res://.godot/imported/SlotFull.png-43542414c6faa5dd48d3fc4cc0bcba29.ctex"]
 
 [params]
 

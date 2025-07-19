@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4pj7m32l80ap"]
 
-[ext_resource type="Texture2D" uid="uid://qogbmg6ol5jc" path="res://src/menus/assets/sprites/UIPill2/UIPill2Mask.png" id="1_vwkly"]
-[ext_resource type="Texture2D" uid="uid://npftv8ub4iqt" path="res://src/menus/assets/sprites/UIPill2/UIPill2Empty.png" id="2_tmcga"]
+[ext_resource type="Texture2D" uid="uid://qogbmg6ol5jc" path="res://src/menus/assets/2d/UIPill2/UIPill2Mask.png" id="1_vwkly"]
+[ext_resource type="Texture2D" uid="uid://npftv8ub4iqt" path="res://src/menus/assets/2d/UIPill2/UIPill2Empty.png" id="2_tmcga"]
 
 [node name="UIPill2" type="Control"]
 layout_mode = 3

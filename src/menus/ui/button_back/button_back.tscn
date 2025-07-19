@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://m3584wxp2p80"]
 
-[ext_resource type="Texture2D" uid="uid://2xln8q88cohh" path="res://src/menus/assets/sprites/UIQuit/UIQuit.png" id="1_lsevv"]
-[ext_resource type="Script" uid="uid://cyiqunw2xmcio" path="res://src/menus/assets/prefabs/button_back/button_back.gd" id="2_1cbx5"]
+[ext_resource type="Texture2D" uid="uid://2xln8q88cohh" path="res://src/menus/assets/2d/UIQuit/UIQuit.png" id="1_lsevv"]
+[ext_resource type="Script" uid="uid://cyiqunw2xmcio" path="res://src/menus/ui/button_back/button_back.gd" id="2_1cbx5"]
 
 [node name="ButtonBack" type="TextureButton"]
 anchors_preset = -1

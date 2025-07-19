@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2aynrh2p0i35"
-path="res://.godot/imported/TitleBox_64x16.png-968298bbf0289006970e253899dea5b8.ctex"
+uid="uid://npftv8ub4iqt"
+path="res://.godot/imported/UIPill2Empty.png-5582d35acad086ff03693e807837f7ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/sprites/TitleBox/TitleBox_64x16.png"
-dest_files=["res://.godot/imported/TitleBox_64x16.png-968298bbf0289006970e253899dea5b8.ctex"]
+source_file="res://src/menus/assets/2d/UIPill2/UIPill2Empty.png"
+dest_files=["res://.godot/imported/UIPill2Empty.png-5582d35acad086ff03693e807837f7ef.ctex"]
 
 [params]
 

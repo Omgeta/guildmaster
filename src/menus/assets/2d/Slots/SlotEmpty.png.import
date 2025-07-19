@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qogbmg6ol5jc"
-path="res://.godot/imported/UIPill2Mask.png-81b33d3ce74640d45c9c66ea96906e7e.ctex"
+uid="uid://mhibmh51pudw"
+path="res://.godot/imported/SlotEmpty.png-19650b9f8c8c9c115bbcbda1b4b8f953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/sprites/UIPill2/UIPill2Mask.png"
-dest_files=["res://.godot/imported/UIPill2Mask.png-81b33d3ce74640d45c9c66ea96906e7e.ctex"]
+source_file="res://src/menus/assets/2d/Slots/SlotEmpty.png"
+dest_files=["res://.godot/imported/SlotEmpty.png-19650b9f8c8c9c115bbcbda1b4b8f953.ctex"]
 
 [params]
 

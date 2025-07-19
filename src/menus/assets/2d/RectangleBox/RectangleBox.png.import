@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6ag3gimgtq2u"
-path="res://.godot/imported/SlotBusy.png-874122d5a5d7cc29a14f9b80b51bf770.ctex"
+uid="uid://cvjx5tpfnydhh"
+path="res://.godot/imported/RectangleBox.png-6b28a6c3dc605004700173aa1d0a48b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/sprites/Slots/SlotBusy.png"
-dest_files=["res://.godot/imported/SlotBusy.png-874122d5a5d7cc29a14f9b80b51bf770.ctex"]
+source_file="res://src/menus/assets/2d/RectangleBox/RectangleBox.png"
+dest_files=["res://.godot/imported/RectangleBox.png-6b28a6c3dc605004700173aa1d0a48b1.ctex"]
 
 [params]
 

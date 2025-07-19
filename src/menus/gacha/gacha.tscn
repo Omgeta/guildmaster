@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://bbmslpepfelv2" path="res://src/menus/gacha/prefabs/standard/standard.tres" id="5_36sg7"]
 [ext_resource type="Resource" uid="uid://3oixa72efirr" path="res://src/menus/gacha/prefabs/premium/premium.tres" id="6_d35nn"]
 [ext_resource type="PackedScene" uid="uid://yupcsm3r4k5w" path="res://src/menus/gacha/ui/currency_container/currency_container.tscn" id="7_36sg7"]
-[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/assets/prefabs/button_back/button_back.tscn" id="8_r45s6"]
+[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_back/button_back.tscn" id="8_r45s6"]
 [ext_resource type="PackedScene" uid="uid://c4u5akh5rwyps" path="res://src/menus/gacha/ui/pull_display/pull_display.tscn" id="10_f4qci"]
 
 [node name="Gacha" type="Control"]

@@ -76,7 +76,7 @@ func _finish_mission(id: String):
 	var mission := MissionDB.get_by_id(id)
 
 	# fetch the Adventurers for a simulation
-	var party = []
+	var party: Array[AdventurerData] = []
 	for guid in st.team_guids:
 		var adv = SaveManager.find_adventurer(guid, false)
 		if adv:

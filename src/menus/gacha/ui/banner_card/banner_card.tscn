@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce8ioh65jiuol"]
 
-[ext_resource type="PackedScene" uid="uid://c4pj7m32l80ap" path="res://src/menus/assets/prefabs/ui_pill_2.tscn" id="1_2h3fe"]
+[ext_resource type="PackedScene" uid="uid://c4pj7m32l80ap" path="res://src/menus/ui/ui_pill_2.tscn" id="1_2h3fe"]
 [ext_resource type="Script" uid="uid://dud8yq1bxggge" path="res://src/menus/gacha/ui/banner_card/banner_card.gd" id="2_o662b"]
 
 [node name="BannerCard" instance=ExtResource("1_2h3fe")]

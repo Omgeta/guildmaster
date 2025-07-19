@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mhibmh51pudw"
-path="res://.godot/imported/SlotEmpty.png-037b8adf4e45890dd55c60d114c934e1.ctex"
+uid="uid://d3qlt284hh48w"
+path="res://.godot/imported/UIQuit2.png-f5b4cc40882baa2898954aff257f008f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/sprites/Slots/SlotEmpty.png"
-dest_files=["res://.godot/imported/SlotEmpty.png-037b8adf4e45890dd55c60d114c934e1.ctex"]
+source_file="res://src/menus/assets/2d/UIQuit/UIQuit2.png"
+dest_files=["res://.godot/imported/UIQuit2.png-f5b4cc40882baa2898954aff257f008f.ctex"]
 
 [params]
 

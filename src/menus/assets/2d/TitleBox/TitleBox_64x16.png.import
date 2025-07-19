@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2xln8q88cohh"
-path="res://.godot/imported/UIQuit.png-c548da46935188d555777b91ee3ee27c.ctex"
+uid="uid://d2aynrh2p0i35"
+path="res://.godot/imported/TitleBox_64x16.png-a2cc99f3a738b0370e35f156753f7b38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/sprites/UIQuit/UIQuit.png"
-dest_files=["res://.godot/imported/UIQuit.png-c548da46935188d555777b91ee3ee27c.ctex"]
+source_file="res://src/menus/assets/2d/TitleBox/TitleBox_64x16.png"
+dest_files=["res://.godot/imported/TitleBox_64x16.png-a2cc99f3a738b0370e35f156753f7b38.ctex"]
 
 [params]
 

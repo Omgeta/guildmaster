@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l1gaobdpfp1i"]
 
 [ext_resource type="Script" uid="uid://fx77kfwid535" path="res://src/menus/gacha/ui/pull_buttons/pull_buttons.gd" id="1_ktlis"]
-[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/assets/prefabs/button_single/button_single.tscn" id="2_jv568"]
+[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/ui/button_single/button_single.tscn" id="2_jv568"]
 
 [node name="PullButtons" type="HBoxContainer"]
 custom_minimum_size = Vector2(300, 45)
