@@ -16,10 +16,12 @@ const FADE_TIME := 0.20
 @onready var _btn_back := $MainContainer/ButtonBack
 @onready var _display := $PullDisplay
 @onready var _results := $ResultsContainer
+
 var _busy: bool = false
 
 
 func _ready() -> void:
+	# setup banners
 	_viewer.banner_changed.connect(_on_banner_changed)
 	_pull.pull_requested.connect(_on_pull)
 	_on_banner_changed(0, _cur_banner)
@@ -27,6 +29,12 @@ func _ready() -> void:
 
 	# keep currencycounter updated
 	SaveManager.gold_changed.connect(func(_old, _new): _refresh_afford())
+
+	# handle intro
+	if not SaveManager.get_flag(GameState.Flag.INTRO_GACHA):
+		var beginner_banner = load("res://src/menus/gacha/prefabs/beginner/beginner.tres")
+		_on_pull(10, beginner_banner)
+		SaveManager.set_flag(GameState.Flag.INTRO_GACHA, true)
 
 
 func _input(event: InputEvent) -> void:
@@ -63,13 +71,13 @@ func _refresh_afford() -> void:
 	_pull.set_enabled(gold >= _cur_banner.pull_cost, gold >= _cur_banner.pull_cost * 10)
 
 
-func _on_pull(count: int) -> void:
+func _on_pull(count: int, banner: BannerData = _cur_banner) -> void:
 	if _busy:
 		return
 
 	# run banner specific logic from attached script on tres
-	var results: Array[AdventurerData] = _cur_banner.pull_logic.new().pull(_cur_banner, count)
-	if len(results) == 0:
+	var results: Array[AdventurerData] = banner.pull_logic.new().pull(banner, count)
+	if results.is_empty():
 		return
 
 	_refresh_afford()

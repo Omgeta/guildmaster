@@ -59,7 +59,7 @@ func earn_gold(amount: int) -> bool:
 
 
 func spend_gold(amount: int) -> bool:
-	if amount <= 0 or amount > _state.gold:
+	if amount < 0 or amount > _state.gold:
 		return false
 	var old_gold := _state.gold
 	_state.gold -= amount
