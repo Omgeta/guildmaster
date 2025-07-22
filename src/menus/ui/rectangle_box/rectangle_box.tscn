@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://v8r6r2eg6afa"]
+
+[ext_resource type="Texture2D" uid="uid://cvjx5tpfnydhh" path="res://src/menus/assets/2d/RectangleBox/RectangleBox.png" id="1_o2cw4"]
+
+[node name="NinePatchRect" type="NinePatchRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_o2cw4")
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25

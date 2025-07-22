@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3584wxp2p80"]
+
+[ext_resource type="Texture2D" uid="uid://2xln8q88cohh" path="res://src/menus/assets/2d/UIQuit/UIQuit.png" id="1_lsevv"]
+[ext_resource type="Script" uid="uid://cyiqunw2xmcio" path="res://src/menus/ui/button_back/button_back.gd" id="2_1cbx5"]
+
+[node name="ButtonBack" type="TextureButton"]
+anchors_preset = -1
+anchor_left = 0.482639
+anchor_top = 0.469136
+anchor_right = 0.505208
+anchor_bottom = 0.510802
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_lsevv")
+stretch_mode = 4
+script = ExtResource("2_1cbx5")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_exited" from="." to="." method="_on_button_up"]

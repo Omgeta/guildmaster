@@ -8,6 +8,7 @@
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_vxo1m")
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0

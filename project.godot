@@ -20,12 +20,12 @@ config/icon="res://icon.svg"
 SpawnManager="*res://src/globals/SpawnManager.gd"
 SceneLoader="*res://src/globals/SceneLoader.gd"
 RNG="*res://src/globals/RNG.gd"
-SpriteDB="*res://src/globals/SpriteDB.gd"
-ItemDB="*res://src/globals/ItemDB.gd"
-OriginDB="*res://src/globals/OriginDB.gd"
-MissionDB="*res://src/globals/MissionDB.gd"
-SaveManager="*res://src/globals/save/SaveManager.gd"
-MissionManager="*res://src/globals/MissionManager.gd"
+SpriteDB="*res://src/globals/DB/SpriteDB.gd"
+ItemDB="*res://src/globals/DB/ItemDB.gd"
+OriginDB="*res://src/globals/DB/OriginDB.gd"
+MissionDB="*res://src/globals/DB/MissionDB.gd"
+SaveManager="*res://src/globals/SaveManager/SaveManager.gd"
+MissionManager="*res://src/globals/MissionManager/MissionManager.gd"
 
 [display]
 
