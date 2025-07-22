@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BannerData" load_steps=3 format=3 uid="uid://io10tj85o232"]
+
+[ext_resource type="Script" uid="uid://cc6326atdl7yo" path="res://src/menus/gacha/prefabs/standard/standard_pull_logic.gd" id="1_en2wj"]
+[ext_resource type="Script" uid="uid://8blkhmp8qulr" path="res://src/menus/gacha/banner_data.gd" id="2_mt0l0"]
+
+[resource]
+script = ExtResource("2_mt0l0")
+id = "beginner"
+display_name = "Beginner"
+pull_logic = ExtResource("1_en2wj")
+min_rarity = 1
+max_rarity = 3
+pull_cost = 100
+tag_bias = Array[int]([])
+enabled = false
+metadata/_custom_type_script = "uid://8blkhmp8qulr"
