@@ -48,6 +48,7 @@ func _show_one(
 
 
 func _burst_fx(color: Color):
+	_fx.emitting = true
 	_fx.amount = fx_burst
 	_fx.process_material.color = color
 	_fx.emitting = false

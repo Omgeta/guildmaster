@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://v21t7u88gjhg"]
 
 [ext_resource type="PackedScene" uid="uid://mxqtfw0fyis5" path="res://src/levels/gacha/assets/3d/cave/grotto_cavern_cave.glb" id="1_2vr2n"]
-[ext_resource type="Script" path="res://src/levels/gacha/gacha_cave.gd" id="1_h3nu3"]
+[ext_resource type="Script" uid="uid://ifsxeamdvfbj" path="res://src/levels/gacha/gacha_cave.gd" id="1_h3nu3"]
 [ext_resource type="PackedScene" uid="uid://de53ks26apt33" path="res://src/levels/gacha/assets/3d/portal/old_portal.glb" id="2_h3nu3"]
-[ext_resource type="PackedScene" uid="uid://c64b3cxkn0pf0" path="res://src/levels/gacha/assets/3d/torch/torch.glb" id="4_ikbl2"]
+[ext_resource type="PackedScene" uid="uid://b24e8uxhe6kxm" path="res://src/levels/gacha/assets/3d/torch/torch.tscn" id="4_h3nu3"]
 
 [sub_resource type="Curve" id="Curve_2vr2n"]
 _data = [Vector2(0, 0.720755), 0.0, 0.0, 0, 0, Vector2(0.783251, 0.54717), 0.0, 0.0, 0, 0]
@@ -31,12 +31,12 @@ alpha_curve = SubResource("CurveTexture_h3nu3")
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_2vr2n"]
 material = SubResource("StandardMaterial3D_2vr2n")
 size = Vector2(0.1, 0.1)
+orientation = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ey0fm"]
 
@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216665, 1.41074, 0.0298571
 
 [node name="PortalParticles" type="GPUParticles3D" parent="Portal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0681841, 0.733346, 0.118988)
-amount = 5
+emitting = false
 lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_2vr2n")
 draw_pass_1 = SubResource("QuadMesh_2vr2n")
@@ -112,16 +112,11 @@ shadow_blur = 3.5
 directional_shadow_split_1 = 0.0
 directional_shadow_blend_splits = true
 
-[node name="Torch" parent="." instance=ExtResource("4_ikbl2")]
-transform = Transform3D(-4.22079e-08, 0.0369576, 0.999317, 1.16161e-09, 0.999317, -0.0369576, -1, -3.99089e-10, -4.2222e-08, -4.10746, -1.0421, 0.000184059)
+[node name="Torch2" parent="." instance=ExtResource("4_h3nu3")]
+transform = Transform3D(0.292372, 0, 0.956305, 0, 1, 0, -0.956305, 0, 0.292372, -3.3, -0.8, -2.1)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Torch"]
-transform = Transform3D(1, 2.77556e-16, 7.10543e-15, 5.55112e-17, 1, 1.68504e-17, -1.42109e-14, 1.68503e-17, 1, 0.0277374, 0.391113, 0.247516)
-light_color = Color(0.752941, 0.529412, 0, 1)
-light_size = 1.0
-light_specular = 1.0
-omni_range = 15.0
-omni_attenuation = 0.05
+[node name="Torch" parent="." instance=ExtResource("4_h3nu3")]
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, -3.8, -0.8, 2.1)
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.4266, 0.102923)
