@@ -47,9 +47,9 @@ func _input(event):
 
 func _load_game() -> void:
 	var has_save := SaveManager.load_slot()
-	if not has_save or not SaveManager.get_flag("seen_intro_cutscene"):  # new game
+	if not has_save or not SaveManager.get_flag(GameState.Flag.INTRO_CUTSCENE):  # new game
 		_start_intro_cutscene()
-	elif not SaveManager.get_flag("finished_intro_gacha"):
+	elif not SaveManager.get_flag(GameState.Flag.INTRO_GACHA):
 		_go_to_gacha()
 	else:
 		_go_to_lobby()
@@ -64,7 +64,7 @@ func _start_intro_cutscene() -> void:
 
 func _on_intro_finished():
 	# mark the flag so we skip next time
-	SaveManager.set_flag("seen_intro_cutscene", true)
+	SaveManager.set_flag(GameState.Flag.INTRO_CUTSCENE, true)
 	SaveManager.save_async()
 	_go_to_gacha()
 

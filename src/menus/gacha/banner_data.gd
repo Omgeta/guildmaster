@@ -6,7 +6,7 @@ class_name BannerData
 @export var image: Texture2D  # banner splash art
 @export var pull_logic: Script  # inherits GachaPullLogic
 
-@export var min_rarity: int = 1
+@export_range(1, 5, 1) var min_rarity: int = 1
+@export_range(1, 5, 1) var max_rarity: int = 5
 @export var pull_cost: int = 100
 @export var tag_bias: Array[CharacterData.Tag] = []
-@export var enabled: bool = true

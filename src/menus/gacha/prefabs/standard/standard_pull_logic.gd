@@ -6,27 +6,37 @@ const ADV_FACTORY := preload("res://src/core/entities/adventurers/adventurer_fac
 func pull(banner: BannerData, count: int) -> Array[AdventurerData]:
 	var cost := banner.pull_cost * count
 	if not SaveManager.spend_gold(cost):
+		print("what the----")
 		return []
 
-	var pool := _build_origin_pool(banner)
+	var pool := SaveManager.get_origins()
+
 	var results: Array[AdventurerData] = []
 	for i in count:
-		var origin := _pick_origin(pool)
-		var c := ADV_FACTORY.create_from_origin(origin)
+		var c: AdventurerData
+
+		# keep re-rolling until we get one that fits the banner rarity and tag bias
+		while true:
+			var origin: OriginData = RNG.choose(pool)
+			c = ADV_FACTORY.create_from_origin(origin)
+
+			# rarity checks
+			if c.rarity < banner.min_rarity:
+				continue
+			if banner.max_rarity > 0 and c.rarity > banner.max_rarity:
+				continue
+
+			# tag_bias check (if any)
+			if banner.tag_bias.size() > 0 and not _has_overlap(banner.tag_bias, c.tags):
+				continue
+
+			# passed all checks
+			break
+
 		results.append(c)
 		SaveManager.set_adventurer(c)
+
 	return results
-
-
-func _build_origin_pool(banner: BannerData) -> Array[OriginData]:
-	var pool: Array[OriginData] = []
-	for o in SaveManager.get_origins():
-		if o.base_rank < banner.min_rarity:  # rarity floor enforced
-			continue
-		if banner.tag_bias.size() > 0 and not _has_overlap(banner.tag_bias, o.tags):
-			continue
-		pool.append(o)
-	return pool
 
 
 func _has_overlap(a: PackedStringArray, b: PackedStringArray) -> bool:
@@ -34,7 +44,3 @@ func _has_overlap(a: PackedStringArray, b: PackedStringArray) -> bool:
 		if b.has(t):
 			return true
 	return false
-
-
-func _pick_origin(pool: Array[OriginData]) -> OriginData:
-	return RNG.choose(pool)
