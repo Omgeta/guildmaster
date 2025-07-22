@@ -1,23 +1,17 @@
 extends CanvasLayer
 
-@export var fade_time: float = 0.5
-@export var fade_color: Color = Color.BLACK
-
 signal scene_changed(current: Node)
 
+@export var fade_time: float = 0.5
+
+@onready var _fader: ColorRect = $Fader
+
 var _stack: Array[Node] = []
-var _fader: ColorRect
 var _tween: Tween
 var _busy: bool = false
 
 
 func _ready() -> void:
-	_fader = ColorRect.new()
-	_fader.name = "Fader"
-	_fader.color = fade_color
-	_fader.modulate.a = 0.0
-	_fader.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_fader.set_anchors_preset(Control.PRESET_FULL_RECT, true)
 	add_child(_fader)
 	_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
