@@ -30,7 +30,7 @@ func get_inventory(copy := true) -> Dictionary[String, int]:
 	return _state.inventory.duplicate(true) if copy else _state.inventory
 
 
-func get_flag(flag: String) -> bool:
+func get_flag(flag: GameState.Flag) -> bool:
 	return _state.flags.get(flag, false)
 
 
@@ -113,7 +113,7 @@ func remove_item(item_id: String, amount := 1) -> bool:
 	return true
 
 
-func set_flag(flag: String, val: bool) -> void:
+func set_flag(flag: GameState.Flag, val: bool) -> void:
 	if flag in _state.flags:
 		_state.flags[flag] = val
 		_dirty = true
