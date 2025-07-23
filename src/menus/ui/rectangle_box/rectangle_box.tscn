@@ -2,11 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://cvjx5tpfnydhh" path="res://src/menus/assets/2d/RectangleBox/RectangleBox.png" id="1_o2cw4"]
 
-[node name="NinePatchRect" type="NinePatchRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="RectangleBox" type="NinePatchRect"]
+anchors_preset = -1
+anchor_right = 0.0434028
+anchor_bottom = 0.0771605
+offset_right = -10.0
+offset_bottom = -10.0
 texture = ExtResource("1_o2cw4")
 patch_margin_left = 25
 patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
+metadata/_edit_use_anchors_ = true

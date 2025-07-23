@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3584wxp2p80"]
+
+[ext_resource type="Texture2D" uid="uid://dvvhhcx5u8fio" path="res://src/menus/assets/2d/Home/Home.png" id="1_r5lb6"]
+[ext_resource type="Script" uid="uid://cyiqunw2xmcio" path="res://src/menus/ui/button_home/button_home.gd" id="2_1cbx5"]
+
+[node name="ButtonBack" type="TextureButton"]
+offset_right = 21.0
+offset_bottom = 21.0
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_r5lb6")
+stretch_mode = 4
+script = ExtResource("2_1cbx5")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_exited" from="." to="." method="_on_button_up"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu0y6smoidwwj"]
+[gd_scene load_steps=13 format=3 uid="uid://bu0y6smoidwwj"]
 
 [ext_resource type="Script" uid="uid://dcn8nlgsbdugh" path="res://src/menus/gacha/gacha.gd" id="1_d35nn"]
 [ext_resource type="PackedScene" uid="uid://v21t7u88gjhg" path="res://src/levels/gacha/gacha_cave.tscn" id="1_u8bn6"]
@@ -8,8 +8,10 @@
 [ext_resource type="Resource" uid="uid://bbmslpepfelv2" path="res://src/menus/gacha/prefabs/standard/standard.tres" id="5_36sg7"]
 [ext_resource type="Resource" uid="uid://3oixa72efirr" path="res://src/menus/gacha/prefabs/premium/premium.tres" id="6_d35nn"]
 [ext_resource type="PackedScene" uid="uid://yupcsm3r4k5w" path="res://src/menus/gacha/ui/currency_container/currency_container.tscn" id="7_36sg7"]
-[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_back/button_back.tscn" id="8_r45s6"]
+[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_home/button_home.tscn" id="8_r45s6"]
 [ext_resource type="PackedScene" uid="uid://c4u5akh5rwyps" path="res://src/menus/gacha/ui/pull_display/pull_display.tscn" id="10_f4qci"]
+[ext_resource type="PackedScene" uid="uid://ccrsoh5bobmwf" path="res://src/menus/ui/button_direction/left_arrow.tscn" id="11_a1pp1"]
+[ext_resource type="PackedScene" uid="uid://blrt5jmq2hkg6" path="res://src/menus/ui/button_direction/right_arrow.tscn" id="12_k6vcq"]
 
 [node name="Gacha" type="Control"]
 layout_mode = 3
@@ -50,12 +52,19 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="BannerViewer" parent="MainContainer" instance=ExtResource("3_fxtcr")]
+custom_minimum_size = Vector2(750, 350)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.197917
-anchor_top = 0.194444
-anchor_right = 0.809896
-anchor_bottom = 0.743827
+anchor_left = 0.5
+anchor_top = 0.476852
+anchor_right = 0.5
+anchor_bottom = 0.476852
+offset_left = -375.0
+offset_top = -194.0
+offset_right = 375.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
 banners = Array[ExtResource("4_jv4xj")]([ExtResource("5_36sg7"), ExtResource("6_d35nn")])
 
 [node name="PullButtons" parent="MainContainer" instance=ExtResource("2_g6y2b")]
@@ -67,25 +76,55 @@ anchor_bottom = 0.899691
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="ButtonBack" parent="MainContainer" instance=ExtResource("8_r45s6")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.872396
-anchor_top = 0.0864198
-anchor_right = 0.907986
-anchor_bottom = 0.149691
-grow_horizontal = 1
+[node name="ButtonHome" parent="MainContainer" instance=ExtResource("8_r45s6")]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.80382
+anchor_top = 0.162037
+anchor_right = 0.847223
+anchor_bottom = 0.239197
+offset_right = -15.0001
+offset_bottom = -15.0
 grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CurrencyContainer" parent="MainContainer" instance=ExtResource("7_36sg7")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.753472
-anchor_top = 0.0802469
-anchor_right = 0.854167
-anchor_bottom = 0.157407
+anchor_left = 0.450521
+anchor_top = 0.666667
+anchor_right = 0.550347
+anchor_bottom = 0.743827
 offset_right = 0.0
-offset_bottom = 0.0
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftArrow" parent="MainContainer" instance=ExtResource("11_a1pp1")]
+custom_minimum_size = Vector2(21, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148003
+anchor_top = 0.430556
+anchor_right = 0.166233
+anchor_bottom = 0.476852
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RightArrow" parent="MainContainer" instance=ExtResource("12_k6vcq")]
+custom_minimum_size = Vector2(21, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.833767
+anchor_top = 0.427469
+anchor_right = 0.851997
+anchor_bottom = 0.473765
+grow_horizontal = 2
+grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ResultsContainer" type="GridContainer" parent="."]
@@ -100,3 +139,6 @@ grow_vertical = 2
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 5
+
+[connection signal="pressed" from="MainContainer/LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="MainContainer/RightArrow" to="." method="_on_right_arrow_pressed"]

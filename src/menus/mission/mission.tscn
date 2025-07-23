@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://4fdx6lkx5qrq" path="res://src/levels/missions/missions_bg.tscn" id="1_u7eep"]
 [ext_resource type="Script" uid="uid://c0u8cifgtx23k" path="res://src/menus/mission/mission.gd" id="1_w6lnb"]
-[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_back/button_back.tscn" id="2_77xhu"]
+[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_home/button_home.tscn" id="2_77xhu"]
 [ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="3_4q0vm"]
 [ext_resource type="PackedScene" uid="uid://bln73s5cx446f" path="res://src/menus/mission/ui/mission_card/mission_card.tscn" id="4_j2owq"]
 [ext_resource type="Texture2D" uid="uid://d2aynrh2p0i35" path="res://src/menus/assets/2d/TitleBox/TitleBox_64x16.png" id="5_iara5"]

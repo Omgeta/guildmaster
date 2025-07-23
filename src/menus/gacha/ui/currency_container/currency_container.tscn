@@ -5,21 +5,25 @@
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="3_q4v0j"]
 [ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="5_q4v0j"]
 
-[node name="NinePatchRect" instance=ExtResource("5_q4v0j")]
-offset_right = 114.0
+[node name="Background" instance=ExtResource("5_q4v0j")]
+custom_minimum_size = Vector2(115, 50)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 115.0
 offset_bottom = 50.0
 script = ExtResource("2_q4v0j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
+[node name="HBoxContainer" type="HSplitContainer" parent="." index="0"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.125
-anchor_top = 0.272727
-anchor_right = 0.875
-anchor_bottom = 0.709091
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.113043
+anchor_top = 0.26
+anchor_right = 0.869565
+anchor_bottom = 0.7
+theme_override_constants/separation = -40
 metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
 
 [node name="CoinIcon" type="TextureRect" parent="HBoxContainer" index="0"]
 layout_mode = 2
@@ -31,3 +35,4 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_q4v0j")
 theme_override_font_sizes/font_size = 17
 text = "999999"
+horizontal_alignment = 2

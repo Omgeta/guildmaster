@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3qlt284hh48w"
-path="res://.godot/imported/UIQuit2.png-f5b4cc40882baa2898954aff257f008f.ctex"
+uid="uid://evn1mna1b5hk"
+path="res://.godot/imported/RectangleBoxMask.png-b19af9cf4d0bea849c4a1b7ec04063ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/menus/assets/2d/UIQuit/UIQuit2.png"
-dest_files=["res://.godot/imported/UIQuit2.png-f5b4cc40882baa2898954aff257f008f.ctex"]
+source_file="res://src/menus/assets/2d/RectangleBox/RectangleBoxMask.png"
+dest_files=["res://.godot/imported/RectangleBoxMask.png-b19af9cf4d0bea849c4a1b7ec04063ea.ctex"]
 
 [params]
 

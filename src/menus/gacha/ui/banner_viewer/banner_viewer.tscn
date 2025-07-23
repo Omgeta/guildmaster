@@ -1,26 +1,25 @@
 [gd_scene load_steps=3 format=3 uid="uid://x806s713g56u"]
 
 [ext_resource type="Script" uid="uid://canvcpd2dmjac" path="res://src/menus/gacha/ui/banner_viewer/banner_viewer.gd" id="1_qog7l"]
-[ext_resource type="PackedScene" uid="uid://ce8ioh65jiuol" path="res://src/menus/gacha/ui/banner_card/banner_card.tscn" id="2_88ra5"]
+[ext_resource type="PackedScene" uid="uid://vwn0extikar2" path="res://src/menus/ui/rectangle_box/rectangle_box_masked.tscn" id="2_88ra5"]
 
 [node name="BannerViewer" type="Control"]
+custom_minimum_size = Vector2(350, 175)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 350.0
+offset_bottom = 175.0
 script = ExtResource("1_qog7l")
 metadata/_edit_use_anchors_ = true
 
 [node name="BannerCard" parent="." instance=ExtResource("2_88ra5")]
 layout_mode = 1
-anchor_left = 0.382813
-anchor_top = 0.384259
-anchor_right = 0.617188
-anchor_bottom = 0.615741
-offset_bottom = 3.05176e-05
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(135, 75)
-metadata/_edit_use_anchors_ = true
+texture = null
+texture = null
