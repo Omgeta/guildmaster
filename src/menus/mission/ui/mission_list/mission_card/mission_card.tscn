@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://f44qelvashc4"]
+
+[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/ui/button_single/button_single.tscn" id="1_73qk4"]
+[ext_resource type="Script" uid="uid://des2v28dmtchl" path="res://src/menus/mission/ui/mission_list/mission_card/mission_card.gd" id="2_n25tq"]
+
+[node name="MissionCard" instance=ExtResource("1_73qk4")]
+custom_minimum_size = Vector2(192, 55)
+script = ExtResource("2_n25tq")

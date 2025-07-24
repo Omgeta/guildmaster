@@ -1,4 +1,4 @@
-extends TextureButton
+extends "res://src/menus/ui/button_single/button_single.gd"
 
 const COL_OPEN := Color.WHITE
 var COL_TIME := Color.hex(0xe8c75dff)  # gold
@@ -6,38 +6,27 @@ var COL_DONE := Color.hex(0x7be07bff)  # green
 var COL_FAIL := Color.hex(0xdb5b5bff)  # red
 var DESAT := Color(0.35, 0.35, 0.35, 1.0)  # greyed out
 
-@onready var _label := $Label
 
-@export var label: String:
-	set(value):
-		label = value
-		if _label:
-			_label.text = label
-
-
-func _ready():
-	_label.text = label
-
-
-func set_status(s: String) -> void:
-	match s:
-		"locked":
+func set_mission(name: String, state: MissionState):
+	set_label(name)
+	match state.status:
+		MissionState.Status.LOCKED:
 			self_modulate = DESAT
-			_label.self_modulate = COL_OPEN
-			disabled = true
-		"open":
+			_label.self_modulate = DESAT
+			set_disabled_(true)
+		MissionState.Status.AVAILABLE:
 			self_modulate = Color.WHITE
 			_label.self_modulate = COL_OPEN
-			disabled = false
-		"time":
+			set_disabled_(false)
+		MissionState.Status.IN_PROGRESS:
 			self_modulate = Color.WHITE
 			_label.self_modulate = COL_TIME
-			disabled = true
-		"done":
+			set_disabled_(true)
+		MissionState.Status.SUCCESS:
 			self_modulate = Color.WHITE
 			_label.self_modulate = COL_DONE
-			disabled = false
-		"fail":
+			set_disabled_(false)
+		MissionState.Status.FAILED:
 			self_modulate = Color.WHITE
 			_label.self_modulate = COL_FAIL
-			disabled = false
+			set_disabled_(false)

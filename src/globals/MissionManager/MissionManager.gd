@@ -1,9 +1,8 @@
 extends Node
 
 signal mission_started(id: String)
-signal mission_finished(
-	id: String, success: bool, rewards: Array[ItemData], killed: Array[AdventurerData]
-)
+signal mission_finished(id: String)
+signal mission_claimed(id: String)
 
 const TICK_SEC := 1.0  # how often we check states
 const CombatSim := preload("res://src/globals/MissionManager/combat_simulator.gd")
@@ -39,7 +38,7 @@ func start_mission(id: String, team: Array[AdventurerData]) -> bool:
 	var mission := MissionDB.get_by_id(id)
 	if not st or st.status != MissionState.Status.AVAILABLE:
 		return false
-	if team.size() < mission.slots_required:
+	if team.size() < 1:
 		return false
 
 	st.status = MissionState.Status.IN_PROGRESS
@@ -85,28 +84,47 @@ func _finish_mission(id: String):
 	# run the sim and collect results
 	var sim := CombatSim.simulate(party, mission)
 	var success: bool = sim.success
-	var killed: Array[AdventurerData] = sim.killed
-	var rewards: Array[String] = sim.rewards
-	var xp: int = sim.xp
+	st.pending_killed = sim.killed.map(func(a: AdventurerData): return a.id)
+	st.pending_rewards = sim.rewards
+	st.pending_xp = sim.xp
 
 	# update state
 	st.status = MissionState.Status.SUCCESS if success else MissionState.Status.FAILED
-
-	# apply casualties and reward xp
-	var xp_per_survivor := int(xp / party.size())
-	for adv in party:
-		if adv in killed:
-			SaveManager.remove_adventurer(adv.id)
-		else:
-			# adv.reward_xp(xp_per_survivor)
-			adv.in_mission = false
 
 	# unlock next tower level
 	if success:
 		_unlock_next_tower(id)
 
 	SaveManager.save_async()
-	mission_finished.emit(id, success, rewards, killed)
+	mission_finished.emit(id)
+
+
+func claim_rewards(id: String) -> void:
+	var st = get_state(id)
+	if st.status not in [MissionState.Status.SUCCESS, MissionState.Status.FAILED]:
+		return  # nothing to claim
+
+	for reward in st.pending_rewards:
+		SaveManager.add_item(reward)
+		# push notifcation
+	st.pending_rewards.clear()
+
+	for adv_id in st.pending_killed:
+		SaveManager.remove_adventurer(adv_id)
+		# push notifcation
+	st.pending_killed.clear()
+
+	for adv in st.team_guids:
+		if adv not in st.pending_killed:
+			pass
+			# TODO: adv.reward_exp(st.pending_xp)
+	st.team_guids.clear()
+	st.pending_xp = 0
+
+	st.status = MissionState.Status.AVAILABLE
+
+	SaveManager.save_async()
+	mission_claimed.emit(id)
 
 
 func _unlock_next_tower(prev_id: String):

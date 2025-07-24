@@ -51,3 +51,7 @@ func has(id: String) -> bool:
 
 func all() -> Array[MissionData]:
 	return _map.values()
+
+
+func get_by_type(type: MissionData.Type) -> Array[MissionData]:
+	return all().filter(func(m: MissionData): return m.type == type)
