@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="OriginKeywords" load_steps=35 format=3 uid="uid://btunowalgcedc"]
 
-[ext_resource type="Script" uid="uid://175dpxh0acmh" path="res://src/core/origins/origin_name_part.gd" id="1_xatdv"]
-[ext_resource type="Script" uid="uid://b17ydgcahgkt5" path="res://src/core/origins/origin_keywords.gd" id="2_o7co5"]
-[ext_resource type="Script" uid="uid://cev5ysh56jjvv" path="res://src/core/origins/tag_class_bias.gd" id="3_3ayh4"]
+[ext_resource type="Script" path="res://src/core/origins/origin_name_part.gd" id="1_xatdv"]
+[ext_resource type="Script" path="res://src/core/origins/origin_keywords.gd" id="2_o7co5"]
+[ext_resource type="Script" path="res://src/core/origins/tag_class_bias.gd" id="3_3ayh4"]
 
 [sub_resource type="Resource" id="Resource_xatdv"]
 script = ExtResource("1_xatdv")

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://nrypiq50pkbq"
+
+[deps]
+
+files=["res://exports/missions.display.translation", "res://exports/missions.type.translation", "res://exports/missions.prerequisite.translation", "res://exports/missions.duration.translation", "res://exports/missions.slots.translation", "res://exports/missions.bonus.translation", "res://exports/missions.enemy.translation"]
+
+source_file="res://exports/missions.csv"
+dest_files=["res://exports/missions.display.translation", "res://exports/missions.type.translation", "res://exports/missions.prerequisite.translation", "res://exports/missions.duration.translation", "res://exports/missions.slots.translation", "res://exports/missions.bonus.translation", "res://exports/missions.enemy.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,6 @@
+id,name,description,rarity,stack_limit,type,specific_data
+attack_potion,Attack Poition,"A crude potion that raises attack.",1,99,Consumable,"heal_hp:0|buffs:Add +20 attack to warrior characters"
+heal_potion,Healing Potion,"A crude potion which recovers a bit of HP.",1,99,Consumable,"heal_hp:15|buffs:"
+magic_potion,Magic Potion,"A crude potion that raises magic.",1,99,Consumable,"heal_hp:0|buffs:Adds +20 magic to magicians"
+swift_potion,Swift Potion,"A crude potion that raises dexterity. ",1,99,Consumable,"heal_hp:0|buffs:add +20 dex "
+admin_sword,Admin Sword,"A sword that one shots everything. ",5,1,Equipment,"slot:weapon|hp:0|atk:999|dex:0|mag:0|def:0"

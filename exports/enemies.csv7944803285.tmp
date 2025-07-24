@@ -1,0 +1,13 @@
+id,display_name,xp_reward,drop_table,hp,atk,dex,mag,def,tags,sprites
+bandit,Bandit,10,"",20,5,5,5,10,"4,1","acc:|body:|hair:|outfit:"
+bandit_king,Bandit King,75,"",150,30,15,5,20,"4,6,1","acc:|body:|hair:|outfit:"
+bandit_queen,Bandit Queen,10,"",165,40,15,5,15,"4,6,1","acc:|body:|hair:|outfit:"
+demon_king,Demon King,200,"",200,40,10,5,25,"5,6","acc:|body:|hair:|outfit:"
+lower_demon,Lower Demon,10,"",20,5,5,5,5,"5","acc:|body:|hair:|outfit:"
+upper_demon,Upper Demon,25,"",35,12,5,5,12,"5","acc:|body:|hair:|outfit:"
+goblin,Goblin,10,"",20,5,10,5,5,"3","acc:|body:|hair:|outfit:"
+goblin_elite,Goblin Elite,20,"",35,8,5,5,15,"3","acc:|body:|hair:|outfit:"
+goblin_gangster,Goblin Gangster,10,"",45,15,5,5,10,"3","acc:|body:|hair:|outfit:"
+ghoul,Ghoul,10,"",20,5,5,5,5,"2","acc:|body:|hair:|outfit:"
+skeleton,Skeleton,25,"",25,12,8,5,10,"2","acc:|body:|hair:|outfit:"
+sorceress,Sorceress,40,"",50,5,10,30,10,"2,1","acc:|body:|hair:|outfit:"
