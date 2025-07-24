@@ -14,15 +14,18 @@ const MAX_WAIT := 3
 
 var _gravity := float(ProjectSettings.get_setting("physics/3d/default_gravity"))
 var _last_nav: NavigationRegion3D
-var _cam3d: Camera3D
 
 
 func _ready() -> void:
-	assert(data, "Character3D needs a CharacterData resource")
 	assert(cam, "Character3D needs a CameraRig reference")
-	_cam3d = cam.get_child(0)
-	_apply_sprites()
+	if data:
+		_apply_sprites()
 	_agent.target_reached.connect(_on_target_reached)
+
+
+func set_character(c: CharacterData):
+	data = c
+	_apply_sprites()
 
 
 func _physics_process(delta: float) -> void:

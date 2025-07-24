@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://blrt5jmq2hkg6"]
+
+[ext_resource type="Texture2D" uid="uid://c7u50ynksouk1" path="res://src/menus/assets/2d/Arrows/RightArrowButton_7x10.png" id="1_ldytu"]
+[ext_resource type="Script" uid="uid://d1q3d4cjulue2" path="res://src/menus/ui/button_direction/arrow.gd" id="2_annx3"]
+
+[node name="RightArrow" type="TextureButton"]
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_ldytu")
+stretch_mode = 4
+script = ExtResource("2_annx3")
+
+[connection signal="button_down" from="." to="." method="_on_down"]
+[connection signal="button_up" from="." to="." method="_on_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_up"]

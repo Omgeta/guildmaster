@@ -6,7 +6,6 @@ const ADV_FACTORY := preload("res://src/core/entities/adventurers/adventurer_fac
 func pull(banner: BannerData, count: int) -> Array[AdventurerData]:
 	var cost := banner.pull_cost * count
 	if not SaveManager.spend_gold(cost):
-		print("what the----")
 		return []
 
 	var pool := SaveManager.get_origins()
@@ -36,6 +35,7 @@ func pull(banner: BannerData, count: int) -> Array[AdventurerData]:
 		results.append(c)
 		SaveManager.set_adventurer(c)
 
+	SaveManager.save_async()
 	return results
 
 

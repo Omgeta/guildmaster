@@ -7,13 +7,8 @@ signal scene_changed(current: Node)
 @onready var _fader: ColorRect = $Fader
 
 var _stack: Array[Node] = []
-var _tween: Tween
+var _tween: Tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 var _busy: bool = false
-
-
-func _ready() -> void:
-	add_child(_fader)
-	_tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
 
 func change_to(target, reset_stack := true) -> void:

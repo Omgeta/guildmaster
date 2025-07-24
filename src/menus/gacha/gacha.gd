@@ -12,10 +12,12 @@ const FADE_TIME := 0.20
 @onready var _pull := $MainContainer/PullButtons
 @onready var _currency := $MainContainer/CurrencyContainer
 @onready var _stage := $SubViewportContainer/SubViewport/GachaStage
-@onready var _cur_banner: BannerData = _viewer.banners[0]
-@onready var _btn_back := $MainContainer/ButtonBack
+@onready var _btn_back := $MainContainer/ButtonHome
 @onready var _display := $PullDisplay
 @onready var _results := $ResultsContainer
+@onready var _cur_banner: BannerData = _viewer.banners[0]
+@onready var _left_button := $MainContainer/LeftArrow
+@onready var _right_button := $MainContainer/RightArrow
 
 var _busy: bool = false
 
@@ -38,8 +40,22 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and not _busy:
+	if _busy:
+		return
+	if event.is_action_pressed("ui_cancel"):
 		_return_to_lobby()
+	elif event.is_action_pressed("ui_left"):
+		_viewer.show_prev()
+	elif event.is_action_pressed("ui_right"):
+		_viewer.show_next()
+
+
+func _on_left_arrow_pressed() -> void:
+	_viewer.show_prev()
+
+
+func _on_right_arrow_pressed() -> void:
+	_viewer.show_next()
 
 
 func _fade_ui(to_alpha: float) -> void:
@@ -88,7 +104,7 @@ func _on_pull(count: int, banner: BannerData = _cur_banner) -> void:
 	# play reveal inside the gacha cave level for each of the pulls
 	for r in results:
 		await _stage.play_reveal(r, CHARACTER_SCN, pop_time, show_time)
-		await show_display(r, pop_time, show_time)
+		await _show_display(r, pop_time, show_time)
 
 	# show summary cards
 	#_results.populate(results)
@@ -99,7 +115,7 @@ func _on_pull(count: int, banner: BannerData = _cur_banner) -> void:
 	_busy = false
 
 
-func show_display(r: AdventurerData, pop_time: float, show_time: float):
+func _show_display(r: AdventurerData, pop_time: float, show_time: float):
 	_display.set_adventurer_data(r)
 	_display.modulate.a = 0.0
 	var t := create_tween()

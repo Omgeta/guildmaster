@@ -27,7 +27,7 @@ static func simulate(
 	# simple: if you fail, kill the first two members bcos why not
 	# TODO: make this fair too
 	if not success:
-		var to_kill = int(party.size() / 2)
+		var to_kill := int(party.size() / 2)
 		for i in range(to_kill):
 			killed.append(party[i])
 

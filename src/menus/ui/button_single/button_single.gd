@@ -15,8 +15,9 @@ func set_label(text: String):
 
 func set_disabled_(value: bool):
 	disabled = value
-	modulate = Color(0.5, 0.5, 0.5, 0.7) if value else Color(1, 1, 1, 1)
+	modulate = Color(0.5, 0.5, 0.5, 0.7) if value else Color.WHITE
 	mouse_filter = Control.MOUSE_FILTER_IGNORE if value else Control.MOUSE_FILTER_STOP
+	mouse_default_cursor_shape = Control.CURSOR_ARROW if value else Control.CURSOR_POINTING_HAND
 
 
 func _on_down():

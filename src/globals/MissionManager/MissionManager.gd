@@ -1,9 +1,8 @@
 extends Node
 
 signal mission_started(id: String)
-signal mission_finished(
-	id: String, success: bool, rewards: Array[ItemData], killed: Array[AdventurerData]
-)
+signal mission_finished(id: String)
+signal mission_claimed(id: String)
 
 const TICK_SEC := 1.0  # how often we check states
 const CombatSim := preload("res://src/globals/MissionManager/combat_simulator.gd")
@@ -34,22 +33,25 @@ func available_missions() -> Array[MissionData]:
 	)
 
 
-func start_mission(id: String, team: Array[AdventurerData]) -> bool:
+func start_mission(id: String, team_guids: Array[String]) -> bool:
 	var st := get_state(id)
-	var mission := MissionDB.get_by_id(id)
 	if not st or st.status != MissionState.Status.AVAILABLE:
 		return false
-	if team.size() < mission.slots_required:
+	if team_guids.size() < 1:
 		return false
 
 	st.status = MissionState.Status.IN_PROGRESS
 	st.start_time = int(Time.get_unix_time_from_system())
-	st.team_guids = team.map(func(a): return a.id)
+	st.team_guids = team_guids
 
 	# mark adventurers unavailable
-	for a in team:
-		a.in_mission = true
-		SaveManager.set_adventurer(a)
+	for adv_id in team_guids:
+		var adv: AdventurerData = SaveManager.find_adventurer(adv_id)
+		if not adv:
+			return false
+
+		adv.in_mission = true
+		SaveManager.set_adventurer(adv)
 
 	mission_started.emit(id)
 	SaveManager.save_async()
@@ -85,28 +87,51 @@ func _finish_mission(id: String):
 	# run the sim and collect results
 	var sim := CombatSim.simulate(party, mission)
 	var success: bool = sim.success
-	var killed: Array[AdventurerData] = sim.killed
-	var rewards: Array[String] = sim.rewards
-	var xp: int = sim.xp
+	st.pending_killed = sim.killed.map(func(a: AdventurerData): return a.id)
+	st.pending_rewards = sim.rewards
+	st.pending_xp = sim.xp
 
 	# update state
 	st.status = MissionState.Status.SUCCESS if success else MissionState.Status.FAILED
-
-	# apply casualties and reward xp
-	var xp_per_survivor := int(xp / party.size())
-	for adv in party:
-		if adv in killed:
-			SaveManager.remove_adventurer(adv.id)
-		else:
-			# adv.reward_xp(xp_per_survivor)
-			adv.in_mission = false
 
 	# unlock next tower level
 	if success:
 		_unlock_next_tower(id)
 
 	SaveManager.save_async()
-	mission_finished.emit(id, success, rewards, killed)
+	mission_finished.emit(id)
+
+
+func claim_rewards(id: String) -> void:
+	var st = get_state(id)
+	if st.status not in [MissionState.Status.SUCCESS, MissionState.Status.FAILED]:
+		return  # nothing to claim
+
+	for reward in st.pending_rewards:
+		SaveManager.add_item(reward)
+		# push notifcation
+	st.pending_rewards.clear()
+
+	for adv_id in st.pending_killed:
+		SaveManager.remove_adventurer(adv_id)
+		# push notifcation
+	st.pending_killed.clear()
+
+	for adv_id in st.team_guids:
+		if adv_id not in st.pending_killed:
+			pass
+			# TODO: adv.reward_exp(st.pending_xp)
+		var adv := SaveManager.find_adventurer(adv_id)
+		adv.in_mission = false
+		SaveManager.set_adventurer(adv)
+	st.team_guids.clear()
+	st.pending_xp = 0
+
+	st.status = MissionState.Status.AVAILABLE
+	st.completed = true
+
+	SaveManager.save_async()
+	mission_claimed.emit(id)
 
 
 func _unlock_next_tower(prev_id: String):

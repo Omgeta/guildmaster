@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvk2bxir4lti2"]
+
+[ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="1_2tbax"]
+[ext_resource type="PackedScene" uid="uid://f44qelvashc4" path="res://src/menus/mission/ui/mission_list/mission_card/mission_card.tscn" id="2_ggihf"]
+[ext_resource type="Script" uid="uid://daw815rudqirf" path="res://src/menus/mission/ui/mission_list/mission_list.gd" id="2_tjkmy"]
+[ext_resource type="Texture2D" uid="uid://d2aynrh2p0i35" path="res://src/menus/assets/2d/TitleBox/TitleBox_64x16.png" id="4_vvmsk"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="5_jdxdm"]
+
+[node name="MissionList" instance=ExtResource("1_2tbax")]
+custom_minimum_size = Vector2(245, 116)
+anchor_right = 0.201389
+anchor_bottom = 0.149691
+offset_right = 13.0
+offset_bottom = -7.0
+script = ExtResource("2_tjkmy")
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 28
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MissionCard" parent="MarginContainer/ScrollContainer/VBoxContainer" index="0" instance=ExtResource("2_ggihf")]
+layout_mode = 2
+
+[node name="Header" type="TextureRect" parent="." index="1"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.5001
+offset_top = -10.0
+offset_right = 69.4999
+offset_bottom = 24.0
+grow_horizontal = 2
+texture = ExtResource("4_vvmsk")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Header" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_jdxdm")
+theme_override_font_sizes/font_size = 19
+text = "Missions"
+horizontal_alignment = 1
+vertical_alignment = 1
