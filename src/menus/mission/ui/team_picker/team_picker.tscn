@@ -1,23 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://duwt6bvsn5cvh"]
+[gd_scene load_steps=5 format=3 uid="uid://duwt6bvsn5cvh"]
 
 [ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="1_6w27t"]
-[ext_resource type="Texture2D" uid="uid://mhibmh51pudw" path="res://src/menus/assets/2d/Slots/SlotEmpty.png" id="1_hmf4s"]
 [ext_resource type="Script" uid="uid://cjuuha5p6qb2n" path="res://src/menus/mission/ui/team_picker/team_picker.gd" id="1_mpg08"]
-[ext_resource type="Texture2D" uid="uid://6ag3gimgtq2u" path="res://src/menus/assets/2d/Slots/SlotBusy.png" id="3_6w27t"]
-[ext_resource type="Texture2D" uid="uid://fmaqpb7d6b5t" path="res://src/menus/assets/2d/Slots/SlotFull.png" id="4_vbdwi"]
 [ext_resource type="Texture2D" uid="uid://d2aynrh2p0i35" path="res://src/menus/assets/2d/TitleBox/TitleBox_64x16.png" id="5_khkj0"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="5_vbdwi"]
 
 [node name="TeamPicker" instance=ExtResource("1_6w27t")]
-custom_minimum_size = Vector2(294, 100)
-anchor_right = 0.151042
-anchor_bottom = 0.17284
-offset_right = 120.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(535, 100)
+anchor_right = 0.46441
+anchor_bottom = 0.327161
+offset_right = -241.0
+offset_bottom = 0.0
 script = ExtResource("1_mpg08")
-slot_empty_tex = ExtResource("1_hmf4s")
-slot_busy_tex = ExtResource("3_6w27t")
-slot_full_tex = ExtResource("4_vbdwi")
 
 [node name="MarginContainer" type="MarginContainer" parent="." index="0"]
 layout_mode = 1
@@ -26,60 +20,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 28
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
-theme_override_constants/separation = 8
-metadata/_edit_use_anchors_ = true
 
-[node name="Roster" type="PanelContainer" parent="MarginContainer/VBoxContainer" index="0"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer" index="0"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="List" type="ItemList" parent="MarginContainer/VBoxContainer/Roster" index="0"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("5_vbdwi")
-theme_override_font_sizes/font_size = 12
-item_count = 1
-
-[node name="Slots" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="1"]
-layout_mode = 2
-alignment = 1
-
-[node name="Slot0" type="TextureButton" parent="MarginContainer/VBoxContainer/Slots" index="0"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-button_mask = 3
-texture_normal = ExtResource("1_hmf4s")
-stretch_mode = 4
-
-[node name="Slot1" type="TextureButton" parent="MarginContainer/VBoxContainer/Slots" index="1"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-button_mask = 3
-texture_normal = ExtResource("1_hmf4s")
-stretch_mode = 4
-
-[node name="Slot2" type="TextureButton" parent="MarginContainer/VBoxContainer/Slots" index="2"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-button_mask = 3
-texture_normal = ExtResource("1_hmf4s")
-stretch_mode = 4
-
-[node name="Slot3" type="TextureButton" parent="MarginContainer/VBoxContainer/Slots" index="3"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-button_mask = 3
-texture_normal = ExtResource("1_hmf4s")
-stretch_mode = 4
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 7
 
 [node name="Header" type="TextureRect" parent="." index="1"]
 custom_minimum_size = Vector2(120, 40)

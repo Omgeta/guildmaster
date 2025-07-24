@@ -33,22 +33,25 @@ func available_missions() -> Array[MissionData]:
 	)
 
 
-func start_mission(id: String, team: Array[AdventurerData]) -> bool:
+func start_mission(id: String, team_guids: Array[String]) -> bool:
 	var st := get_state(id)
-	var mission := MissionDB.get_by_id(id)
 	if not st or st.status != MissionState.Status.AVAILABLE:
 		return false
-	if team.size() < 1:
+	if team_guids.size() < 1:
 		return false
 
 	st.status = MissionState.Status.IN_PROGRESS
 	st.start_time = int(Time.get_unix_time_from_system())
-	st.team_guids = team.map(func(a): return a.id)
+	st.team_guids = team_guids
 
 	# mark adventurers unavailable
-	for a in team:
-		a.in_mission = true
-		SaveManager.set_adventurer(a)
+	for adv_id in team_guids:
+		var adv: AdventurerData = SaveManager.find_adventurer(adv_id)
+		if not adv:
+			return false
+
+		adv.in_mission = true
+		SaveManager.set_adventurer(adv)
 
 	mission_started.emit(id)
 	SaveManager.save_async()
@@ -114,14 +117,18 @@ func claim_rewards(id: String) -> void:
 		# push notifcation
 	st.pending_killed.clear()
 
-	for adv in st.team_guids:
-		if adv not in st.pending_killed:
+	for adv_id in st.team_guids:
+		if adv_id not in st.pending_killed:
 			pass
 			# TODO: adv.reward_exp(st.pending_xp)
+		var adv := SaveManager.find_adventurer(adv_id)
+		adv.in_mission = false
+		SaveManager.set_adventurer(adv)
 	st.team_guids.clear()
 	st.pending_xp = 0
 
 	st.status = MissionState.Status.AVAILABLE
+	st.completed = true
 
 	SaveManager.save_async()
 	mission_claimed.emit(id)

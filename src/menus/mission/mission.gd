@@ -7,6 +7,7 @@ extends Control
 @onready var _button := $MainButton
 
 var _selected: MissionData
+var _busy := false
 
 
 func _ready():
@@ -61,16 +62,14 @@ func _update_buttons():
 			else:
 				_button.set_label("Start")
 				_button.set_disabled_(false)
-				_button.pressed.disconnect(_on_button_results)
-				_button.pressed.connect(_on_button_start)
+				_button.pressed.connect(_on_button_start, ConnectFlags.CONNECT_ONE_SHOT)
 		MissionState.Status.IN_PROGRESS:
 			_button.set_label("...")
 			_button.set_disabled_(true)
 		MissionState.Status.SUCCESS, MissionState.Status.FAILED:
 			_button.set_label("Results")
 			_button.set_disabled_(false)
-			_button.pressed.disconnect(_on_button_start)
-			_button.pressed.connect(_on_button_results)
+			_button.pressed.connect(_on_button_results, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _on_button_start():
@@ -87,15 +86,15 @@ func _on_mission_state_change(id: String) -> void:
 	if _selected.id == id:
 		_update_buttons()
 		_refresh_countdown()
+		_picker.setup(SaveManager.get_roster(), MissionManager.get_state(id).team_guids)
+	_missions.populate_missions(MissionDB.get_by_type(MissionData.Type.TOWER))
 
 
 func _on_mission_selected(mission: MissionData) -> void:
 	_selected = mission
 	_refresh_countdown()
-	_picker.setup(
-		SaveManager.get_roster(),
-		MissionManager.get_state(mission.id).status == MissionState.Status.IN_PROGRESS
-	)
+	_update_buttons()
+	_picker.setup(SaveManager.get_roster(), MissionManager.get_state(mission.id).team_guids)
 
 
 func _on_back_button_pressed():

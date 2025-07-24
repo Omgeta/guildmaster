@@ -10,3 +10,4 @@ enum Status { LOCKED, AVAILABLE, IN_PROGRESS, SUCCESS, FAILED }
 @export var pending_rewards: PackedStringArray = []
 @export var pending_killed: PackedStringArray = []
 @export var pending_xp: int = 0
+var completed: bool = false

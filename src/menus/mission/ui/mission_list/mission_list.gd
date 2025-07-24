@@ -19,6 +19,6 @@ func populate_missions(missions: Array[MissionData]):
 		card.pressed.connect(_on_card_pressed.bind(card, mission))
 
 
-func _on_card_pressed(card: Control, mission: MissionData):
+func _on_card_pressed(_card: Control, mission: MissionData):
 	# TODO: highlight selected card
 	mission_selected.emit(mission)

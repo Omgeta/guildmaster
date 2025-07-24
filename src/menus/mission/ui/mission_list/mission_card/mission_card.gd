@@ -1,32 +1,26 @@
 extends "res://src/menus/ui/button_single/button_single.gd"
 
-const COL_OPEN := Color.WHITE
-var COL_TIME := Color.hex(0xe8c75dff)  # gold
-var COL_DONE := Color.hex(0x7be07bff)  # green
-var COL_FAIL := Color.hex(0xdb5b5bff)  # red
-var DESAT := Color(0.35, 0.35, 0.35, 1.0)  # greyed out
 
-
-func set_mission(name: String, state: MissionState):
-	set_label(name)
+func set_mission(msn_name: String, state: MissionState):
+	set_label(msn_name)
 	match state.status:
 		MissionState.Status.LOCKED:
-			self_modulate = DESAT
-			_label.self_modulate = DESAT
+			self_modulate = Color.DIM_GRAY
+			_label.self_modulate = Color.DIM_GRAY
 			set_disabled_(true)
 		MissionState.Status.AVAILABLE:
 			self_modulate = Color.WHITE
-			_label.self_modulate = COL_OPEN
+			_label.self_modulate = Color.GREEN_YELLOW if state.completed else Color.WHITE
 			set_disabled_(false)
 		MissionState.Status.IN_PROGRESS:
-			self_modulate = Color.WHITE
-			_label.self_modulate = COL_TIME
-			set_disabled_(true)
+			self_modulate = Color.DODGER_BLUE
+			_label.self_modulate = Color.WHITE
+			set_disabled_(false)
 		MissionState.Status.SUCCESS:
-			self_modulate = Color.WHITE
-			_label.self_modulate = COL_DONE
+			self_modulate = Color.GREEN
+			_label.self_modulate = Color.GREEN_YELLOW if state.completed else Color.WHITE
 			set_disabled_(false)
 		MissionState.Status.FAILED:
-			self_modulate = Color.WHITE
-			_label.self_modulate = COL_FAIL
+			self_modulate = Color.FIREBRICK
+			_label.self_modulate = Color.GREEN_YELLOW if state.completed else Color.WHITE
 			set_disabled_(false)
