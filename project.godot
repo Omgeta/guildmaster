@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SpawnManager="*res://src/globals/SpawnManager.gd"
 RNG="*res://src/globals/RNG.gd"
 SceneLoader="*res://src/globals/SceneLoader/SceneLoader.tscn"
 SoundManager="*res://src/globals/SoundManager/SoundManager.tscn"

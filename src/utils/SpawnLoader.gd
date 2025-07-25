@@ -1,4 +1,5 @@
 extends Node
+class_name SpawnLoader
 
 
 func spawn_roster(
@@ -13,7 +14,8 @@ func spawn_roster(
 	# just waiting 1 doesn't work unlike in the issue and its inconsistent
 	# so we just wait until it works
 	# relevant issue: https://github.com/godotengine/godot/pull/75098
-	await get_tree().create_timer(0.1).timeout
+	var tree := Engine.get_main_loop() as SceneTree
+	await tree.create_timer(0.1).timeout
 	var points := _gather_points(nav, data.size(), markers)
 	RNG.shuffle(points)
 	var out: Array[Character3D] = []
@@ -26,7 +28,7 @@ func spawn_roster(
 		parent.add_child(c)
 		out.append(c)
 
-	print("SpawnManager: spawned %d entities" % out.size())
+	print("SpawnLoader: spawned %d entities" % out.size())
 	return out
 
 

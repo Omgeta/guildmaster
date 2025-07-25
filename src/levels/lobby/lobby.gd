@@ -1,6 +1,7 @@
 extends Node3D
 
 const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d.tscn")
+const SPAWN_LOADER := preload("res://src/utils/SpawnLoader.gd")
 const BOUND := 10
 
 @export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
@@ -27,7 +28,8 @@ func _process(delta: float) -> void:
 
 
 func _spawn_roster():
-	var chars := await SpawnManager.spawn_roster(_nav, _chars, CHARACTER_PCK, _cam, _spawns)
+	var loader := SPAWN_LOADER.new()
+	var chars := await loader.spawn_roster(_nav, _chars, CHARACTER_PCK, _cam, _spawns)
 	for c in chars:
 		c.wander(_nav)
 
