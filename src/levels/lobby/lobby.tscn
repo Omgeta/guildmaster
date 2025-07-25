@@ -34,6 +34,8 @@ dof_blur_far_distance = 50.0
 
 [node name="Lobby" type="Node3D"]
 script = ExtResource("1_qisat")
+orbit_speed_deg = null
+pan_speed = null
 
 [node name="CameraRig" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53409, 0.0250001, 4.52048)

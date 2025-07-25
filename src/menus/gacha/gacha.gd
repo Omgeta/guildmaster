@@ -2,6 +2,8 @@ extends Control
 
 const CHARACTER_SCN := preload("res://src/core/entities/character_3d.tscn")
 const LOBBY_PCK := preload("res://src/menus/lobby/lobby.tscn")
+const GACHA_TRACK := preload("res://src/menus/assets/music/bgm/lobby.mp3")
+const GACHA_PULL_SFX := preload("res://src/menus/assets/music/sfx/gacha_pull.mp3")
 const FADE_TIME := 0.20
 
 @export var pop_time := 0.5
@@ -28,6 +30,9 @@ func _ready() -> void:
 	_pull.pull_requested.connect(_on_pull)
 	_on_banner_changed(0, _cur_banner)
 	_btn_back.pressed.connect(_return_to_lobby)
+
+	# music
+	SoundManager.play_bgm(GACHA_TRACK)
 
 	# keep currencycounter updated
 	SaveManager.gold_changed.connect(func(_old, _new): _refresh_afford())
@@ -103,6 +108,7 @@ func _on_pull(count: int, banner: BannerData = _cur_banner) -> void:
 
 	# play reveal inside the gacha cave level for each of the pulls
 	for r in results:
+		SoundManager.play_sfx(GACHA_PULL_SFX)
 		await _stage.play_reveal(r, CHARACTER_SCN, pop_time, show_time)
 		await _show_display(r, pop_time, show_time)
 

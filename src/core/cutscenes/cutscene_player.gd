@@ -10,8 +10,6 @@ const FAST_MULT := 0.20  # factor to speed up by
 
 @onready var text_label: Label = $CenterContainer/VBoxContainer/Text
 @onready var image_label: TextureRect = $CenterContainer/VBoxContainer/Image
-@onready var sfx: AudioStreamPlayer = $SFX
-@onready var bgm: AudioStreamPlayer = $BGM
 @onready var timer: Timer = $Timer
 @onready var tween: Tween = create_tween()
 @export var cutscene: CutsceneData
@@ -30,8 +28,9 @@ func _ready() -> void:
 
 	# start background music if provided
 	if cutscene.background_music:
-		bgm.stream = cutscene.background_music
-		bgm.play()
+		SoundManager.play_bgm(cutscene.background_music)
+	else:
+		SoundManager.stop_bgm()
 
 	_play_entry(cutscene.entries[_idx])
 
@@ -59,7 +58,7 @@ func _play_entry(e: CutsceneEntry) -> void:
 	tween.kill()
 
 	_set_image(e.image)
-	_play_sound(e.sound)
+	SoundManager.play_sfx(e.sound)
 
 	# start typing
 	_queue_next_char()
@@ -117,10 +116,3 @@ func _set_image(tex: Texture2D):
 		tween.tween_property(image_label, "modulate:a", 1, 0.25)
 	else:
 		image_label.visible = false
-
-
-func _play_sound(stream: AudioStream):
-	if stream:
-		sfx.stop()
-		sfx.stream = stream
-		sfx.play()

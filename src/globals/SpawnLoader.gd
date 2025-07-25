@@ -1,11 +1,11 @@
 extends Node
-class_name SpawnLoader
+
+const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d.tscn")
 
 
 func spawn_roster(
 	nav: NavigationRegion3D,
 	parent: Node3D,
-	prefab: PackedScene,  # e.g. Character3D
 	cam: Node3D = get_viewport().get_camera_3d().get_parent_node_3d(),
 	markers: Node3D = null,
 	data: Array[AdventurerData] = SaveManager.get_roster(),
@@ -14,14 +14,13 @@ func spawn_roster(
 	# just waiting 1 doesn't work unlike in the issue and its inconsistent
 	# so we just wait until it works
 	# relevant issue: https://github.com/godotengine/godot/pull/75098
-	var tree := Engine.get_main_loop() as SceneTree
-	await tree.create_timer(0.1).timeout
+	await get_tree().create_timer(0.1).timeout
 	var points := _gather_points(nav, data.size(), markers)
 	RNG.shuffle(points)
 	var out: Array[Character3D] = []
 
 	for i in data.size():
-		var c: Character3D = prefab.instantiate()
+		var c: Character3D = CHARACTER_PCK.instantiate()
 		c.data = data[i]
 		c.cam = cam
 		c.position = points[i]

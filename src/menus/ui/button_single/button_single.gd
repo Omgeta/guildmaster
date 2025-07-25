@@ -1,5 +1,7 @@
 extends TextureButton
 
+const SFX := preload("res://src/menus/assets/music/sfx/click.mp3")
+
 @onready var _label: Label = $Label
 
 @export var label: String
@@ -33,3 +35,7 @@ func _on_up():
 func _on_entered():
 	modulate = Color(0.85, 0.85, 0.85)
 	_label.modulate = Color(0.85, 0.85, 0.85)
+
+
+func _on_pressed() -> void:
+	SoundManager.play_sfx(SFX)
