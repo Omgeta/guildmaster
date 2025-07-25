@@ -4,6 +4,9 @@ class_name Character3D
 const SPEED := 2.0
 const MIN_WAIT := 1
 const MAX_WAIT := 3
+const MAX_TRAVEL_TIME := 6.0
+const MAX_STUCK_TIME := 1.5
+const STUCK_EPS := 0.05
 
 @export var data: CharacterData
 @export var cam: Node3D
@@ -14,6 +17,9 @@ const MAX_WAIT := 3
 
 var _gravity := float(ProjectSettings.get_setting("physics/3d/default_gravity"))
 var _last_nav: NavigationRegion3D
+var _travel_time := 0.0
+var _stuck_time := 0.0
+var _last_dist := 0.0
 
 
 func _ready() -> void:
@@ -32,12 +38,26 @@ func _physics_process(delta: float) -> void:
 	_update_sprite_animation()
 
 	if _agent.is_navigation_finished():
+		_travel_time = 0.0
+		_stuck_time = 0.0
+		_last_dist = 0.0
 		velocity = Vector3.ZERO
 	else:
+		_travel_time += delta
+		var dist := _agent.distance_to_target()
+		_stuck_time = _stuck_time + delta if abs(dist - _last_dist) < STUCK_EPS else 0.0
+		_last_dist = dist
+
+		if _travel_time > MAX_TRAVEL_TIME or _stuck_time > MAX_STUCK_TIME:
+			_agent.set_target_position(global_position)  # reset
+			wander(_last_nav)
+			return
+
 		var next_path_position = _agent.get_next_path_position()
-		var direction = (next_path_position - global_position).normalized()
-		velocity = direction * SPEED
+		var direction = (next_path_position - global_position).normalized() * SPEED
+		velocity.x = direction.x
 		velocity.y -= _gravity * delta
+		velocity.z = direction.z
 	move_and_slide()
 
 

@@ -1,6 +1,7 @@
 extends Node3D
 
 const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d.tscn")
+const BOUND := 10
 
 @export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
