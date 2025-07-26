@@ -10,34 +10,52 @@ static func simulate(
 	var xp := 0
 
 	# check for success
-	# simple deterministic check: sum party ATK vs sum enemy DEF
-	# TODO: hickey change this shit to actually make sense and be FAIR
-	var party_power := 0
+	# simple deterministic check: get party ATK and HP against enemy ATK and HP
+	# if we win both checks, it is our complete victory, else, we lose 1-2 members
+	# if we lose both stat checks, the whole party wipes
+	var party_dmg := 0
+	var party_hp := 0
 	for adv in party:
-		party_power += adv.base_stats.atk + adv.base_stats.mag + adv.base_stats.dex
+		party_hp += adv.base_stats.hp
+		match adv.class_:
+			AdventurerData.Class.Warrior:
+				party_dmg += adv.base_stats.atk
+			AdventurerData.Class.Rogue:
+				party_dmg += adv.base_stats.dex
+			AdventurerData.Class.Mage:
+				party_dmg += adv.base_stats.mag
 
-	var enemy_power := 0
+	var enemy_dmg := 0
+	var enemy_hp := 0
 	for spawn in mission.enemy_spawns:
 		var enemy := spawn.enemy_data
-		enemy_power += (enemy.base_stats.hp) * spawn.count
+		enemy_hp += enemy.base_stats.hp * spawn.count
+		enemy_dmg += (
+			RNG.choose([enemy.base_stats.atk, enemy.base_stats.dex, enemy.base_stats.mag])
+			* spawn.count
+		)
 
-	success = party_power >= enemy_power
+	success = party_dmg >= enemy_hp and party_hp > enemy_dmg
+	var total_failure := party_dmg < enemy_hp and party_hp <= enemy_dmg
 
-	# get casualties
-	# simple: if you fail, kill the first two members bcos why not
-	# TODO: make this fair too
-	if not success:
+	# check for kills
+	if total_failure:
+		killed.append_array(party)
+	else:
+		# if not total failure, kill first half vanguards
 		var to_kill := int(party.size() / 2)
-		for i in range(to_kill):
+		for i in to_kill:
 			killed.append(party[i])
 
 	# generate loot, exp
-	# TODO: modify to add bonus rewards
-	for spawn in mission.enemy_spawns:
-		var enemy = spawn.enemy_data
-		xp += enemy.xp_reward * spawn.count
-		for i in spawn.count:
-			rewards.append_array(_roll_enemy_drops(enemy))
+	if not total_failure:
+		for spawn in mission.enemy_spawns:
+			var enemy = spawn.enemy_data
+			xp += enemy.xp_reward * spawn.count
+
+			# cut drops in half if failure
+			for i in spawn.count / (1 if success else 2):
+				rewards.append_array(_roll_enemy_drops(enemy))
 
 	return {"success": success, "killed": killed, "rewards": rewards, "xp": xp}
 
