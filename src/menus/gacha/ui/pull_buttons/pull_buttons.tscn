@@ -20,8 +20,17 @@ metadata/_edit_use_anchors_ = true
 [node name="ButtonSingle" parent="." instance=ExtResource("2_jv568")]
 layout_mode = 2
 
+[node name="Label" parent="ButtonSingle" index="0"]
+text = "Single"
+
 [node name="ButtonMulti" parent="." instance=ExtResource("2_jv568")]
 layout_mode = 2
 
+[node name="Label" parent="ButtonMulti" index="0"]
+text = "Multi"
+
 [connection signal="pressed" from="ButtonSingle" to="." method="_on_single"]
 [connection signal="pressed" from="ButtonMulti" to="." method="_on_multi"]
+
+[editable path="ButtonSingle"]
+[editable path="ButtonMulti"]

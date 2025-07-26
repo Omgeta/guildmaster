@@ -12,4 +12,4 @@ func _on_button_up() -> void:
 
 
 func _on_pressed() -> void:
-	SoundManager.play_sfx(SFX)
+	SoundService.play_sfx(SFX)

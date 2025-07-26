@@ -98,4 +98,4 @@ func _on_mission_selected(mission: MissionData) -> void:
 
 
 func _on_back_button_pressed():
-	SceneLoader.change_to(load("res://src/menus/lobby/lobby.tscn"))
+	SceneService.change_to(load("res://src/menus/lobby/lobby.tscn"))

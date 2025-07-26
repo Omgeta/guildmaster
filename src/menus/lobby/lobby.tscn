@@ -42,16 +42,26 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GachaButton" parent="HBoxContainer" instance=ExtResource("2_myvp6")]
 layout_mode = 2
-label = "Gacha"
+
+[node name="Label" parent="HBoxContainer/GachaButton" index="0"]
+text = "Gacha"
 
 [node name="MissionButton" parent="HBoxContainer" instance=ExtResource("2_myvp6")]
 layout_mode = 2
-label = "Missions"
+
+[node name="Label" parent="HBoxContainer/MissionButton" index="0"]
+text = "Missions"
 
 [node name="GalleryButton" parent="HBoxContainer" instance=ExtResource("2_myvp6")]
 layout_mode = 2
-label = "Gallery"
+
+[node name="Label" parent="HBoxContainer/GalleryButton" index="0"]
+text = "Gallery"
 
 [connection signal="pressed" from="HBoxContainer/GachaButton" to="." method="_on_gacha_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/MissionButton" to="." method="_on_mission_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/GalleryButton" to="." method="_on_gallery_button_pressed"]
+
+[editable path="HBoxContainer/GachaButton"]
+[editable path="HBoxContainer/MissionButton"]
+[editable path="HBoxContainer/GalleryButton"]

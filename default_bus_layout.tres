@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
 resource_name = "Compressor"
-threshold = -10.0
+threshold = -15.0
 
 [resource]
 bus/1/name = &"BGM"

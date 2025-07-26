@@ -14,6 +14,7 @@ offset_right = -1092.0
 offset_bottom = -588.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_f2yx1")
 stretch_mode = 4
 script = ExtResource("1_tu28a")
@@ -39,5 +40,3 @@ cam = NodePath("../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0.15)
-
-[connection signal="toggled" from="." to="." method="_on_toggled"]

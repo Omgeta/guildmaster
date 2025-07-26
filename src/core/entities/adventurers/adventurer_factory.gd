@@ -9,9 +9,9 @@ const NAMES := preload("res://src/core/entities/assets/data/character_names.json
 
 const Class = AdventurerData.Class
 const BASE_STATS: Dictionary[Class, Dictionary] = {
-	Class.Warrior: {"hp": 100, "atk": 25, "dex": 15, "mag": 15, "def": 5},
-	Class.Mage: {"hp": 100, "atk": 15, "dex": 25, "mag": 25, "def": 5},
-	Class.Rogue: {"hp": 100, "atk": 15, "dex": 15, "mag": 15, "def": 5}
+	Class.Warrior: {"hp": 100, "atk": 25, "dex": 15, "mag": 15},
+	Class.Mage: {"hp": 100, "atk": 15, "dex": 15, "mag": 25},
+	Class.Rogue: {"hp": 100, "atk": 15, "dex": 25, "mag": 15}
 }
 
 const MAX_RARITY = 5
@@ -27,13 +27,13 @@ static func create_from_origin(origin: OriginData) -> AdventurerData:
 	# character data
 	data.id = uuid_util.v4()
 	data.display_name = _random_name()
-	data.base_stats = _compute_stats(data.class_, origin.base_rank)
 	data.character_sprites = _random_sprite_resource()
 	data.tags = _get_tags_subset(origin.tags)
 
 	# adventurer data
 	data.level = 1
 	data.rarity = _get_rarity(origin.base_rank)
+	data.base_stats = _compute_stats(data.class_, data.rarity)
 	data.class_ = _random_class(origin.class_dist)
 	data.alignment = origin.alignment
 	data.origin = origin

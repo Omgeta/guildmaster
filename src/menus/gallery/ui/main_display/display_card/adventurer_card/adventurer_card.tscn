@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://6djkft4h4xxq"]
+
+[ext_resource type="PackedScene" uid="uid://pkuo3cdg0fi5" path="res://src/menus/gallery/ui/main_display/display_card/display_card.tscn" id="1_pojlj"]
+[ext_resource type="PackedScene" uid="uid://fv7ckbpapn2j" path="res://src/core/entities/character_3d.tscn" id="2_12wbo"]
+[ext_resource type="Script" uid="uid://dgf2ul328xc7s" path="res://src/menus/gallery/ui/main_display/display_card/adventurer_card/adventurer_card.gd" id="2_j2qfu"]
+[ext_resource type="Texture2D" uid="uid://dapa2h6vlyyeo" path="res://src/menus/gallery/assets/2d/new_marker.png" id="4_dxn72"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="5_ywico"]
+
+[node name="DisplayCard" instance=ExtResource("1_pojlj")]
+mouse_default_cursor_shape = 0
+script = ExtResource("2_j2qfu")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(60, 60)
+render_target_update_mode = 4
+
+[node name="Character3D" parent="SubViewportContainer/SubViewport" index="0" node_paths=PackedStringArray("cam") instance=ExtResource("2_12wbo")]
+cam = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0997435, 0.15)
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NewTexture" type="TextureRect" parent="MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("4_dxn72")
+
+[node name="Level" type="Label" parent="MarginContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_ywico")
+theme_override_font_sizes/font_size = 16
+text = "Lv91"

@@ -16,10 +16,7 @@ const FADE_TIME := 0.20
 @onready var _stage := $SubViewportContainer/SubViewport/GachaStage
 @onready var _btn_back := $MainContainer/ButtonHome
 @onready var _display := $PullDisplay
-@onready var _results := $ResultsContainer
 @onready var _cur_banner: BannerData = _viewer.banners[0]
-@onready var _left_button := $MainContainer/LeftArrow
-@onready var _right_button := $MainContainer/RightArrow
 
 var _busy: bool = false
 
@@ -32,7 +29,7 @@ func _ready() -> void:
 	_btn_back.pressed.connect(_return_to_lobby)
 
 	# music
-	SoundManager.play_bgm(GACHA_TRACK)
+	SoundService.play_bgm(GACHA_TRACK)
 
 	# keep currencycounter updated
 	SaveManager.gold_changed.connect(func(_old, _new): _refresh_afford())
@@ -77,7 +74,7 @@ func _reactivate_ui():
 
 
 func _return_to_lobby() -> void:
-	SceneLoader.change_to(LOBBY_PCK)
+	SceneService.change_to(LOBBY_PCK)
 
 
 func _on_banner_changed(_idx: int, banner: BannerData = null) -> void:
@@ -108,24 +105,20 @@ func _on_pull(count: int, banner: BannerData = _cur_banner) -> void:
 
 	# play reveal inside the gacha cave level for each of the pulls
 	for r in results:
-		SoundManager.play_sfx(GACHA_PULL_SFX)
+		SoundService.play_sfx(GACHA_PULL_SFX)
 		await _stage.play_reveal(r, CHARACTER_SCN, pop_time, show_time)
 		await _show_display(r, pop_time, show_time)
-
-	# show summary cards
-	#_results.populate(results)
-	#_results.visible = true
 
 	await _fade_ui(1.0)
 	_reactivate_ui()
 	_busy = false
 
 
-func _show_display(r: AdventurerData, pop_time: float, show_time: float):
+func _show_display(r: AdventurerData, pop: float, show: float):
 	_display.set_adventurer_data(r)
 	_display.modulate.a = 0.0
 	var t := create_tween()
-	t.tween_property(_display, "modulate:a", 1.0, pop_time)
-	t.tween_interval(show_time)
-	t.tween_property(_display, "modulate:a", 0.0, pop_time)
+	t.tween_property(_display, "modulate:a", 1.0, pop)
+	t.tween_interval(show)
+	t.tween_property(_display, "modulate:a", 0.0, pop)
 	await t.finished

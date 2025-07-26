@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://b2thq81nyk7"]
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=3 format=3 uid="uid://b2thq81nyk7"]
 
 [ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_cetp6"]
+[ext_resource type="Texture2D" uid="uid://hkxl0dkfdi0l" path="res://src/core/items/prefabs/potions/attack_potion/attack_potion.png" id="1_qd5or"]
 
 [resource]
 script = ExtResource("1_cetp6")
@@ -9,6 +10,7 @@ buffs = Array[String](["Add +20 attack to warrior characters"])
 id = "attack_potion"
 name = "Attack Poition"
 description = "A crude potion that raises attack."
-rarity = 1
+icon = ExtResource("1_qd5or")
+rarity = 2
 stack_limit = 99
 metadata/_custom_type_script = "uid://cn8hm7ftsvunw"

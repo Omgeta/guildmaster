@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7gw7hwrbbwfb"]
+
+[ext_resource type="PackedScene" uid="uid://ctbyk2qp466xg" path="res://src/levels/gallery/gallery_bg.tscn" id="1_jsesl"]
+[ext_resource type="Script" uid="uid://dnpow2fkahq24" path="res://src/menus/gallery/gallery.gd" id="1_q82vm"]
+[ext_resource type="PackedScene" uid="uid://cvdhcb2ju1ud8" path="res://src/menus/gallery/ui/main_display/main_display.tscn" id="2_q77lp"]
+[ext_resource type="Texture2D" uid="uid://c8pitygjprffo" path="res://src/menus/assets/2d/Pipe/Pipe_36x11.png" id="2_x4jku"]
+[ext_resource type="PackedScene" uid="uid://bh2e7fhcw04b4" path="res://src/menus/gallery/ui/detail_display/detail_display.tscn" id="3_k57hr"]
+[ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/ui/button_single/button_single.tscn" id="6_q82vm"]
+[ext_resource type="PackedScene" uid="uid://yupcsm3r4k5w" path="res://src/menus/ui/currency_container/currency_container.tscn" id="8_8eaqw"]
+[ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_home/button_home.tscn" id="8_dy6oo"]
+
+[node name="Gallery" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q82vm")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="GalleryBackground" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_jsesl")]
+
+[node name="Pipe" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 306.0
+offset_right = 835.0
+offset_bottom = 318.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_x4jku")
+
+[node name="Main" parent="." instance=ExtResource("2_q77lp")]
+custom_minimum_size = Vector2(505, 400)
+layout_mode = 1
+anchor_left = 0.282986
+anchor_top = 0.191358
+anchor_right = 0.717014
+anchor_bottom = 0.808642
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Details" parent="." instance=ExtResource("3_k57hr")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 264.0
+offset_top = -200.0
+offset_right = 514.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonBack" parent="." instance=ExtResource("8_dy6oo")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+anchor_left = 0.696181
+anchor_top = 0.182099
+anchor_right = 0.722222
+anchor_bottom = 0.228395
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AdventurersButton" parent="." instance=ExtResource("6_q82vm")]
+layout_mode = 1
+anchor_left = 0.0980903
+anchor_top = 0.365741
+anchor_right = 0.264757
+anchor_bottom = 0.450617
+grow_horizontal = 2
+grow_vertical = 2
+label = "Adventurers"
+
+[node name="InventoryButton" parent="." instance=ExtResource("6_q82vm")]
+layout_mode = 1
+anchor_left = 0.0980903
+anchor_top = 0.496914
+anchor_right = 0.264757
+anchor_bottom = 0.58179
+grow_horizontal = 2
+grow_vertical = 2
+label = "Inventory"
+
+[node name="Currency" parent="." instance=ExtResource("8_8eaqw")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.450087
+anchor_top = 0.759259
+anchor_right = 0.549913
+anchor_bottom = 0.83642
+offset_top = -3.05176e-05
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="select_adventurer" from="Main" to="." method="_on_select_adventurer"]
+[connection signal="select_item" from="Main" to="." method="_on_select_item"]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="AdventurersButton" to="." method="_on_adventurers_button_pressed"]
+[connection signal="pressed" from="InventoryButton" to="." method="_on_inventory_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://yupcsm3r4k5w"]
 
-[ext_resource type="Script" uid="uid://5qbpoehnseg4" path="res://src/menus/gacha/ui/currency_container/currency_container.gd" id="2_q4v0j"]
+[ext_resource type="Script" uid="uid://5qbpoehnseg4" path="res://src/menus/ui/currency_container/currency_container.gd" id="2_q4v0j"]
 [ext_resource type="Texture2D" uid="uid://deoddg8u80fq" path="res://src/menus/assets/2d/Coin/Coin.png" id="2_v3ibx"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="3_q4v0j"]
 [ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="5_q4v0j"]

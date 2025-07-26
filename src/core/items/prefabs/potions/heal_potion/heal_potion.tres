@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://dssunnw3mlqj"]
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=3 format=3 uid="uid://dssunnw3mlqj"]
 
+[ext_resource type="Texture2D" uid="uid://b2yp80utgerr1" path="res://src/core/items/prefabs/potions/heal_potion/heal_potion.png" id="1_23tmb"]
 [ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_xe4aa"]
 
 [resource]
@@ -9,6 +10,7 @@ buffs = Array[String]([])
 id = "heal_potion"
 name = "Healing Potion"
 description = "A crude potion which recovers a bit of HP."
-rarity = 1
+icon = ExtResource("1_23tmb")
+rarity = 3
 stack_limit = 99
 metadata/_custom_type_script = "uid://cn8hm7ftsvunw"

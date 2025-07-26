@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ConsumableData" load_steps=2 format=3 uid="uid://cx6h3wvvhw7ow"]
+[gd_resource type="Resource" script_class="ConsumableData" load_steps=3 format=3 uid="uid://cx6h3wvvhw7ow"]
 
+[ext_resource type="Texture2D" uid="uid://b1a0sua7oe37m" path="res://src/core/items/prefabs/potions/magic_potion/magic_potion.png" id="1_dab2c"]
 [ext_resource type="Script" uid="uid://cn8hm7ftsvunw" path="res://src/core/items/consumable_data.gd" id="1_nh58l"]
 
 [resource]
@@ -9,6 +10,7 @@ buffs = Array[String](["Adds +20 magic to magicians"])
 id = "magic_potion"
 name = "Magic Potion"
 description = "A crude potion that raises magic."
-rarity = 1
+icon = ExtResource("1_dab2c")
+rarity = 3
 stack_limit = 99
 metadata/_custom_type_script = "uid://cn8hm7ftsvunw"

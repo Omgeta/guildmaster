@@ -75,7 +75,6 @@ anchor_right = 0.675347
 anchor_bottom = 0.851852
 offset_right = 50.9998
 offset_bottom = 27.9998
-label = "Start"
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_77xhu")]
 layout_mode = 1

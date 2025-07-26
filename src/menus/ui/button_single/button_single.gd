@@ -4,12 +4,6 @@ const SFX := preload("res://src/menus/assets/music/sfx/click.mp3")
 
 @onready var _label: Label = $Label
 
-@export var label: String
-
-
-func _ready() -> void:
-	_label.text = label
-
 
 func set_label(text: String):
 	_label.text = text
@@ -38,4 +32,4 @@ func _on_entered():
 
 
 func _on_pressed() -> void:
-	SoundManager.play_sfx(SFX)
+	SoundService.play_sfx(SFX)
