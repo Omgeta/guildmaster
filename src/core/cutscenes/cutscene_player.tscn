@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://8p87q4ndhseo"]
+[gd_scene load_steps=4 format=3 uid="uid://8p87q4ndhseo"]
 
 [ext_resource type="Script" uid="uid://o4edfly50fue" path="res://src/core/cutscenes/cutscene_player.gd" id="1_n6x6k"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_b8kow"]
+[ext_resource type="Texture2D" uid="uid://cw0khc5bxjuxs" path="res://src/menus/assets/2d/Arrows/SkipArrowButton.png" id="3_2pavv"]
 
 [node name="CutscenePlayer" type="Control"]
 layout_mode = 3
@@ -43,4 +44,17 @@ text = "Cutscene Text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SkipButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.903646
+anchor_top = 0.100309
+anchor_right = 0.926215
+anchor_bottom = 0.118827
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_2pavv")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

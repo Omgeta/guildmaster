@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cftpqwhvadj6r"
+
+[deps]
+
+files=["res://src/exports/items_general.name.translation", "res://src/exports/items_general.description.translation", "res://src/exports/items_general.rarity.translation", "res://src/exports/items_general.stack.translation"]
+
+source_file="res://src/exports/items_general.csv"
+dest_files=["res://src/exports/items_general.name.translation", "res://src/exports/items_general.description.translation", "res://src/exports/items_general.rarity.translation", "res://src/exports/items_general.stack.translation"]
+
+[params]
+
+compress=true
+delimiter=0

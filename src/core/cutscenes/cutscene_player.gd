@@ -5,14 +5,16 @@ signal cutscene_finished
 const FAST_MULT := 0.20  # factor to speed up by
 
 @export_range(0.005, 0.2, 0.005) var typing_speed := 0.04
-@export var skip_input := "ui_accept"
+@export var speed_input := "ui_accept"
 @export var next_input := "ui_accept"
+@export var skip_input := "ui_escape"
+@export var cutscene: CutsceneData
 
 @onready var text_label: Label = $CenterContainer/VBoxContainer/Text
 @onready var image_label: TextureRect = $CenterContainer/VBoxContainer/Image
 @onready var timer: Timer = $Timer
 @onready var tween: Tween = create_tween()
-@export var cutscene: CutsceneData
+@onready var skip: TextureButton = $SkipButton
 
 var _idx: int = 0  # track current entry
 var _char_idx: int = 0  # track current char
@@ -40,11 +42,13 @@ func _input(event: InputEvent) -> void:
 	if _awaiting and event.is_action_pressed(next_input) and not event.is_echo():
 		_awaiting = false
 		_next_entry()
+	if event.is_action_pressed(skip_input):
+		_on_skip_button_pressed()
 
 
 func _process(_delta: float) -> void:
 	# hook onto skip_input action for speed up in queue_next_char()
-	_skipping = Input.is_action_pressed(skip_input)
+	_skipping = Input.is_action_pressed(speed_input)
 
 
 func _current() -> CutsceneEntry:
@@ -103,6 +107,7 @@ func _next_entry():
 	if _idx < cutscene.entries.size():
 		_play_entry(cutscene.entries[_idx])
 	else:
+		skip.visible = false
 		cutscene_finished.emit()
 
 
@@ -116,3 +121,9 @@ func _set_image(tex: Texture2D):
 		tween.tween_property(image_label, "modulate:a", 1, 0.25)
 	else:
 		image_label.visible = false
+
+
+func _on_skip_button_pressed() -> void:
+	skip.visible = false
+	SoundService.stop_bgm()
+	cutscene_finished.emit()
