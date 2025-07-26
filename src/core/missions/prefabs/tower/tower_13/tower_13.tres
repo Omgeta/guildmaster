@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MissionData" load_steps=5 format=3 uid="uid://f4mdbqwb6nnm"]
+
+[ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_nhymu"]
+[ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_otdrv"]
+[ext_resource type="Resource" uid="uid://d01oidr2x8rdc" path="res://src/core/entities/enemies/prefabs/dragons/dragon_guard.tres" id="2_w5t5v"]
+
+[sub_resource type="Resource" id="Resource_264jb"]
+script = ExtResource("1_nhymu")
+enemy_data = ExtResource("2_w5t5v")
+count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
+
+[resource]
+script = ExtResource("2_otdrv")
+id = "tower_13"
+display_name = "Floor 13"
+type = 0
+prerequisite_id = "tower_12"
+duration_sec = 180
+enemy_spawns = Array[ExtResource("1_nhymu")]([SubResource("Resource_264jb")])
+bonus_exp = 750
+bonus_gold = 500
+bonus_rewards = []
+metadata/_custom_type_script = "uid://3jfimk51slkh"
