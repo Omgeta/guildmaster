@@ -27,6 +27,7 @@ SpriteDB="*res://src/globals/DB/SpriteDB.gd"
 ItemDB="*res://src/globals/DB/ItemDB.gd"
 SaveManager="*res://src/globals/Managers/SaveManager/SaveManager.gd"
 MissionManager="*res://src/globals/Managers/MissionManager/MissionManager.gd"
+AdventurerManager="*res://src/globals/Managers/AdventurerManager.gd"
 
 [display]
 

@@ -86,7 +86,7 @@ func _on_mission_state_change(id: String) -> void:
 	if _selected.id == id:
 		_update_buttons()
 		_refresh_countdown()
-		_picker.setup(SaveManager.get_roster(), MissionManager.get_state(id).team_guids)
+		_picker.setup(AdventurerManager.get_roster(true), MissionManager.get_state(id).team_guids)
 	_missions.populate_missions(MissionDB.get_by_type(MissionData.Type.TOWER))
 
 
@@ -94,7 +94,9 @@ func _on_mission_selected(mission: MissionData) -> void:
 	_selected = mission
 	_refresh_countdown()
 	_update_buttons()
-	_picker.setup(SaveManager.get_roster(), MissionManager.get_state(mission.id).team_guids)
+	_picker.setup(
+		AdventurerManager.get_roster(true), MissionManager.get_state(mission.id).team_guids
+	)
 
 
 func _on_back_button_pressed():

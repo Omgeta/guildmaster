@@ -30,7 +30,7 @@ func _build_list() -> void:
 	for c in _list.get_children():
 		c.queue_free()
 	if _mode == Mode.Adventurer:
-		for a in SaveManager.get_roster(true, true):
+		for a in AdventurerManager.get_roster(true):
 			var card := ADVENTURER_CARD_PCK.instantiate()
 			_list.add_child(card)
 			card.setup(a)
@@ -48,7 +48,7 @@ func _build_list() -> void:
 
 
 func _on_adventurer_press(adv: AdventurerData, card: Control):
-	SaveManager.touch_adventurer(adv.id)
+	AdventurerManager.mark_seen(adv.id)
 	card.notify_seen()
 	select_adventurer.emit(adv)
 
