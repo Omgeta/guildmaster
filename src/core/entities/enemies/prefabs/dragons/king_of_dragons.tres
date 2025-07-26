@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://dpbgkwtjn8h8s"]
+
+[ext_resource type="Script" uid="uid://bql4dlrv1v4d2" path="res://src/core/entities/character_stats.gd" id="1_d4tus"]
+[ext_resource type="Script" uid="uid://bxpjwrgua8liq" path="res://src/core/entities/enemies/enemy_data.gd" id="1_y6nb2"]
+
+[sub_resource type="Resource" id="Resource_h7v2y"]
+script = ExtResource("1_d4tus")
+hp = 350
+atk = 80
+dex = 40
+mag = 20
+metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
+
+[resource]
+script = ExtResource("1_y6nb2")
+xp_reward = 10
+drop_table = Dictionary[String, float]({})
+id = "king_of_dragons"
+display_name = "King of Dragons"
+base_stats = SubResource("Resource_h7v2y")
+tags = Array[int]([])
+metadata/_custom_type_script = "uid://bxpjwrgua8liq"

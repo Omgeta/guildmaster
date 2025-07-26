@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MissionData" load_steps=5 format=3 uid="uid://debrlo8qi6x8c"]
+
+[ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_67e1f"]
+[ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_1icby"]
+[ext_resource type="Resource" uid="uid://dpbgkwtjn8h8s" path="res://src/core/entities/enemies/prefabs/dragons/king_of_dragons.tres" id="2_38hf3"]
+
+[sub_resource type="Resource" id="Resource_2ouen"]
+script = ExtResource("1_67e1f")
+enemy_data = ExtResource("2_38hf3")
+count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
+
+[resource]
+script = ExtResource("2_1icby")
+id = "tower_20"
+display_name = "Floor 20"
+type = 0
+prerequisite_id = "tower_19"
+duration_sec = 270
+enemy_spawns = Array[ExtResource("1_67e1f")]([SubResource("Resource_2ouen")])
+bonus_exp = 2000
+bonus_gold = 2000
+bonus_rewards = []
+metadata/_custom_type_script = "uid://3jfimk51slkh"
