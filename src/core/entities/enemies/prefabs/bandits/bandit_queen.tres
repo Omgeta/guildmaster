@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("1_w1hwq")
-xp_reward = 10
+xp_reward = 60
 drop_table = Dictionary[String, float]({})
 id = "bandit_queen"
 display_name = "Bandit Queen"

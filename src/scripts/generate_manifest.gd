@@ -5,7 +5,7 @@ const VALID_EXT := "tres"
 const SPRITE_EXT := "png"
 const OUT_CFG := "res://src/manifest.cfg"
 const ROOTS := {
-	"sprites": "res://src/core/entities/assets/sprites",  # adjust if your sprites live elsewhere
+	"sprites": "res://src/core/entities/assets/sprites",
 	"items": "res://src/core/items/prefabs",
 	"enemies": "res://src/core/entities/enemies/prefabs",
 	"missions": "res://src/core/missions/prefabs",
@@ -55,7 +55,7 @@ func _register_sprite(root: String, filename: String, out: Dictionary) -> void:
 	var category = root.rsplit("/", 1)[-1]  # "outfit"
 	var id = "%s/%s" % [category, canon]
 	if out.has(id):
-		push_warning("duplicate sprite id %s" % id)
+		push_warning("GenerateManifest: duplicate sprite id %s" % id)
 	else:
 		out[id] = (root + "/" + filename)
 
@@ -63,15 +63,15 @@ func _register_sprite(root: String, filename: String, out: Dictionary) -> void:
 func _register_resource(path: String, out: Dictionary) -> void:
 	var res = ResourceLoader.load(path, "", 0)
 	if res == null:
-		push_warning("failed to load %s" % path)
+		push_warning("GenerateManifest: failed to load %s" % path)
 		return
-	# try common ID properties
+
 	var id = str(res.get("id"))
 	if id == "":
-		push_warning("no id/guid on %s" % path)
+		push_warning("GenerateManifest: no id/guid on %s" % path)
 		return
 	if out.has(id):
-		push_warning("duplicate entry %s" % id)
+		push_warning("GenerateManifest: duplicate entry %s" % id)
 	else:
 		out[id] = path
 
@@ -79,7 +79,45 @@ func _register_resource(path: String, out: Dictionary) -> void:
 func _write(cfg_path: String, sections: Dictionary) -> void:
 	var cfg = ConfigFile.new()
 	for sect in sections.keys():
-		for key in sections[sect].keys():
+		var keys = sections[sect].keys()
+
+		# for missions, we sort alphabetically for the first half of the id,
+		# then numerically for the second half of the id
+		# this ensures that proper order is preserved in the MissionDB
+		if sect == "missions":
+			keys.sort_custom(
+				func(a: String, b: String) -> bool:
+					var pre_a := a.get_slice("_", 0)
+					var pre_b := b.get_slice("_", 0)
+					var num_a := a.get_slice("_", 1).to_int()
+					var num_b := b.get_slice("_", 1).to_int()
+
+					var has_num_a := (
+						a.find("_") != -1
+						&& a.get_slice_count("_") >= 2
+						&& a.get_slice("_", 1).is_valid_int()
+					)
+					var has_num_b := (
+						b.find("_") != -1
+						&& b.get_slice_count("_") >= 2
+						&& b.get_slice("_", 1).is_valid_int()
+					)
+
+					# alphebetical first
+					if pre_a != pre_b:
+						return pre_a < pre_b
+
+					# numeric next if alphebetical is same
+					if has_num_a and has_num_b:
+						return num_a < num_b
+
+					# default to normal sort
+					return a < b
+			)
+		else:
+			# any other section we do normal lexographical sort
+			keys.sort()
+		for key in keys:
 			cfg.set_value(sect, key, sections[sect][key])
 	var err = cfg.save(cfg_path)
 	if err != OK:
