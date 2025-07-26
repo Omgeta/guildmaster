@@ -7,7 +7,7 @@ const Class := AdventurerData.Class
 
 const MAX_LEVEL := 99
 const BASE_EXP := 100  # base EXP for 1->2
-const EXP_GROWTH := 1.20  # curve multiplier
+const EXP_GROWTH := 1.50  # curve multiplier
 const STAT_GROWTHS := {
 	Class.Warrior: {"hp": 1, "atk": 3, "dex": 1, "mag": 1},
 	Class.Rogue: {"hp": 1, "atk": 1, "dex": 3, "mag": 1},
@@ -26,7 +26,11 @@ func get_roster(sorted: bool = false) -> Array[AdventurerData]:
 
 
 func find(id: String) -> AdventurerData:
-	return SaveManager._get_adventurer(id, true)
+	return SaveManager._find_adventurer(id, true)
+
+
+func find_name(id: String) -> String:
+	return SaveManager._find_adventurer(id, false).display_name
 
 
 ## Setters
@@ -80,6 +84,9 @@ func reward_exp(id: String, amount: int) -> void:
 
 	if lev_up:
 		level_up.emit(adv)
+		NotificationService.toast(
+			"Level Up", "%s leveled up to level %d" % [adv.display_name, adv.level], Color.BLUE
+		)
 	SaveManager.set_dirty()
 
 

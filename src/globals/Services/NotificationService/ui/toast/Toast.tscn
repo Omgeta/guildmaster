@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce24jnlih1op8"]
+
+[ext_resource type="Script" uid="uid://rplrtp3rhb6a" path="res://src/globals/Services/NotificationService/ui/toast/toast.gd" id="1_l0k04"]
+[ext_resource type="Texture2D" uid="uid://c2l8vhkynrerg" path="res://src/menus/assets/2d/RectangleBox/RectangleBoxInner.png" id="1_qmymw"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_fykpt"]
+
+[node name="Toast" type="Control"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_l0k04")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.00442)
+texture = ExtResource("1_qmymw")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.964223)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_fykpt")
+text = "Mission"
+
+[node name="Description" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_fykpt")
+theme_override_font_sizes/font_size = 12
+text = "Lorem Ipsum Dolor Sit Amet"
+autowrap_mode = 2

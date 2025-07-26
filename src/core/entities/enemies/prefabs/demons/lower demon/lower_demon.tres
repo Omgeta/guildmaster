@@ -9,13 +9,12 @@ hp = 20
 atk = 5
 dex = 5
 mag = 5
-def = 5
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("1_p2ym2")
-drop_table = []
 xp_reward = 10
+drop_table = Dictionary[String, float]({})
 id = "lower_demon"
 display_name = "Lower Demon"
 base_stats = SubResource("Resource_wpxwe")

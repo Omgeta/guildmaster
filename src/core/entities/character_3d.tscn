@@ -164,7 +164,6 @@ neighbor_distance = 10.0
 max_speed = 5.0
 use_3d_avoidance = true
 avoidance_mask = 3
-debug_enabled = true
 
 [node name="Billboard" type="Node3D" parent="."]
 

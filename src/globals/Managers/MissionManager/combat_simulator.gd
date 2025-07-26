@@ -19,7 +19,7 @@ static func simulate(
 	var enemy_power := 0
 	for spawn in mission.enemy_spawns:
 		var enemy := spawn.enemy_data
-		enemy_power += (enemy.base_stats.def) * spawn.count
+		enemy_power += (enemy.base_stats.hp) * spawn.count
 
 	success = party_power >= enemy_power
 

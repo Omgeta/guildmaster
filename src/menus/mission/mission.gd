@@ -7,7 +7,6 @@ extends Control
 @onready var _button := $MainButton
 
 var _selected: MissionData
-var _busy := false
 
 
 func _ready():
@@ -83,7 +82,7 @@ func _on_button_results():
 
 
 func _on_mission_state_change(id: String) -> void:
-	if _selected.id == id:
+	if _selected and _selected.id == id:
 		_update_buttons()
 		_refresh_countdown()
 		_picker.setup(AdventurerManager.get_roster(true), MissionManager.get_state(id).team_guids)
