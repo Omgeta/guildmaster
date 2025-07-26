@@ -16,7 +16,7 @@ const BASE_STATS: Dictionary[Class, Dictionary] = {
 
 const MAX_RARITY = 5
 const MIN_RARITY = 1
-const DEF_DECAY = 0.5
+const DEF_DECAY = 0.35
 
 const uuid_util = preload("res://addons/uuid/uuid.gd")
 
