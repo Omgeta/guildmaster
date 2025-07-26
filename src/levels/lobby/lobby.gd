@@ -3,6 +3,12 @@ extends Node3D
 const LOBBY_TRACK = preload("res://src/menus/assets/music/bgm/lobby.mp3")
 const BOUND := 10
 
+@export_range(0.1, 6, 0.1) var min_size := 1.0
+@export_range(0.1, 6, 0.1) var max_size := 5.5
+@export var wheel_step := 0.5
+@export var smooth_speed := 8.0
+@export_range(0.1, 2.0, 0.05) var zoom_speed := 0.2
+@export_range(0.1, 5.0, 0.05) var mouse_sens := 0.7
 @export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
 
@@ -11,9 +17,13 @@ const BOUND := 10
 @onready var _chars: Node3D = $Characters
 @onready var _spawns: Node3D = $Spawns
 @onready var _cam: Node3D = $CameraRig
+@onready var _cam3d: Camera3D = $CameraRig/Camera3D
 @onready var _nav_bounds: AABB = _nav.get_bounds()
+@onready var _zoom := _cam3d.size
 
 var _orbit_angle: float = 0
+var _right_drag := false
+var _last_mouse_x := 0.0
 
 
 func _ready() -> void:
@@ -34,9 +44,38 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	_update_camera_orbit(delta)
+	_keyboard_orbit(delta)
 	_update_camera_pan(delta)
 	_rotate_sky(delta)
+	_cam3d.size = lerp(_cam3d.size, _zoom, smooth_speed * delta)
+
+
+func _input(event: InputEvent) -> void:
+	# adjust cam3d size in order to zoom in and out
+	if (
+		event is InputEventMouseButton
+		and event.is_pressed()
+		and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]
+	):
+		var dir := -1.0 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0
+		_zoom = clamp(_zoom + dir * wheel_step, min_size, max_size)
+
+	# set flag for RMB held down
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
+		_right_drag = event.pressed
+		_last_mouse_x = event.position.x
+
+	# calculate diff and rotate along x
+	if _right_drag and event is InputEventMouseMotion:
+		var dx = event.position.x - _last_mouse_x
+		_last_mouse_x = event.position.x
+		_orbit_angle -= dx * mouse_sens * 0.1
+		_orbit_angle = wrapf(_orbit_angle, -180.0, 180.0)
+		_cam.rotation_degrees.y = _orbit_angle
+
+
+func _apply_zoom() -> void:
+	_cam3d.size = _zoom
 
 
 func _spawn_roster():
@@ -51,7 +90,7 @@ func _refresh_roster():
 	_spawn_roster()
 
 
-func _update_camera_orbit(delta: float) -> void:
+func _keyboard_orbit(delta: float) -> void:
 	var spin := 0.0
 	if Input.is_action_pressed("ui_left"):
 		spin -= 1
