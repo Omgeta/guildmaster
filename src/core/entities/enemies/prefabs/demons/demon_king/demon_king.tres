@@ -9,14 +9,12 @@ hp = 200
 atk = 40
 dex = 10
 mag = 5
-def = 25
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("1_0wqqe")
-drop_table = []
 xp_reward = 200
-gold_reward = 10
+drop_table = Dictionary[String, float]({})
 id = "demon_king"
 display_name = "Demon King"
 base_stats = SubResource("Resource_nrsic")
