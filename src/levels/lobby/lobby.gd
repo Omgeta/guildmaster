@@ -16,6 +16,7 @@ var _orbit_angle: float = 0
 
 
 func _ready() -> void:
+	await SoundManager.play_bgm(LOBBY_TRACK)
 	_spawn_roster.call_deferred()
 	SaveManager.roster_changed.connect(_refresh_roster)
 
@@ -27,7 +28,11 @@ func _process(delta: float) -> void:
 
 
 func _spawn_roster():
+<<<<<<< HEAD
 	var chars := await SpawnService.spawn_roster(_nav, _chars, _cam, _spawns)
+=======
+	var chars := await SpawnLoader.spawn_roster(_nav, _chars, _cam, _spawns)
+>>>>>>> master
 	for c in chars:
 		c.wander(_nav)
 

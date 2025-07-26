@@ -58,7 +58,11 @@ func _play_entry(e: CutsceneEntry) -> void:
 	tween.kill()
 
 	_set_image(e.image)
+<<<<<<< HEAD
 	SoundService.play_sfx(e.sound)
+=======
+	SoundManager.play_sfx(e.sound)
+>>>>>>> master
 
 	# start typing
 	_queue_next_char()
