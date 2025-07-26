@@ -33,8 +33,8 @@ static func create_from_origin(origin: OriginData) -> AdventurerData:
 	# adventurer data
 	data.level = 1
 	data.rarity = _get_rarity(origin.base_rank)
-	data.base_stats = _compute_stats(data.class_, data.rarity)
 	data.class_ = _random_class(origin.class_dist)
+	data.base_stats = _compute_stats(data.class_, data.rarity)
 	data.alignment = origin.alignment
 	data.origin = origin
 
