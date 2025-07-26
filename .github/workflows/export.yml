@@ -30,6 +30,14 @@ jobs:
           relative_project_path: ./
           archive_output: true
 
+      - uses: yeslayla/butler-publish-itchio-action@v1.0.3
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: web
+          ITCH_GAME: guildmaster
+          ITCH_USER: omgeta
+          PACKAGE: ${{ steps.export.outputs.archive_directory }}/Web.zip
+
         # This release action has worked well for me. However, you can most likely use any release action of your choosing.
         # https://github.com/ncipollo/release-action
       - name: create release
@@ -39,11 +47,3 @@ jobs:
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
-
-      - uses: yeslayla/butler-publish-itchio-action@v1.0.3
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: web
-          ITCH_GAME: guildmaster
-          ITCH_USER: omgeta
-          PACKAGE: ${{ steps.export.outputs.build_directory }}/index.html
