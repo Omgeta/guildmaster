@@ -21,12 +21,14 @@ RNG="*res://src/globals/RNG.gd"
 SpawnService="*res://src/globals/Services/SpawnService.gd"
 SoundService="*res://src/globals/Services/SoundService/SoundService.tscn"
 SceneService="*res://src/globals/Services/SceneService/SceneService.tscn"
+NotificationService="*res://src/globals/Services/NotificationService/NotificationService.tscn"
 OriginDB="*res://src/globals/DB/OriginDB.gd"
 MissionDB="*res://src/globals/DB/MissionDB.gd"
 SpriteDB="*res://src/globals/DB/SpriteDB.gd"
 ItemDB="*res://src/globals/DB/ItemDB.gd"
 SaveManager="*res://src/globals/Managers/SaveManager/SaveManager.gd"
 MissionManager="*res://src/globals/Managers/MissionManager/MissionManager.gd"
+AdventurerManager="*res://src/globals/Managers/AdventurerManager.gd"
 
 [display]
 

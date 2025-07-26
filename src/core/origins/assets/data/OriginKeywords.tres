@@ -102,7 +102,7 @@ metadata/_custom_type_script = "uid://175dpxh0acmh"
 
 [sub_resource type="Resource" id="Resource_pqu4t"]
 script = ExtResource("1_xatdv")
-name = "Whispering Fen"
+name = "Fen"
 tags = Array[int]([8])
 metadata/_custom_type_script = "uid://175dpxh0acmh"
 

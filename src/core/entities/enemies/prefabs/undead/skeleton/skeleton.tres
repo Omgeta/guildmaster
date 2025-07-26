@@ -9,13 +9,12 @@ hp = 25
 atk = 12
 dex = 8
 mag = 5
-def = 10
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("1_vibog")
-drop_table = []
 xp_reward = 25
+drop_table = Dictionary[String, float]({})
 id = "skeleton"
 display_name = "Skeleton"
 base_stats = SubResource("Resource_a4drh")

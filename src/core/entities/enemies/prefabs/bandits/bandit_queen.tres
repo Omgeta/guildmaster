@@ -9,13 +9,12 @@ hp = 165
 atk = 40
 dex = 15
 mag = 5
-def = 15
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("1_w1hwq")
-drop_table = []
 xp_reward = 10
+drop_table = Dictionary[String, float]({})
 id = "bandit_queen"
 display_name = "Bandit Queen"
 base_stats = SubResource("Resource_7614b")

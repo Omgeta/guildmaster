@@ -9,13 +9,12 @@ hp = 35
 atk = 8
 dex = 5
 mag = 5
-def = 15
 metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
 
 [resource]
 script = ExtResource("2_vswao")
-drop_table = []
 xp_reward = 20
+drop_table = Dictionary[String, float]({})
 id = "goblin_elite"
 display_name = "Goblin Elite"
 base_stats = SubResource("Resource_pyk4j")

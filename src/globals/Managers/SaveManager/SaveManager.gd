@@ -8,47 +8,15 @@ var _state: GameState = GameState.new()
 var _dirty: bool = false
 
 signal gold_changed(old_amount: int, new_amount: int)
-signal roster_changed
 signal inventory_changed(id: String, quantity: int)
 signal save_finished(success: bool)
 
 
-## Getters
+## Gold
 func get_gold() -> int:
 	return _state.gold
 
 
-func get_roster(copy := true, sorted := false) -> Array[AdventurerData]:
-	var vals := _state.adventurers.values().duplicate(true) if copy else _state.adventurers.values()
-	if sorted:
-		vals.sort_custom(
-			func(a, b): return a.level > b.level if a.level != b.level else a.rarity > b.rarity
-		)
-	return vals
-
-
-func get_inventory(copy := true) -> Dictionary[String, int]:
-	return _state.inventory.duplicate(true) if copy else _state.inventory
-
-
-func get_flag(flag: GameState.Flag) -> bool:
-	return _state.flags.get(flag, false)
-
-
-func get_origins(copy := true, include_prefab := false) -> Array[OriginData]:
-	var own_origins = _state.origins.duplicate(true) if copy else _state.origins
-	return own_origins + OriginDB.all() if include_prefab else own_origins
-
-
-func get_mission_states(copy := true) -> Dictionary[String, MissionState]:
-	return _state.mission_states.duplicate(true) if copy else _state.mission_states
-
-
-func find_adventurer(guid: String, copy := true) -> AdventurerData:
-	return _state.adventurers[guid].duplicate(true) if copy else _state.adventurers[guid]
-
-
-## Mutators
 func earn_gold(amount: int) -> bool:
 	if amount <= 0:
 		return false
@@ -69,31 +37,9 @@ func spend_gold(amount: int) -> bool:
 	return true
 
 
-func set_adventurer(data: AdventurerData) -> bool:
-	if data == null:
-		return false
-	_state.adventurers[data.id] = data
-	_dirty = true
-	roster_changed.emit()
-	return true
-
-
-func touch_adventurer(id: String) -> bool:
-	if _state.adventurers.has(id):
-		_state.adventurers[id].seen = true
-		_dirty = true
-		roster_changed.emit()
-		return true
-	return false
-
-
-func remove_adventurer(id: String) -> bool:
-	if _state.adventurers.has(id):
-		_state.adventurers.erase(id)
-		_dirty = true
-		roster_changed.emit()
-		return true
-	return false
+## Inventory
+func get_inventory(copy := true) -> Dictionary[String, int]:
+	return _state.inventory.duplicate(true) if copy else _state.inventory
 
 
 func add_item(item_id: String, amount := 1) -> bool:
@@ -121,6 +67,40 @@ func remove_item(item_id: String, amount := 1) -> bool:
 	_dirty = true
 	inventory_changed.emit(item_id, new_qty)
 	return true
+
+
+## Adventurers
+func _get_roster(copy := true) -> Array[AdventurerData]:
+	var vals := _state.adventurers.values().duplicate(true) if copy else _state.adventurers.values()
+	return vals
+
+
+func _find_adventurer(id: String, copy := true) -> AdventurerData:
+	return _state.adventurers[id].duplicate(true) if copy else _state.adventurers[id]
+
+
+func _set_adventurer(data: AdventurerData) -> void:
+	_state.adventurers[data.id] = data
+
+
+func _remove_adventurer(id: String) -> void:
+	_state.adventurers.erase(id)
+
+
+## Origins
+func get_origins(copy := true, include_prefab := false) -> Array[OriginData]:
+	var own_origins = _state.origins.duplicate(true) if copy else _state.origins
+	return own_origins + OriginDB.all() if include_prefab else own_origins
+
+
+## Missions
+func _get_mission_states(copy := true) -> Dictionary[String, MissionState]:
+	return _state.mission_states.duplicate(true) if copy else _state.mission_states
+
+
+## Mutators
+func get_flag(flag: GameState.Flag) -> bool:
+	return _state.flags.get(flag, false)
 
 
 func set_flag(flag: GameState.Flag, val: bool) -> void:

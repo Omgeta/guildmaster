@@ -8,7 +8,7 @@ func spawn_roster(
 	parent: Node3D,
 	cam: Node3D = get_viewport().get_camera_3d().get_parent_node_3d(),
 	markers: Node3D = null,
-	data: Array[AdventurerData] = SaveManager.get_roster(),
+	data: Array[AdventurerData] = AdventurerManager.get_roster(),
 ) -> Array[Character3D]:
 	# very hacky, procedural methods like get_random_point only work ~1-3 frame after NavServer mount
 	# just waiting 1 doesn't work unlike in the issue and its inconsistent

@@ -49,6 +49,10 @@ func get_by_id(id: String) -> ItemData:
 	return _by_id.get(id)
 
 
+func find_name(id: String) -> String:
+	return get_by_id(id).name
+
+
 func has(id: String) -> bool:
 	return _by_id.has(id)
 
