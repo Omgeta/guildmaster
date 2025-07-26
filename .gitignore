@@ -8,6 +8,7 @@ export.cfg
 export_credentials.cfg
 bin/
 *.exe
+exports/
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -16,4 +17,3 @@ bin/
 .mono/
 data_*/
 mono_crash.*.json
-

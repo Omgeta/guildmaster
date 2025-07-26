@@ -1,5 +1,0 @@
-id,name,description,rarity,stack_limit,heal_hp,buffs
-attack_potion,Attack Poition,"A crude potion that raises attack.",1,99,0,"Add +20 attack to warrior characters"
-heal_potion,Healing Potion,"A crude potion which recovers a bit of HP.",1,99,15,""
-magic_potion,Magic Potion,"A crude potion that raises magic.",1,99,0,"Adds +20 magic to magicians"
-swift_potion,Swift Potion,"A crude potion that raises dexterity. ",1,99,0,"add +20 dex "
