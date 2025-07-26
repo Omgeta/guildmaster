@@ -1,7 +1,9 @@
 extends Resource
 class_name GameState
 
-enum Flag { INTRO_CUTSCENE, INTRO_GACHA }
+enum Flag {
+	INTRO_CUTSCENE, GACHA_TUTORIAL, LOBBY_TUTORIAL, MISSION_TUTORIAL, GALLERY_TUTORIAL
+}
 
 @export var adventurers: Dictionary[String, AdventurerData] = {}
 @export var origins: Array[OriginData] = []

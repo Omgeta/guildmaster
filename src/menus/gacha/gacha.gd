@@ -35,10 +35,18 @@ func _ready() -> void:
 	SaveManager.gold_changed.connect(func(_old, _new): _refresh_afford())
 
 	# handle intro
-	if not SaveManager.get_flag(GameState.Flag.INTRO_GACHA):
+	if not SaveManager.get_flag(GameState.Flag.GACHA_TUTORIAL):
 		var beginner_banner = load("res://src/menus/gacha/prefabs/beginner/beginner.tres")
-		_on_pull(10, beginner_banner)
-		SaveManager.set_flag(GameState.Flag.INTRO_GACHA, true)
+		await _on_pull(10, beginner_banner)
+		(
+			NotificationService
+			. popup(
+				"Gacha",
+				"Gacha is a mechanic allowing you to summon new adventurers to help you from various origins.\n\nSome origins have higher chances of rare adventurers than others, but fret not, great adventurers come from all different origins\n\nNote: More expensive gacha banners tend to have higher chance of giving you new recruits! You can earn gold through missions...",
+				Color.PURPLE
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.GACHA_TUTORIAL, true)
 
 
 func _input(event: InputEvent) -> void:

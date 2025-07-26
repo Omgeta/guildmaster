@@ -21,6 +21,17 @@ func _ready():
 	MissionManager.mission_finished.connect(_on_mission_state_change)
 	MissionManager.mission_claimed.connect(_on_mission_state_change)
 
+	if not SaveManager.get_flag(GameState.Flag.MISSION_TUTORIAL):
+		(
+			NotificationService
+			. popup(
+				"Missions",
+				"Welcome to the real challenge...\n\nYou can send out your allies on missions here to level up, gather loot and most of all, climb the tower.\n\n But be careful... there's no coming back from death here. Make rational choices and be well-prepared or you might just be sending off your friends to their deaths.",
+				Color.GREEN,
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.MISSION_TUTORIAL, true)
+
 
 func _refresh_countdown():
 	if not _selected:
