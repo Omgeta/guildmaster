@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dchbosrikea1x"
+
+[deps]
+
+files=["res://exports/items_equipment.name.translation", "res://exports/items_equipment.description.translation", "res://exports/items_equipment.rarity.translation", "res://exports/items_equipment.stack.translation", "res://exports/items_equipment.slot.translation", "res://exports/items_equipment.hp.translation", "res://exports/items_equipment.atk.translation", "res://exports/items_equipment.dex.translation", "res://exports/items_equipment.mag.translation", "res://exports/items_equipment.def.translation"]
+
+source_file="res://exports/items_equipment.csv"
+dest_files=["res://exports/items_equipment.name.translation", "res://exports/items_equipment.description.translation", "res://exports/items_equipment.rarity.translation", "res://exports/items_equipment.stack.translation", "res://exports/items_equipment.slot.translation", "res://exports/items_equipment.hp.translation", "res://exports/items_equipment.atk.translation", "res://exports/items_equipment.dex.translation", "res://exports/items_equipment.mag.translation", "res://exports/items_equipment.def.translation"]
+
+[params]
+
+compress=true
+delimiter=0

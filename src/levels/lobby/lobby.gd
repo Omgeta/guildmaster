@@ -1,6 +1,7 @@
 extends Node3D
 
-const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d.tscn")
+const LOBBY_TRACK := preload("res://src/menus/assets/music/bgm/lobby.mp3")
+const BOUND := 10
 
 @export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
@@ -10,11 +11,13 @@ const CHARACTER_PCK: PackedScene = preload("res://src/core/entities/character_3d
 @onready var _chars: Node3D = $Characters
 @onready var _spawns: Node3D = $Spawns
 @onready var _cam: Node3D = $CameraRig
+@onready var _nav_bounds: AABB = _nav.get_bounds()
 
 var _orbit_angle: float = 0
 
 
 func _ready() -> void:
+	await SoundManager.play_bgm(LOBBY_TRACK)
 	_spawn_roster.call_deferred()
 	SaveManager.roster_changed.connect(_refresh_roster)
 
@@ -26,7 +29,7 @@ func _process(delta: float) -> void:
 
 
 func _spawn_roster():
-	var chars := await SpawnManager.spawn_roster(_nav, _chars, CHARACTER_PCK, _cam, _spawns)
+	var chars := await SpawnLoader.spawn_roster(_nav, _chars, _cam, _spawns)
 	for c in chars:
 		c.wander(_nav)
 
@@ -67,7 +70,16 @@ func _update_camera_pan(delta: float) -> void:
 		return
 
 	move = move.normalized() * pan_speed * delta
-	_cam.translate(move)
+
+	# clamp inside nav AABB after transforming to local space
+	var new_world_pos = _cam.global_transform.origin + move
+	var local = _nav.to_local(new_world_pos)
+	local.x = clamp(local.x, _nav_bounds.position.x, _nav_bounds.position.x + _nav_bounds.size.x)
+	local.z = clamp(local.z, _nav_bounds.position.z, _nav_bounds.position.z + _nav_bounds.size.z)
+
+	var gtransform = _cam.global_transform
+	gtransform.origin = _nav.to_global(local)
+	_cam.global_transform = gtransform
 
 
 func _rotate_sky(delta: float) -> void:

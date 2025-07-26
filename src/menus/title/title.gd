@@ -3,6 +3,7 @@ extends Control
 signal scene_loaded
 
 const INTRO_CS_RES := preload("res://src/core/cutscenes/prefabs/intro/intro_cutscene.tres")
+const TITLE_TRACK := preload("res://src/menus/assets/music/bgm/title.mp3")
 
 const FADE_TIME := 2.5
 const PULSE_TIME := 1.2
@@ -18,6 +19,9 @@ func _ready():
 	# initial states
 	logo.modulate.a = 0.0
 	prompt.modulate.a = 0.0
+
+	# background BGM
+	SoundManager.play_bgm(TITLE_TRACK)
 
 	# fade in
 	var tween = create_tween()

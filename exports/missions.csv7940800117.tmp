@@ -1,0 +1,10 @@
+id,display_name,type,prerequisite_id,duration_sec,slots_required,bonus_rewards,enemy_count,xp_reward,drop_table
+tower_1,Floor 1,0,,60,2,,1,10,""
+tower_2,Floor 2,0,tower_1,60,2,,2,10,""
+tower_3,Floor 3,0,tower_2,90,3,,3,20,""
+tower_4,Floor 4,0,tower_3,90,3,,2,35,""
+tower_5,Floor 5,0,tower_4,150,2,,1,40,""
+tower_6,Floor 6,0,tower_5,120,3,,2,30,""
+tower_7,Floor 7,0,tower_6,120,3,,4,30,""
+tower_8,Floor 8,0,tower_7,120,3,,2,25,""
+tower_9,Floor 9,0,tower_8,150,3,,1,10,""

@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SpawnManager="*res://src/globals/SpawnManager.gd"
+SpawnLoader="*res://src/globals/SpawnLoader.gd"
 RNG="*res://src/globals/RNG.gd"
 SceneLoader="*res://src/globals/SceneLoader/SceneLoader.tscn"
 SoundManager="*res://src/globals/SoundManager/SoundManager.tscn"
@@ -35,7 +35,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/format_on_save/plugin.cfg")
+enabled=PackedStringArray("res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/format_on_save/plugin.cfg", "res://addons/unidot_importer/plugin.cfg", "res://addons/vrm/plugin.cfg")
 
 [input]
 

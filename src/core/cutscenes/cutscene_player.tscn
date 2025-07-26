@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://8p87q4ndhseo"]
 
-[ext_resource type="Script" uid="uid://o4edfly50fue" path="res://src/cutscenes/cutscene_player.gd" id="1_n6x6k"]
+[ext_resource type="Script" uid="uid://o4edfly50fue" path="res://src/core/cutscenes/cutscene_player.gd" id="1_n6x6k"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_b8kow"]
 
 [node name="CutscenePlayer" type="Control"]
@@ -42,9 +42,5 @@ theme_override_font_sizes/font_size = 16
 text = "Cutscene Text"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-
-[node name="SFX" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

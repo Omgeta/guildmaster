@@ -1,6 +1,6 @@
 extends Node
 
-@export var bgm_volume_db: float = -6.0
+@export var bgm_volume_db: float = -8.0
 @export var sfx_volume_db: float = 0.0
 @export var sfx_player_count := 8  # number of simultaneous SFX
 
@@ -26,19 +26,18 @@ func play_bgm(stream: AudioStream, fade_time := 1.0) -> void:
 		return  # already playing
 
 	# fade out from old stream
-	if _bgm_player.playing:
-		await _fade_player(_bgm_player, 0.0, fade_time).finished
+	await stop_bgm(fade_time)
 
 	# swap stream and fade back in
 	_bgm_player.stream = stream
-	_bgm_player.volume_db = -80  # start silent
+	_bgm_player.volume_db = -40  # start silent
 	_bgm_player.play()
 	_fade_player(_bgm_player, bgm_volume_db, fade_time)
 
 
 func stop_bgm(fade_time := 1.0) -> void:
 	if _bgm_player.playing:
-		await _fade_player(_bgm_player, -80, fade_time).finished
+		await _fade_player(_bgm_player, -40.0, fade_time).finished
 		_bgm_player.stop()
 
 
