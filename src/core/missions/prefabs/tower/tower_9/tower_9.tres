@@ -1,13 +1,20 @@
-[gd_resource type="Resource" script_class="MissionData" load_steps=5 format=3 uid="uid://cusjyc0kihudn"]
+[gd_resource type="Resource" script_class="MissionData" load_steps=7 format=3 uid="uid://cusjyc0kihudn"]
 
 [ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_lni3i"]
 [ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_8j6v8"]
 [ext_resource type="Resource" uid="uid://cls6c1asd7xx4" path="res://src/core/entities/enemies/prefabs/bandits/bandit_queen.tres" id="2_jyxme"]
+[ext_resource type="Resource" uid="uid://1fgs1e3otw6u" path="res://src/core/entities/enemies/prefabs/bandits/bandit.tres" id="3_jyxme"]
 
 [sub_resource type="Resource" id="Resource_hu47m"]
 script = ExtResource("1_lni3i")
 enemy_data = ExtResource("2_jyxme")
 count = 1
+metadata/_custom_type_script = "uid://cre2kdlod3tks"
+
+[sub_resource type="Resource" id="Resource_kiuba"]
+script = ExtResource("1_lni3i")
+enemy_data = ExtResource("3_jyxme")
+count = 2
 metadata/_custom_type_script = "uid://cre2kdlod3tks"
 
 [resource]
@@ -17,7 +24,7 @@ display_name = "Floor 9"
 type = 0
 prerequisite_id = "tower_8"
 duration_sec = 150
-enemy_spawns = Array[ExtResource("1_lni3i")]([SubResource("Resource_hu47m")])
+enemy_spawns = Array[ExtResource("1_lni3i")]([SubResource("Resource_hu47m"), SubResource("Resource_kiuba")])
 bonus_exp = 1000
 bonus_gold = 500
 bonus_rewards = []

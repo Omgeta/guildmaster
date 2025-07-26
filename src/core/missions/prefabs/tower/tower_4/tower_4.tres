@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_xgwjl"]
 script = ExtResource("1_13cgn")
 enemy_data = ExtResource("2_y38kk")
-count = 1
+count = 2
 metadata/_custom_type_script = "uid://cre2kdlod3tks"
 
 [sub_resource type="Resource" id="Resource_fw3r8"]

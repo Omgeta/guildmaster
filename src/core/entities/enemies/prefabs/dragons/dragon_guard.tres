@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://d01oidr2x8rdc"]
+
+[ext_resource type="Script" uid="uid://bxpjwrgua8liq" path="res://src/core/entities/enemies/enemy_data.gd" id="1_dkkhl"]
+[ext_resource type="Script" uid="uid://bql4dlrv1v4d2" path="res://src/core/entities/character_stats.gd" id="1_tsnft"]
+
+[sub_resource type="Resource" id="Resource_1fo7v"]
+script = ExtResource("1_tsnft")
+hp = 100
+atk = 25
+dex = 15
+mag = 5
+metadata/_custom_type_script = "uid://bql4dlrv1v4d2"
+
+[resource]
+script = ExtResource("1_dkkhl")
+xp_reward = 50
+drop_table = Dictionary[String, float]({})
+id = "dragon_guard"
+display_name = "Dragon Guard"
+base_stats = SubResource("Resource_1fo7v")
+tags = Array[int]([])
+metadata/_custom_type_script = "uid://bxpjwrgua8liq"
