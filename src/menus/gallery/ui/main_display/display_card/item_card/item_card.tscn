@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://hxstnoih00k1"]
+
+[ext_resource type="PackedScene" uid="uid://pkuo3cdg0fi5" path="res://src/menus/gallery/ui/main_display/display_card/display_card.tscn" id="1_dwaxr"]
+[ext_resource type="Script" uid="uid://bcsj2yqm2drik" path="res://src/menus/gallery/ui/main_display/display_card/item_card/item_card.gd" id="2_dms63"]
+[ext_resource type="Texture2D" uid="uid://b2yp80utgerr1" path="res://src/core/items/prefabs/potions/heal_potion/heal_potion.png" id="3_dms63"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="4_6xc3j"]
+
+[node name="DisplayCard" instance=ExtResource("1_dwaxr")]
+script = ExtResource("2_dms63")
+
+[node name="TextureRect" type="TextureRect" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dms63")
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("4_6xc3j")
+theme_override_font_sizes/font_size = 16
+text = "99"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true

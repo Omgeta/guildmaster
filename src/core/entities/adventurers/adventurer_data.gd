@@ -10,7 +10,9 @@ enum Alignment { Orderly, Neutral, Chaotic }
 @export var alignment: Alignment = Alignment.Neutral
 @export var origin: OriginData
 @export_range(1, 5, 1) var rarity: int = 1  # 1–5 stars
+
 @export var in_mission: bool = false
+@export var seen: bool = false
 
 @export var weapon_id: String = ""
 @export var armor_id: String = ""

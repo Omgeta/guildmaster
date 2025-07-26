@@ -17,16 +17,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SpawnLoader="*res://src/globals/SpawnLoader.gd"
 RNG="*res://src/globals/RNG.gd"
-SceneLoader="*res://src/globals/SceneLoader/SceneLoader.tscn"
-SoundManager="*res://src/globals/SoundManager/SoundManager.tscn"
-SpriteDB="*res://src/globals/DB/SpriteDB.gd"
-ItemDB="*res://src/globals/DB/ItemDB.gd"
+SpawnService="*res://src/globals/Services/SpawnService.gd"
+SoundService="*res://src/globals/Services/SoundService/SoundService.tscn"
+SceneService="*res://src/globals/Services/SceneService/SceneService.tscn"
 OriginDB="*res://src/globals/DB/OriginDB.gd"
 MissionDB="*res://src/globals/DB/MissionDB.gd"
-SaveManager="*res://src/globals/SaveManager/SaveManager.gd"
-MissionManager="*res://src/globals/MissionManager/MissionManager.gd"
+SpriteDB="*res://src/globals/DB/SpriteDB.gd"
+ItemDB="*res://src/globals/DB/ItemDB.gd"
+SaveManager="*res://src/globals/Managers/SaveManager/SaveManager.gd"
+MissionManager="*res://src/globals/Managers/MissionManager/MissionManager.gd"
 
 [display]
 

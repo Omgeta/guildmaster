@@ -4,12 +4,8 @@ const SAVE_PATH := "user://save_slot0.tres"
 const SAVE_FLAGS := ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS
 const MAX_GOLD := 99999
 
-var game_state := GameState.new()
-
 var _state: GameState = GameState.new()
 var _dirty: bool = false
-var _save_thread: Thread = null
-var _pending_path: String = ""  # next queued save
 
 signal gold_changed(old_amount: int, new_amount: int)
 signal roster_changed
@@ -22,8 +18,13 @@ func get_gold() -> int:
 	return _state.gold
 
 
-func get_roster(copy := true) -> Array[AdventurerData]:
-	return _state.adventurers.values().duplicate(true) if copy else _state.adventurers.values()
+func get_roster(copy := true, sorted := false) -> Array[AdventurerData]:
+	var vals := _state.adventurers.values().duplicate(true) if copy else _state.adventurers.values()
+	if sorted:
+		vals.sort_custom(
+			func(a, b): return a.level > b.level if a.level != b.level else a.rarity > b.rarity
+		)
+	return vals
 
 
 func get_inventory(copy := true) -> Dictionary[String, int]:
@@ -34,9 +35,9 @@ func get_flag(flag: GameState.Flag) -> bool:
 	return _state.flags.get(flag, false)
 
 
-func get_origins(copy := true) -> Array[OriginData]:
+func get_origins(copy := true, include_prefab := false) -> Array[OriginData]:
 	var own_origins = _state.origins.duplicate(true) if copy else _state.origins
-	return own_origins + OriginDB.all()  # change depending on save state
+	return own_origins + OriginDB.all() if include_prefab else own_origins
 
 
 func get_mission_states(copy := true) -> Dictionary[String, MissionState]:
@@ -52,7 +53,7 @@ func earn_gold(amount: int) -> bool:
 	if amount <= 0:
 		return false
 	var old_gold := _state.gold
-	_state.gold = max(amount, MAX_GOLD)
+	_state.gold = max(old_gold + amount, MAX_GOLD)
 	_dirty = true
 	gold_changed.emit(old_gold, _state.gold)
 	return true
@@ -77,9 +78,18 @@ func set_adventurer(data: AdventurerData) -> bool:
 	return true
 
 
-func remove_adventurer(guid: String) -> bool:
-	if _state.adventurers.has(guid):
-		_state.adventurers.erase(guid)
+func touch_adventurer(id: String) -> bool:
+	if _state.adventurers.has(id):
+		_state.adventurers[id].seen = true
+		_dirty = true
+		roster_changed.emit()
+		return true
+	return false
+
+
+func remove_adventurer(id: String) -> bool:
+	if _state.adventurers.has(id):
+		_state.adventurers.erase(id)
 		_dirty = true
 		roster_changed.emit()
 		return true
@@ -124,29 +134,16 @@ func set_dirty() -> void:
 
 
 ## SaveLoad
-func save_async() -> void:
+func save_sync() -> void:
 	if not _dirty:  # if nothing changed, skip
 		return
-	if _save_thread:  # queue next save
-		_pending_path = SAVE_PATH
-		return
 	_dirty = false
-	_save_thread = Thread.new()
-	_save_thread.start(_thread_save.bind(SAVE_PATH))
-
-
-func _thread_save(path: String) -> void:
-	var err := ResourceSaver.save(_state, path, SAVE_FLAGS)
-	call_deferred("_on_save_done", err)
+	var err := ResourceSaver.save(_state, SAVE_PATH, SAVE_FLAGS)
+	_on_save_done.call_deferred(err)
 
 
 func _on_save_done(err: int) -> void:
-	_save_thread.wait_to_finish()
-	_save_thread = null
 	save_finished.emit(err == OK)
-	if _pending_path != "":
-		_pending_path = ""
-		save_async()  # run queued save
 	print("SaveManager: save completed")
 
 
@@ -180,6 +177,6 @@ func load_slot(path := SAVE_PATH) -> bool:
 
 
 # auto-save on quitting window
-func _notification(what: int) -> void:
+func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		save_async()
+		save_sync()

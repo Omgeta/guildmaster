@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8w3p753tj5ku"]
+
+[ext_resource type="Script" uid="uid://dsrvr8d128x5t" path="res://src/menus/gallery/ui/detail_display/adventurer_display/adventurer_display.gd" id="1_0rl80"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="1_nrkia"]
+[ext_resource type="PackedScene" uid="uid://fv7ckbpapn2j" path="res://src/core/entities/character_3d.tscn" id="2_nrkia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qle3"]
+bg_color = Color(0.319383, 0.263427, 0.300741, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="AdventurerDisplay" type="Control"]
+custom_minimum_size = Vector2(202, 348)
+layout_mode = 3
+anchor_right = 0.175347
+anchor_bottom = 0.537037
+mouse_filter = 2
+script = ExtResource("1_0rl80")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 18
+text = "Full Name"
+horizontal_alignment = 1
+
+[node name="Origin" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 14
+text = "Origin Name"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="SpriteContainer" type="Panel" parent="VBoxContainer/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qle3")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/MarginContainer/SpriteContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/MarginContainer/SpriteContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(175, 175)
+render_target_update_mode = 4
+
+[node name="Character3D" parent="VBoxContainer/MarginContainer/SpriteContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam") instance=ExtResource("2_nrkia")]
+cam = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/MarginContainer/SpriteContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.263823, 0.235902)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/SpriteContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Level" type="Label" parent="VBoxContainer/MarginContainer/SpriteContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 20
+text = "Lv. 99"
+
+[node name="XP" type="Label" parent="VBoxContainer/MarginContainer/SpriteContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 18
+text = "0 XP"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Class" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/Class"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.769432, 0.769432, 0.769432, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "Class: "
+
+[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/Class"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "Warrior"
+
+[node name="HP" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HP"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.866667, 0.772549, 0.27451, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "HP:"
+
+[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HP"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="ATK" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/ATK"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.735647, 0, 0.20217, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "ATK: "
+
+[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/ATK"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "5"
+
+[node name="MAG" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/MAG"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.448084, 0.318182, 0.999965, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "MAG:"
+
+[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/MAG"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "5"
+
+[node name="DEX" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/DEX"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.547789, 0.131819, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "DEX:"
+
+[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/DEX"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 16
+text = "5"

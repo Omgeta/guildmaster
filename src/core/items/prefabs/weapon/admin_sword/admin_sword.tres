@@ -1,19 +1,20 @@
-[gd_resource type="Resource" script_class="EquipmentData" load_steps=2 format=3 uid="uid://cdxkv0j0e5fyp"]
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=3 format=3 uid="uid://cdxkv0j0e5fyp"]
 
 [ext_resource type="Script" uid="uid://cjsveser3stbx" path="res://src/core/items/equipment_data.gd" id="1_eqnou"]
+[ext_resource type="Texture2D" uid="uid://d4axdw0pank6x" path="res://src/core/items/prefabs/weapon/admin_sword/admin_sword.png" id="1_kmsjq"]
 
 [resource]
 script = ExtResource("1_eqnou")
-slot = &"weapon"
+slot = 1
 hp_bonus = 0
 atk_bonus = 999
-dex_bonus = 0
-mag_bonus = 0
-def_bonus = 0
+dex_bonus = 999
+mag_bonus = 999
 id = "admin_sword"
 name = "Admin Sword"
 description = "A sword that one shots everything.
 "
+icon = ExtResource("1_kmsjq")
 rarity = 5
 stack_limit = 1
 metadata/_custom_type_script = "uid://cjsveser3stbx"

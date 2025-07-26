@@ -21,7 +21,7 @@ func _ready():
 	prompt.modulate.a = 0.0
 
 	# background BGM
-	SoundManager.play_bgm(TITLE_TRACK)
+	SoundService.play_bgm(TITLE_TRACK)
 
 	# fade in
 	var tween = create_tween()
@@ -63,19 +63,18 @@ func _start_intro_cutscene() -> void:
 	var player = load("res://src/core/cutscenes/cutscene_player.tscn").instantiate()
 	player.cutscene = INTRO_CS_RES
 	player.cutscene_finished.connect(_on_intro_finished)
-	SceneLoader.change_to(player)
+	SceneService.change_to(player)
 
 
 func _on_intro_finished():
 	# mark the flag so we skip next time
 	SaveManager.set_flag(GameState.Flag.INTRO_CUTSCENE, true)
-	SaveManager.save_async()
 	_go_to_gacha()
 
 
 func _go_to_gacha() -> void:
-	SceneLoader.change_to(load("res://src/menus/gacha/gacha.tscn"))
+	SceneService.change_to(load("res://src/menus/gacha/gacha.tscn"))
 
 
 func _go_to_lobby() -> void:
-	SceneLoader.change_to(load("res://src/menus/lobby/lobby.tscn"))
+	SceneService.change_to(load("res://src/menus/lobby/lobby.tscn"))

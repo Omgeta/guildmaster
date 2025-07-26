@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwtmyx6to8d44"]
 
-[ext_resource type="Script" uid="uid://bt6lhoib4r8u8" path="res://src/globals/SceneLoader/scene_loader.gd" id="1_468ly"]
+[ext_resource type="Script" uid="uid://bt6lhoib4r8u8" path="res://src/globals/Services/SceneService/scene_service.gd" id="1_1q6sk"]
 
-[node name="SceneLoader" type="CanvasLayer"]
-script = ExtResource("1_468ly")
+[node name="SceneService" type="CanvasLayer"]
+script = ExtResource("1_1q6sk")
 
 [node name="Fader" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://pkuo3cdg0fi5"]
+
+[ext_resource type="Texture2D" uid="uid://b6hershj8xa04" path="res://src/menus/assets/2d/ItemBox/ItemBox_24x24.png" id="1_1que2"]
+[ext_resource type="Script" uid="uid://qxbwtt8k0c8q" path="res://src/menus/gallery/ui/main_display/display_card/display_card.gd" id="1_5p1u7"]
+
+[node name="DisplayCard" type="TextureButton"]
+clip_children = 2
+custom_minimum_size = Vector2(60, 60)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1092.0
+offset_bottom = -588.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_1que2")
+stretch_mode = 4
+script = ExtResource("1_5p1u7")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_button_up"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

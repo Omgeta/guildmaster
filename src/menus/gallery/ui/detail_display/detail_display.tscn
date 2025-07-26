@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://bh2e7fhcw04b4"]
+
+[ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="1_310rm"]
+[ext_resource type="Script" uid="uid://b5mxplbbxas6i" path="res://src/menus/gallery/ui/detail_display/detail_display.gd" id="1_lpjsn"]
+[ext_resource type="PackedScene" uid="uid://c8w3p753tj5ku" path="res://src/menus/gallery/ui/detail_display/adventurer_display/adventurer_display.tscn" id="2_lpjsn"]
+[ext_resource type="Texture2D" uid="uid://d2aynrh2p0i35" path="res://src/menus/assets/2d/TitleBox/TitleBox_64x16.png" id="2_s5qig"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="3_lpjsn"]
+[ext_resource type="PackedScene" uid="uid://cu0uib57g4hpd" path="res://src/menus/gallery/ui/detail_display/item_display/item_display.tscn" id="4_8lix6"]
+
+[node name="Details" type="Control"]
+custom_minimum_size = Vector2(250, 400)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lpjsn")
+
+[node name="Background" parent="." instance=ExtResource("1_310rm")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="AdventurerDisplay" parent="MarginContainer" instance=ExtResource("2_lpjsn")]
+visible = false
+layout_mode = 2
+
+[node name="ItemDisplay" parent="MarginContainer" instance=ExtResource("4_8lix6")]
+visible = false
+layout_mode = 2
+
+[node name="Header" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.5001
+offset_top = -10.0
+offset_right = 69.4999
+offset_bottom = 24.0
+grow_horizontal = 2
+texture = ExtResource("2_s5qig")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_lpjsn")
+theme_override_font_sizes/font_size = 19
+text = "Details"
+horizontal_alignment = 1
+vertical_alignment = 1

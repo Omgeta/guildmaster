@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvdhcb2ju1ud8"]
+
+[ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="1_j6f3p"]
+[ext_resource type="Script" uid="uid://dhkk5xxjvg384" path="res://src/menus/gallery/ui/main_display/main_display.gd" id="1_oso5r"]
+[ext_resource type="Texture2D" uid="uid://d2aynrh2p0i35" path="res://src/menus/assets/2d/TitleBox/TitleBox_64x16.png" id="2_4218q"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="3_oso5r"]
+
+[node name="Main" type="Control"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 3
+anchor_right = 0.260417
+anchor_bottom = 0.462963
+offset_right = -260.0
+offset_bottom = -260.0
+script = ExtResource("1_oso5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="RectangleBox" parent="." instance=ExtResource("1_j6f3p")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 28
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Search" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_oso5r")
+placeholder_text = "Search"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 7
+
+[node name="Header" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.5001
+offset_top = -10.0
+offset_right = 69.4999
+offset_bottom = 24.0
+grow_horizontal = 2
+texture = ExtResource("2_4218q")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_oso5r")
+theme_override_font_sizes/font_size = 19
+text = "Gallery"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/Search" to="." method="_on_search_text_changed"]
