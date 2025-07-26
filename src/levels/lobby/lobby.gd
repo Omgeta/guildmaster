@@ -21,6 +21,17 @@ func _ready() -> void:
 	_spawn_roster.call_deferred()
 	AdventurerManager.roster_changed.connect(_refresh_roster)
 
+	if not SaveManager.get_flag(GameState.Flag.LOBBY_TUTORIAL):
+		(
+			NotificationService
+			. popup(
+				"Lobby",
+				"Welcome to your new home: the lobby, a home of new beginnings.\n\nThis is where you can rest and recover, meet your adventurers and most importantly, plan for your next quests. Why not start now?\n\nLook around and you may find some secrets worth your time.",
+				Color.AQUAMARINE
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.LOBBY_TUTORIAL, true)
+
 
 func _process(delta: float) -> void:
 	_update_camera_orbit(delta)

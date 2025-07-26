@@ -53,7 +53,7 @@ func _load_game() -> void:
 	var has_save := SaveManager.load_slot()
 	if not has_save or not SaveManager.get_flag(GameState.Flag.INTRO_CUTSCENE):  # new game
 		_start_intro_cutscene()
-	elif not SaveManager.get_flag(GameState.Flag.INTRO_GACHA):
+	elif not SaveManager.get_flag(GameState.Flag.GACHA_TUTORIAL):
 		_go_to_gacha()
 	else:
 		_go_to_lobby()
