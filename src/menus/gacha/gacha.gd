@@ -2,7 +2,7 @@ extends Control
 
 const CHARACTER_SCN := preload("res://src/core/entities/character_3d.tscn")
 const LOBBY_PCK := preload("res://src/menus/lobby/lobby.tscn")
-const GACHA_TRACK := preload("res://src/menus/assets/music/bgm/lobby.mp3")
+const GACHA_TRACK := preload("res://src/menus/assets/music/bgm/gacha.mp3")
 const GACHA_PULL_SFX := preload("res://src/menus/assets/music/sfx/gacha_pull.mp3")
 const FADE_TIME := 0.20
 

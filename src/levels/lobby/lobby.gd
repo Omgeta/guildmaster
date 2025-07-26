@@ -1,6 +1,5 @@
 extends Node3D
 
-const LOBBY_TRACK := preload("res://src/menus/assets/music/bgm/lobby.mp3")
 const BOUND := 10
 
 @export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
@@ -17,7 +16,6 @@ var _orbit_angle: float = 0
 
 
 func _ready() -> void:
-	await SoundService.play_bgm(LOBBY_TRACK)
 	_spawn_roster.call_deferred()
 	SaveManager.roster_changed.connect(_refresh_roster)
 
