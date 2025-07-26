@@ -40,15 +40,10 @@ jobs:
           tag: ${{ github.ref_name }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
 
-      - name: Debug output paths
-        run: |
-          echo "Build dir: ${{ steps.export.outputs.build_directory }}"
-          ls -R ${{ steps.export.outputs.build_directory }}
-
       - uses: yeslayla/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: web
           ITCH_GAME: guildmaster
           ITCH_USER: omgeta
-          PACKAGE: ${{ steps.export.outputs.build_directory }}/index.html
+          PACKAGE: ${{ steps.export.outputs.build_directory }}/Web/index.html
