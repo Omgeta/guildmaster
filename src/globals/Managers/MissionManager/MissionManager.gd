@@ -5,7 +5,7 @@ signal mission_finished(id: String)
 signal mission_claimed(id: String)
 
 const TICK_SEC := 1.0  # how often we check states
-const CombatSim := preload("res://src/globals/MissionManager/combat_simulator.gd")
+const CombatSim := preload("res://src/globals/Managers/MissionManager/combat_simulator.gd")
 
 var _timer: Timer
 
@@ -54,8 +54,6 @@ func start_mission(id: String, team_guids: Array[String]) -> bool:
 		SaveManager.set_adventurer(adv)
 
 	mission_started.emit(id)
-	SaveManager.save_async()
-
 	return true
 
 
@@ -98,7 +96,7 @@ func _finish_mission(id: String):
 	if success:
 		_unlock_next_tower(id)
 
-	SaveManager.save_async()
+	SaveManager.save_sync()
 	mission_finished.emit(id)
 
 
@@ -130,7 +128,6 @@ func claim_rewards(id: String) -> void:
 	st.status = MissionState.Status.AVAILABLE
 	st.completed = true
 
-	SaveManager.save_async()
 	mission_claimed.emit(id)
 
 
