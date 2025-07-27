@@ -3,6 +3,7 @@ extends Control
 @onready var _missions := $MissionList
 @onready var _countdown := $CountdownContainer
 @onready var _picker := $TeamPicker
+@onready var _details := $MissionDetails
 @onready var _timer: Timer = $Timer
 @onready var _button := $MainButton
 
@@ -109,6 +110,7 @@ func _on_mission_selected(mission: MissionData) -> void:
 	_picker.setup(
 		AdventurerManager.get_roster(true), MissionManager.get_state(mission.id).team_guids
 	)
+	_details.setup(mission)
 
 
 func _on_back_button_pressed():
