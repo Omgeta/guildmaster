@@ -124,6 +124,6 @@ func _set_image(tex: Texture2D):
 
 
 func _on_skip_button_pressed() -> void:
+	_finish_line()
 	skip.visible = false
-	SoundService.stop_bgm()
 	cutscene_finished.emit()
