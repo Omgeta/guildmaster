@@ -37,7 +37,7 @@ func _ready() -> void:
 	# handle intro
 	if not SaveManager.get_flag(GameState.Flag.GACHA_TUTORIAL):
 		var beginner_banner = load("res://src/menus/gacha/prefabs/beginner/beginner.tres")
-		await _on_pull(10, beginner_banner)
+		await _on_pull(5, beginner_banner)
 		(
 			NotificationService
 			. popup(
