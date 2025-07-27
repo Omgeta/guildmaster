@@ -55,3 +55,7 @@ func all() -> Array[MissionData]:
 
 func get_by_type(type: MissionData.Type) -> Array[MissionData]:
 	return all().filter(func(m: MissionData): return m.type == type)
+
+
+func is_last_in_chain(id: String):
+	return all()[-1].id == id  # hardcoded but can be made diff once there are more

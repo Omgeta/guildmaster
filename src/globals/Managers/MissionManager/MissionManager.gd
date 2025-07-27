@@ -50,12 +50,30 @@ func start_mission(id: String, team_guids: Array[String]) -> bool:
 		AdventurerManager.start_mission(adv_id)
 
 	mission_started.emit(id)
+	_check_first_mission(names)
 	NotificationService.toast(
 		"Mission Started",
 		"%s started with %s" % [MissionDB.get_by_id(id).display_name, names],
 		Color.GREEN
 	)
+
 	return true
+
+
+func _check_first_mission(names: String):
+	if not SaveManager.get_flag(GameState.Flag.FIRST_MISSION):
+		(
+			NotificationService
+			. popup(
+				"Missions",
+				(
+					"Congratulations!\n\nYou just started your first ever mission with the party of %s.\n\nWin to gather experience and grow in strength. You also earn bonus rewards for the first clear!."
+					% names
+				),
+				Color.GREEN
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.FIRST_MISSION, true)
 
 
 func _poll_completed() -> void:
@@ -151,9 +169,43 @@ func claim_rewards(id: String) -> void:
 		)
 	st.pending_gold = 0
 
+	if st.status == MissionState.Status.FAILED:
+		_check_first_fail(killed_s)
+	elif id == "tower_20":
+		_check_game_clear()
+
 	st.status = MissionState.Status.AVAILABLE
 	mission_claimed.emit(id)
 	SaveManager.save_sync()
+
+
+func _check_first_fail(names: String):
+	if not SaveManager.get_flag(GameState.Flag.FIRST_FAILURE):
+		(
+			NotificationService
+			. popup(
+				"Missions",
+				(
+					"Oh no, you just failed your first ever mission and lost %s.\n\nGather more strength by repeating easier missions and upgrading your adventurers.\n\nBe careful not to lose all your adventurers or you journey will come to and end!."
+					% names
+				),
+				Color.RED
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.FIRST_FAILURE, true)
+
+
+func _check_game_clear():
+	if not SaveManager.get_flag(GameState.Flag.FINISHED_FLOOR_20):
+		(
+			NotificationService
+			. popup(
+				"End",
+				"Congratulations!\n\nYou just finished floor 20, the last floor in the game demo.\n\nThank you for playing our game, and we hope you had a lot of fun.",
+				Color.GREEN
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.FINISHED_FLOOR_20, true)
 
 
 func _ids_to_items(items_ids: Array[String]) -> String:
