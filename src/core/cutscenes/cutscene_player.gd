@@ -3,8 +3,9 @@ extends Control
 signal cutscene_finished
 
 const FAST_MULT := 0.20  # factor to speed up by
+const MAX_SPEED := 0.00001  # max speed
 
-@export_range(0.005, 0.2, 0.005) var typing_speed := 0.04
+@export_range(0.005, 0.2, 0.005) var typing_speed := 0.05
 @export var speed_input := "ui_accept"
 @export var next_input := "ui_accept"
 @export var skip_input := "ui_end"
@@ -18,7 +19,8 @@ const FAST_MULT := 0.20  # factor to speed up by
 
 var _idx: int = 0  # track current entry
 var _char_idx: int = 0  # track current char
-var _skipping: bool = false
+var _cutscene_skipping: bool = false  # for skipping whole cutscene
+var _skipping: bool = false  # for speeding through current line
 var _awaiting: bool = false  # waiting for player advancing
 
 
@@ -76,6 +78,8 @@ func _queue_next_char():
 
 		# use fast speed only while the key is held
 		var speed := typing_speed * FAST_MULT if _skipping else typing_speed
+		if _cutscene_skipping:
+			speed = MAX_SPEED
 		timer.start(speed)
 	else:
 		_finish_line()
@@ -90,10 +94,13 @@ func _skip_to_end_of_line() -> void:
 	var txt := _current().text
 	_char_idx = txt.length()
 	text_label.text = txt
-	_finish_line()
 
 
 func _finish_line():
+	if _cutscene_skipping:
+		_next_entry()
+		return
+
 	if _current().auto_advance:
 		timer.start(_current().hold_time)
 		await timer.timeout
@@ -124,6 +131,6 @@ func _set_image(tex: Texture2D):
 
 
 func _on_skip_button_pressed() -> void:
+	_cutscene_skipping = true
 	_finish_line()
 	skip.visible = false
-	cutscene_finished.emit()
