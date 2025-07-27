@@ -10,7 +10,7 @@ const TOAST_FADE_TIME := 1.0
 
 
 func toast(
-	title: String, desc: String, colour: Color, icon: Texture = null, life: float = 2.0
+	title: String, desc: String, colour: Color, icon: Texture = null, life: float = 3.0
 ) -> void:
 	var t := TOAST_SCN.instantiate()
 	_toast_container.add_child(t)
