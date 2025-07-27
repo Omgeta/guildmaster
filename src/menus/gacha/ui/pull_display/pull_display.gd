@@ -11,7 +11,7 @@ var color_util = preload("res://src/utils/ColorUtil.gd").new()
 
 
 func set_adventurer_data(c: AdventurerData) -> void:
-	_title.text = c.display_name + " " + str(c.rarity) + "★"
+	_title.text = c.display_name + " " + str(c.rarity) + "*"
 	_subtitle.text = AdventurerData.Class.find_key(c.class_)
 	_subtitle.add_theme_color_override("font_color", color_util.get_class_color(c.class_))
 	_bottom.text = c.origin.display_name

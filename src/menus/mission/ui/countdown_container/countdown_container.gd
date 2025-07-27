@@ -15,7 +15,7 @@ func finished():
 
 
 func set_time(duration: int):
-	var hours := int(duration / 3600)
-	var mins := int((duration / 60) % 60)
-	var secs := int(duration % 60)
+	var hours: int = floor(duration / 3600.0)
+	var mins: int = floor(duration / 60.0) % 60
+	var secs := duration % 60
 	_label.text = "%02d : %02d : %02d" % [hours, mins, secs]

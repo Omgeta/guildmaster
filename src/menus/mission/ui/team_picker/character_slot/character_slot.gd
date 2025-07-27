@@ -21,7 +21,7 @@ func setup(adv: AdventurerData) -> void:
 	_char.position.z += _idx
 	_cam.position.z += _idx
 	tooltip_text = (
-		"%s %d⭐\n%s\nLv. %d"
+		"%s %d*\n%s\nLv. %d"
 		% [adv.display_name, adv.rarity, AdventurerData.Class.find_key(adv.class_), adv.level]
 	)
 	self_modulate = color_util.new().get_rarity_color(adv.rarity)

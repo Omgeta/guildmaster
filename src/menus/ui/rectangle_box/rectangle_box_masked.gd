@@ -1,15 +1,15 @@
 extends Control
 
 @export var switch_time: float = 0.15
-@export var texture: Texture2D
+@export var image: Texture2D
 
 @onready var _banner_img = $Mask/BannerImage
 
-var _tween: Tween
+var _tween: Tween = create_tween()
 
 
 func _ready() -> void:
-	_banner_img.texture = texture
+	_banner_img.texture = image
 
 
 func set_image(tex: Texture2D):
@@ -17,10 +17,12 @@ func set_image(tex: Texture2D):
 
 
 func transition_image(tex: Texture2D, instant := false):
+	print(modulate)
+	print(self.texture)
 	if _tween:
 		_tween.kill()
-	_tween = create_tween()
 	if !instant and switch_time > 0.0:
+		_tween = create_tween()
 		_tween.tween_property(_banner_img, "modulate:a", 0.0, switch_time * 0.5)
 		_tween.tween_callback(set_image.bind(tex))
 		_tween.tween_property(_banner_img, "modulate:a", 1.0, switch_time * 0.5)

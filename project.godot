@@ -94,6 +94,11 @@ move_up={
 ]
 }
 
+[navigation]
+
+3d/default_cell_size=0.1
+3d/merge_rasterizer_cell_scale=0.5
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

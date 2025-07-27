@@ -43,7 +43,7 @@ static func simulate(
 		killed.append_array(party)
 	else:
 		# if not total failure, kill first half vanguards
-		var to_kill := int(party.size() / 2)
+		var to_kill: int = floor(party.size() / 2.0)
 		for i in to_kill:
 			killed.append(party[i])
 
@@ -54,7 +54,8 @@ static func simulate(
 			xp += enemy.xp_reward * spawn.count
 
 			# cut drops in half if failure
-			for i in spawn.count / (1 if success else 2):
+			var rolls: int = floor(spawn.count / (1.0 if success else 2.0))
+			for i in rolls:
 				rewards.append_array(_roll_enemy_drops(enemy))
 
 	return {"success": success, "killed": killed, "rewards": rewards, "xp": xp}

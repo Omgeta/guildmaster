@@ -1,6 +1,6 @@
 extends TextureButton
 
-const SFX := preload("res://src/menus/assets/music/sfx/click.MP3")
+const SFX := preload("res://src/menus/assets/music/sfx/click.mp3")
 
 
 func setup(_item, _c = null) -> void:

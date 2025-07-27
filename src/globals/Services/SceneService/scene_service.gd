@@ -5,10 +5,9 @@ signal scene_changed(current: Node)
 @export var fade_time: float = 0.5
 
 @onready var _fader: ColorRect = $Fader
-@onready var _tween: Tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
+var _tween: Tween
 var _stack: Array[Node] = []
-
 var _busy: bool = false
 
 
@@ -46,7 +45,8 @@ func pop() -> void:
 
 
 func _transition(cb: Callable) -> void:
-	_tween.kill()
+	if _tween:
+		_tween.kill()
 	_tween = create_tween()
 	_tween.tween_property(_fader, "modulate:a", 1.0, fade_time)
 	_tween.tween_callback(cb)
