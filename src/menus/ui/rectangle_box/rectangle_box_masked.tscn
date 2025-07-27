@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://vwn0extikar2"]
+[gd_scene load_steps=5 format=3 uid="uid://3saco77ndwu4"]
 
 [ext_resource type="PackedScene" uid="uid://v8r6r2eg6afa" path="res://src/menus/ui/rectangle_box/rectangle_box.tscn" id="1_e2cju"]
-[ext_resource type="Script" uid="uid://d228dp8c3y1kh" path="res://src/menus/ui/rectangle_box/rectangle_box_masked.gd" id="2_k4o15"]
+[ext_resource type="Script" uid="uid://cvdbcfcmptkoe" path="res://src/menus/ui/rectangle_box/rectangle_box_masked.gd" id="2_k4o15"]
 [ext_resource type="Texture2D" uid="uid://evn1mna1b5hk" path="res://src/menus/assets/2d/RectangleBox/RectangleBoxMask.png" id="3_gmgdn"]
+[ext_resource type="Texture2D" uid="uid://cdua2hgf1l7ky" path="res://src/menus/gacha/prefabs/standard/standard.png" id="4_ys0c6"]
 
-[node name="RectangleBox" instance=ExtResource("1_e2cju")]
+[node name="RectangleBoxMasked" instance=ExtResource("1_e2cju")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 50.0
+offset_bottom = 50.0
 script = ExtResource("2_k4o15")
 
 [node name="Mask" type="NinePatchRect" parent="." index="0"]
@@ -21,15 +27,15 @@ patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
 metadata/_edit_use_anchors_ = true
-metadata/_edit_group_ = true
 
-[node name="BannerImage" type="TextureRect" parent="Mask" index="0"]
+[node name="Image" type="TextureRect" parent="Mask" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("4_ys0c6")
 expand_mode = 5
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true

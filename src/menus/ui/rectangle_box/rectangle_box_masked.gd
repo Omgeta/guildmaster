@@ -1,30 +1,23 @@
-extends Control
+extends NinePatchRect
 
-@export var switch_time: float = 0.15
-@export var image: Texture2D
+@export var switch_time := 0.15
 
-@onready var _banner_img = $Mask/BannerImage
+@onready var _image = $Mask/Image
 
-var _tween: Tween = create_tween()
-
-
-func _ready() -> void:
-	_banner_img.texture = image
+var _tween: Tween
 
 
-func set_image(tex: Texture2D):
-	_banner_img.texture = tex
-
-
-func transition_image(tex: Texture2D, instant := false):
-	print(modulate)
-	print(self.texture)
+func change_image(tex: Texture2D, instant: bool = true):
 	if _tween:
 		_tween.kill()
-	if !instant and switch_time > 0.0:
+	if not instant and switch_time > 0.0:
 		_tween = create_tween()
-		_tween.tween_property(_banner_img, "modulate:a", 0.0, switch_time * 0.5)
-		_tween.tween_callback(set_image.bind(tex))
-		_tween.tween_property(_banner_img, "modulate:a", 1.0, switch_time * 0.5)
+		_tween.tween_property(_image, "modulate:a", 0.0, switch_time * 0.5)
+		_tween.tween_callback(_set_image.bind(tex))
+		_tween.tween_property(_image, "modulate:a", 1.0, switch_time * 0.5)
 	else:
-		set_image(tex)
+		_set_image(tex)
+
+
+func _set_image(tex: Texture2D):
+	_image.texture = tex

@@ -54,15 +54,10 @@ mouse_filter = 2
 [node name="BannerViewer" parent="MainContainer" instance=ExtResource("3_fxtcr")]
 custom_minimum_size = Vector2(750, 350)
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.174479
 anchor_top = 0.177469
 anchor_right = 0.825521
 anchor_bottom = 0.717593
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 banners = Array[ExtResource("4_jv4xj")]([ExtResource("5_36sg7"), ExtResource("6_d35nn")])
 
 [node name="PullButtons" parent="MainContainer" instance=ExtResource("2_g6y2b")]

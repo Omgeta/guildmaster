@@ -27,10 +27,5 @@ func show_next() -> void:
 func _apply_banner(idx: int, instant: bool = false) -> void:
 	var data := banners[idx]
 	_card.name = data.id
-	_card.transition_image(data.image, instant)
+	_card.change_image(data.image, instant)
 	banner_changed.emit(idx, data)
-
-
-func _populate_card(data: BannerData) -> void:
-	_card.texture = data.image
-	_card.name = data.id

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://x806s713g56u"]
 
 [ext_resource type="Script" uid="uid://canvcpd2dmjac" path="res://src/menus/gacha/ui/banner_viewer/banner_viewer.gd" id="1_qog7l"]
-[ext_resource type="PackedScene" uid="uid://vwn0extikar2" path="res://src/menus/ui/rectangle_box/rectangle_box_masked.tscn" id="2_88ra5"]
+[ext_resource type="PackedScene" uid="uid://3saco77ndwu4" path="res://src/menus/ui/rectangle_box/rectangle_box_masked.tscn" id="2_88ra5"]
 
 [node name="BannerViewer" type="Control"]
 custom_minimum_size = Vector2(350, 175)
@@ -13,7 +13,6 @@ grow_vertical = 2
 script = ExtResource("1_qog7l")
 
 [node name="BannerCard" parent="." instance=ExtResource("2_88ra5")]
-custom_minimum_size = Vector2(350, 175)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
