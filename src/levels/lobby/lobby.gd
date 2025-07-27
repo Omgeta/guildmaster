@@ -8,8 +8,9 @@ const BOUND := 10
 @export var wheel_step := 0.5
 @export var smooth_speed := 8.0
 @export_range(0.1, 2.0, 0.05) var zoom_speed := 0.2
-@export_range(0.1, 5.0, 0.05) var mouse_sens := 0.7
-@export_range(10, 100, 1) var orbit_speed_deg: float = 20.0  # deg/s
+@export_range(0.1, 5.0, 0.05) var mouse_rot_sens := 0.75
+@export_range(0.1, 5.0, 0.05) var mouse_pan_sens := 0.1
+@export_range(10, 100, 1) var orbit_speed_deg: float = 70.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
 
 @onready var _env: WorldEnvironment = $WorldEnvironment
@@ -23,6 +24,7 @@ const BOUND := 10
 
 var _orbit_angle: float = 0
 var _right_drag := false
+var _left_drag := false
 var _last_mouse_x := 0.0
 
 
@@ -45,49 +47,39 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_keyboard_orbit(delta)
-	_update_camera_pan(delta)
+	_keyboard_pan(delta)
 	_rotate_sky(delta)
 	_cam3d.size = lerp(_cam3d.size, _zoom, smooth_speed * delta)
 
 
 func _input(event: InputEvent) -> void:
-	# adjust cam3d size in order to zoom in and out
-	if (
-		event is InputEventMouseButton
-		and event.is_pressed()
-		and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]
-	):
-		var dir := -1.0 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0
-		_zoom = clamp(_zoom + dir * wheel_step, min_size, max_size)
+	if event is InputEventMouseButton:
+		match event.button_index:
+			MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN:
+				var dir := -1.0 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0
+				_zoom = clamp(_zoom + dir * wheel_step, min_size, max_size)
 
-	# set flag for RMB held down
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT:
-		_right_drag = event.pressed
-		_last_mouse_x = event.position.x
+			MOUSE_BUTTON_RIGHT:
+				_right_drag = event.pressed
+				_last_mouse_x = event.position.x
 
-	# calculate diff and rotate along x
-	if _right_drag and event is InputEventMouseMotion:
-		var dx = event.position.x - _last_mouse_x
-		_last_mouse_x = event.position.x
-		_orbit_angle -= dx * mouse_sens * 0.1
-		_orbit_angle = wrapf(_orbit_angle, -180.0, 180.0)
-		_cam.rotation_degrees.y = _orbit_angle
+			MOUSE_BUTTON_LEFT:
+				_left_drag = event.pressed
 
+	if event is InputEventMouseMotion:
+		if _right_drag:
+			var dx: float = event.position.x - _last_mouse_x
+			_last_mouse_x = event.position.x
+			_orbit_angle = wrapf(_orbit_angle - dx * mouse_rot_sens * 0.1, -180.0, 180.0)
+			_cam.rotation_degrees.y = _orbit_angle
 
-func _apply_zoom() -> void:
-	_cam3d.size = _zoom
+		elif _left_drag:
+			var delta := get_process_delta_time()
+			var px: float = event.relative.x * mouse_pan_sens
+			var pz: float = event.relative.y * mouse_pan_sens
 
-
-func _spawn_roster():
-	var chars := await SpawnService.spawn_roster(_nav, _chars, _cam, _spawns)
-	for c in chars:
-		c.wander(_nav)
-
-
-func _refresh_roster():
-	for c in _chars.get_children():
-		c.queue_free()
-	_spawn_roster()
+			var move := _pan_vector(px, pz) * pan_speed * delta
+			_clamp_camera_pan(move)
 
 
 func _keyboard_orbit(delta: float) -> void:
@@ -100,27 +92,20 @@ func _keyboard_orbit(delta: float) -> void:
 	_cam.rotation_degrees.y = _orbit_angle
 
 
-func _update_camera_pan(delta: float) -> void:
-	var move := Vector3.ZERO
+func _keyboard_pan(delta: float) -> void:
+	var x := Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var z := Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
-	if Input.is_action_pressed("move_up"):
-		move.x -= 0.5
-		move.z -= 0.5
-	if Input.is_action_pressed("move_down"):
-		move.x += 0.5
-		move.z += 0.5
-	if Input.is_action_pressed("move_left"):
-		move.x -= 0.5
-		move.z += 0.5
-	if Input.is_action_pressed("move_right"):
-		move.x += 0.5
-		move.z -= 0.5
-
-	if move == Vector3.ZERO:
+	if x == 0 and z == 0:
 		return
 
-	move = (_cam.global_transform.basis * move).normalized() * pan_speed * delta
+	var dir2 := Vector2(x, z).normalized()
+	var move := _pan_vector(-dir2.x, -dir2.y) * pan_speed * delta
 
+	_clamp_camera_pan(move)
+
+
+func _clamp_camera_pan(move: Vector3):
 	# clamp inside nav AABB after transforming to local space
 	var new_world_pos = _cam.global_transform.origin + move
 	var local = _nav.to_local(new_world_pos)
@@ -130,6 +115,29 @@ func _update_camera_pan(delta: float) -> void:
 	var gtransform = _cam.global_transform
 	gtransform.origin = _nav.to_global(local)
 	_cam.global_transform = gtransform
+
+
+func _pan_vector(x: float, z: float) -> Vector3:
+	var right := _cam3d.global_transform.basis.x
+	var forward := _cam3d.global_transform.basis.z
+	# project onto ground and renorm
+	right.y = 0
+	forward.y = 0
+	right = right.normalized()
+	forward = forward.normalized()
+	return -right * x - forward * z
+
+
+func _spawn_roster():
+	var chars := await SpawnService.spawn_roster(_nav, _chars, _cam, _spawns)
+	for c in chars:
+		c.wander(_nav)
+
+
+func _refresh_roster():
+	for c in _chars.get_children():
+		c.queue_free()
+	_spawn_roster()
 
 
 func _rotate_sky(delta: float) -> void:

@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="guildmaster"
+config/name="Guildmaster"
 run/main_scene="uid://b5kk3dugot5lb"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://dyfx2gifl0xvi"
 
 [autoload]
 
