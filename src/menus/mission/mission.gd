@@ -100,6 +100,7 @@ func _on_mission_state_change(id: String) -> void:
 		_update_buttons()
 		_refresh_countdown()
 		_picker.setup(AdventurerManager.get_roster(true), MissionManager.get_state(id).team_guids)
+		_details.setup(_selected)
 	_missions.populate_missions(MissionDB.get_by_type(MissionData.Type.TOWER))
 
 

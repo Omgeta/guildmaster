@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bc8a370acfqeq"
-path="res://.godot/imported/gacha_pull.MP3-4f01118278af26e5ffcb9c00fb1a3bf6.mp3str"
+path="res://.godot/imported/gacha_pull.mp3-ddb0a08202a705de06cfa923ed27fcb1.mp3str"
 
 [deps]
 
-source_file="res://src/menus/assets/music/sfx/gacha_pull.MP3"
-dest_files=["res://.godot/imported/gacha_pull.MP3-4f01118278af26e5ffcb9c00fb1a3bf6.mp3str"]
+source_file="res://src/menus/assets/music/sfx/gacha_pull.mp3"
+dest_files=["res://.godot/imported/gacha_pull.mp3-ddb0a08202a705de06cfa923ed27fcb1.mp3str"]
 
 [params]
 
