@@ -9,7 +9,7 @@ const BOUND := 10
 @export var smooth_speed := 8.0
 @export_range(0.1, 2.0, 0.05) var zoom_speed := 0.2
 @export_range(0.1, 5.0, 0.05) var mouse_rot_sens := 0.75
-@export_range(0.1, 5.0, 0.05) var mouse_pan_sens := 0.15
+@export_range(0.1, 5.0, 0.05) var mouse_pan_sens := 0.1
 @export_range(10, 100, 1) var orbit_speed_deg: float = 70.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
 
@@ -74,32 +74,12 @@ func _input(event: InputEvent) -> void:
 			_cam.rotation_degrees.y = _orbit_angle
 
 		elif _left_drag:
-			# same logic as keyboard pan
-			var move := (
-				(
-					(_cam3d.global_basis * Vector3(-event.relative.x, 0, -event.relative.y))
-					. normalized()
-				)
-				* mouse_pan_sens
-			)
-			move.y = 0.0  # keep level
+			var delta := get_process_delta_time()
+			var px: float = event.relative.x * mouse_pan_sens
+			var pz: float = event.relative.y * mouse_pan_sens
+
+			var move := _pan_vector(px, pz) * pan_speed * delta
 			_clamp_camera_pan(move)
-
-
-func _apply_zoom() -> void:
-	_cam3d.size = _zoom
-
-
-func _spawn_roster():
-	var chars := await SpawnService.spawn_roster(_nav, _chars, _cam, _spawns)
-	for c in chars:
-		c.wander(_nav)
-
-
-func _refresh_roster():
-	for c in _chars.get_children():
-		c.queue_free()
-	_spawn_roster()
 
 
 func _keyboard_orbit(delta: float) -> void:
@@ -113,16 +93,14 @@ func _keyboard_orbit(delta: float) -> void:
 
 
 func _keyboard_pan(delta: float) -> void:
-	# local
-	var move := Vector3(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		0.0,
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	)
+	var x := Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	var z := Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
-	# transform along rot and discard y component
-	move = (_cam3d.global_transform.basis * move).normalized() * pan_speed * delta
-	move.y = 0
+	if x == 0 and z == 0:
+		return
+
+	var dir2 := Vector2(x, z).normalized()
+	var move := _pan_vector(-dir2.x, -dir2.y) * pan_speed * delta
 
 	_clamp_camera_pan(move)
 
@@ -137,6 +115,29 @@ func _clamp_camera_pan(move: Vector3):
 	var gtransform = _cam.global_transform
 	gtransform.origin = _nav.to_global(local)
 	_cam.global_transform = gtransform
+
+
+func _pan_vector(x: float, z: float) -> Vector3:
+	var right := _cam3d.global_transform.basis.x
+	var forward := _cam3d.global_transform.basis.z
+	# project onto ground and renorm
+	right.y = 0
+	forward.y = 0
+	right = right.normalized()
+	forward = forward.normalized()
+	return -right * x - forward * z
+
+
+func _spawn_roster():
+	var chars := await SpawnService.spawn_roster(_nav, _chars, _cam, _spawns)
+	for c in chars:
+		c.wander(_nav)
+
+
+func _refresh_roster():
+	for c in _chars.get_children():
+		c.queue_free()
+	_spawn_roster()
 
 
 func _rotate_sky(delta: float) -> void:
