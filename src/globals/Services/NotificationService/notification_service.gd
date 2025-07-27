@@ -3,8 +3,12 @@ extends CanvasLayer
 @onready var _toast_container: VBoxContainer = $ToastContainer
 @onready var _popup_container: Control = $PopupContainer  # input‑blocking backdrop
 
-const TOAST_SCN := preload("res://src/globals/Services/NotificationService/ui/toast/toast.tscn")
-const POPUP_SCN := preload("res://src/globals/Services/NotificationService/ui/popup/popup.tscn")
+const TOAST_SCN: PackedScene = preload(
+	"res://src/globals/Services/NotificationService/ui/toast/toast.tscn"
+)
+const POPUP_SCN: PackedScene = preload(
+	"res://src/globals/Services/NotificationService/ui/popup/popup.tscn"
+)
 const NOTIFICATION_SFX := preload("res://src/menus/assets/music/sfx/notification.mp3")
 const TOAST_FADE_TIME := 1.0
 const TOAST_SPAWN_DELAY := 0.1
