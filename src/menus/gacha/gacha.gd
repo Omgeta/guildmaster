@@ -122,11 +122,11 @@ func _on_pull(count: int, banner: BannerData = _cur_banner) -> void:
 	_busy = false
 
 
-func _show_display(r: AdventurerData, pop: float, show: float):
+func _show_display(r: AdventurerData, pop: float, show_: float):
 	_display.set_adventurer_data(r)
 	_display.modulate.a = 0.0
 	var t := create_tween()
 	t.tween_property(_display, "modulate:a", 1.0, pop)
-	t.tween_interval(show)
+	t.tween_interval(show_)
 	t.tween_property(_display, "modulate:a", 0.0, pop)
 	await t.finished

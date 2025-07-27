@@ -28,8 +28,8 @@ func available_missions() -> Array[MissionData]:
 		SaveManager
 		. _get_mission_states(false)
 		. values()
-		. filter(func(st): st.status == MissionState.Status.AVAILABLE)
-		. map(func(st): MissionDB.get_by_id(st.mission_id))
+		. filter(func(st): return st.status == MissionState.Status.AVAILABLE)
+		. map(func(st): return MissionDB.get_by_id(st.mission_id))
 	)
 
 

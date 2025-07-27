@@ -7,7 +7,7 @@ const FAST_MULT := 0.20  # factor to speed up by
 @export_range(0.005, 0.2, 0.005) var typing_speed := 0.04
 @export var speed_input := "ui_accept"
 @export var next_input := "ui_accept"
-@export var skip_input := "ui_escape"
+@export var skip_input := "ui_end"
 @export var cutscene: CutsceneData
 
 @onready var text_label: Label = $CenterContainer/VBoxContainer/Text
