@@ -1,20 +1,13 @@
-[gd_resource type="Resource" script_class="MissionData" load_steps=7 format=3 uid="uid://djug421mi2823"]
+[gd_resource type="Resource" script_class="MissionData" load_steps=5 format=3 uid="uid://djug421mi2823"]
 
 [ext_resource type="Script" uid="uid://cre2kdlod3tks" path="res://src/core/missions/enemy_spawn.gd" id="1_yu3wf"]
 [ext_resource type="Resource" uid="uid://qhv4cmw1uj50" path="res://src/core/entities/enemies/prefabs/undead/sorceress/sorceress.tres" id="2_id7e7"]
 [ext_resource type="Script" uid="uid://3jfimk51slkh" path="res://src/core/missions/mission_data.gd" id="2_y4o7h"]
-[ext_resource type="Resource" uid="uid://cvyep6gmvwqxr" path="res://src/core/entities/enemies/prefabs/undead/skeleton/skeleton.tres" id="3_id7e7"]
 
 [sub_resource type="Resource" id="Resource_ghfrc"]
 script = ExtResource("1_yu3wf")
 enemy_data = ExtResource("2_id7e7")
 count = 1
-metadata/_custom_type_script = "uid://cre2kdlod3tks"
-
-[sub_resource type="Resource" id="Resource_74aon"]
-script = ExtResource("1_yu3wf")
-enemy_data = ExtResource("3_id7e7")
-count = 2
 metadata/_custom_type_script = "uid://cre2kdlod3tks"
 
 [resource]
@@ -24,7 +17,7 @@ display_name = "Floor 5"
 type = 0
 prerequisite_id = "tower_4"
 duration_sec = 150
-enemy_spawns = Array[ExtResource("1_yu3wf")]([SubResource("Resource_ghfrc"), SubResource("Resource_74aon")])
+enemy_spawns = Array[ExtResource("1_yu3wf")]([SubResource("Resource_ghfrc")])
 bonus_exp = 375
 bonus_gold = 150
 bonus_rewards = []

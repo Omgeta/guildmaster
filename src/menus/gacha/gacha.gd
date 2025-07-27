@@ -35,7 +35,7 @@ func _ready() -> void:
 	SaveManager.gold_changed.connect(func(_old, _new): _refresh_afford())
 
 	# handle intro
-	if not SaveManager.get_flag(GameState.Flag.GACHA_TUTORIAL):
+	if not SaveManager.get_flag(GameState.Flag.INTRO_GACHA):
 		var beginner_banner = load("res://src/menus/gacha/prefabs/beginner/beginner.tres")
 		await _on_pull(5, beginner_banner)
 		(
