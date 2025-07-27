@@ -119,7 +119,7 @@ func _update_camera_pan(delta: float) -> void:
 	if move == Vector3.ZERO:
 		return
 
-	move = move.normalized() * pan_speed * delta
+	move = (_cam.global_transform.basis * move).normalized() * pan_speed * delta
 
 	# clamp inside nav AABB after transforming to local space
 	var new_world_pos = _cam.global_transform.origin + move
