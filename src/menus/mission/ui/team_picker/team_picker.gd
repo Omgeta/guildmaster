@@ -2,8 +2,8 @@ extends Control
 
 signal team_changed
 
-const CHARACTER_SLOT_PCK := preload(
-	"res://src/menus/mission/ui/team_picker/character_slot/character_slot.tscn"
+const ADVENTURER_SLOT_PCK := preload(
+	"res://src/menus/mission/ui/team_picker/adventurer_slot/adventurer_slot.tscn"
 )
 
 @onready var _list: GridContainer = $MarginContainer/ScrollContainer/GridContainer
@@ -27,7 +27,7 @@ func setup(roster: Array[AdventurerData], team_guids: PackedStringArray) -> void
 			continue
 
 		# set up slot
-		var slot := CHARACTER_SLOT_PCK.instantiate()
+		var slot := ADVENTURER_SLOT_PCK.instantiate()
 		_list.add_child(slot)
 		slot.setup(adv)
 		slot.pressed.connect(_on_list_activate.bind(slot, adv.id))

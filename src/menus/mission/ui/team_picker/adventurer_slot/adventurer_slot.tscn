@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqs1wqd5jnxvt"]
+
+[ext_resource type="Script" uid="uid://c63r0vn1j6y35" path="res://src/menus/mission/ui/team_picker/adventurer_slot/adventurer_slot.gd" id="1_340yv"]
+[ext_resource type="Texture2D" uid="uid://mhibmh51pudw" path="res://src/menus/assets/2d/Slots/SlotEmpty.png" id="1_r51ij"]
+[ext_resource type="PackedScene" uid="uid://fv7ckbpapn2j" path="res://src/core/entities/character_3d.tscn" id="2_c8cb4"]
+[ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="3_kgob2"]
+
+[node name="AdventurerSlot" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+script = ExtResource("1_340yv")
+
+[node name="CharacterContainer" type="TextureRect" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r51ij")
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CharacterContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="CharacterContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(60, 60)
+render_target_update_mode = 4
+
+[node name="Character3D" parent="CharacterContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("cam") instance=ExtResource("2_c8cb4")]
+cam = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0.15)
+
+[node name="LevelContainer" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 20.0
+grow_vertical = 0
+texture = ExtResource("1_r51ij")
+
+[node name="Label" type="Label" parent="LevelContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.075
+anchor_right = 1.0
+anchor_bottom = 1.075
+offset_top = 1.5
+offset_bottom = -1.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_kgob2")
+theme_override_font_sizes/font_size = 15
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

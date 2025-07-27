@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c00rbvohyldnx"]
+[gd_scene load_steps=10 format=3 uid="uid://c00rbvohyldnx"]
 
 [ext_resource type="Script" uid="uid://c0u8cifgtx23k" path="res://src/menus/mission/mission.gd" id="1_w6lnb"]
 [ext_resource type="PackedScene" uid="uid://m3584wxp2p80" path="res://src/menus/ui/button_home/button_home.tscn" id="2_77xhu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://s7xddbi1s8fb" path="res://src/menus/ui/button_single/button_single.tscn" id="6_cnq5l"]
 [ext_resource type="PackedScene" uid="uid://duwt6bvsn5cvh" path="res://src/menus/mission/ui/team_picker/team_picker.tscn" id="6_x3uo8"]
 [ext_resource type="PackedScene" uid="uid://bwe7i1bhkqnjp" path="res://src/menus/mission/ui/countdown_container/countdown_container.tscn" id="7_j2owq"]
+[ext_resource type="PackedScene" uid="uid://dslunpm34ypgo" path="res://src/menus/mission/ui/mission_details/mission_details.tscn" id="9_x3uo8"]
 
 [node name="Mission" type="Control"]
 layout_mode = 3
@@ -30,34 +31,44 @@ grow_vertical = 2
 texture = ExtResource("2_cnq5l")
 metadata/_edit_use_anchors_ = true
 
-[node name="Pipe2" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 720.0
-offset_top = 221.0
-offset_right = 756.0
-offset_bottom = 233.0
-rotation = -1.5708
+[node name="Pipe3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.364583
+anchor_top = 0.632716
+anchor_right = 0.427083
+anchor_bottom = 0.669753
+offset_right = -36.0
+offset_bottom = -12.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_cnq5l")
+metadata/_edit_use_anchors_ = true
+
+[node name="Pipe2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.368056
+anchor_top = 0.279321
+anchor_right = 0.430556
+anchor_bottom = 0.316358
+offset_right = -36.0
+offset_bottom = -12.0
+scale = Vector2(2, 2)
+texture = ExtResource("3_cnq5l")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pipe" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 334.0
-offset_right = 459.0
-offset_bottom = 346.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.651042
+anchor_top = 0.225309
+anchor_right = 0.713542
+anchor_bottom = 0.262346
+offset_right = -36.0
+offset_bottom = -12.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_cnq5l")
-
-[node name="TeamPicker" parent="." instance=ExtResource("6_x3uo8")]
-custom_minimum_size = Vector2(540, 100)
-layout_mode = 1
-anchor_left = 0.402778
-anchor_top = 0.308642
-anchor_right = 0.864583
-anchor_bottom = 0.774691
-offset_right = 8.00061
-offset_bottom = -2.00006
+metadata/_edit_use_anchors_ = true
 
 [node name="MissionList" parent="." instance=ExtResource("6_60hqj")]
 layout_mode = 1
@@ -69,36 +80,56 @@ anchor_bottom = 0.910494
 [node name="MainButton" parent="." instance=ExtResource("6_cnq5l")]
 custom_minimum_size = Vector2(192, 55)
 layout_mode = 1
-anchor_left = 0.552951
-anchor_top = 0.810185
-anchor_right = 0.675347
-anchor_bottom = 0.851852
-offset_right = 50.9998
-offset_bottom = 27.9998
+anchor_left = 0.682292
+anchor_top = 0.308642
+anchor_right = 0.859375
+anchor_bottom = 0.393519
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_77xhu")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.846354
-anchor_top = 0.28858
-anchor_right = 0.900173
-anchor_bottom = 0.38426
-offset_right = -21.9996
-offset_bottom = -22.0001
+anchor_left = 0.163194
+anchor_top = 0.160494
+anchor_right = 0.197917
+anchor_bottom = 0.222223
+offset_right = 0.0
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="CountdownContainer" parent="." instance=ExtResource("7_j2owq")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.55816
-anchor_top = 0.194444
-anchor_right = 0.713542
-anchor_bottom = 0.265432
+anchor_left = 0.693576
+anchor_top = 0.208333
+anchor_right = 0.848958
+anchor_bottom = 0.279321
 offset_right = 0.0
 offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
 
-[connection signal="team_changed" from="TeamPicker" to="." method="_update_buttons"]
+[node name="TeamPicker" parent="." instance=ExtResource("6_x3uo8")]
+custom_minimum_size = Vector2(540, 100)
+layout_mode = 1
+anchor_left = 0.402778
+anchor_top = 0.433642
+anchor_right = 0.871528
+anchor_bottom = 0.896604
+offset_right = 0.0
+
+[node name="MissionDetails" parent="." instance=ExtResource("9_x3uo8")]
+layout_mode = 1
+anchor_left = -0.00173611
+anchor_top = -0.00462963
+anchor_right = 0.0416667
+anchor_bottom = 0.0725309
+offset_left = 466.0
+offset_top = 119.0
+offset_right = 726.0
+offset_bottom = 224.0
+
 [connection signal="mission_selected" from="MissionList" to="." method="_on_mission_selected"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_back_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_refresh_countdown"]
+[connection signal="team_changed" from="TeamPicker" to="." method="_update_buttons"]
