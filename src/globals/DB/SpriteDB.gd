@@ -8,7 +8,6 @@ const FRAME_SIZE := Vector2i(64, 64)
 const DIRECTIONS := ["down", "up", "right", "left"]
 
 var _map: Dictionary[String, Dictionary] = {}  # cat : {id: Texture2D}
-var _thread: Thread = null
 var _loaded: int = 0
 var _total: int = 0
 var _busy: bool = true
@@ -19,8 +18,7 @@ signal loaded  # fired once when all sheets are preloaded
 func _ready():
 	var flat := _scan_manifest(MANIFEST_FILE, SPRITES_SECTION)  # flat map from cfg
 	_total = flat.size()
-	_thread = Thread.new()
-	_thread.start(_preload.bind(flat))
+	_preload(flat)
 	print("SpriteDB: loaded %d sprites" % flat.size())
 
 
@@ -43,7 +41,7 @@ func _preload(flat: Dictionary) -> void:
 		var sf: SpriteFrames = _build_frames(tex)
 		_store(full_id, sf)  # store frames by category
 		_loaded += 1
-	call_deferred("_on_finished")
+	_on_finished.call_deferred()
 
 
 func _build_frames(res: Resource) -> SpriteFrames:
@@ -90,8 +88,6 @@ func _store(full_id: String, res: Resource) -> void:
 
 func _on_finished() -> void:
 	_busy = false
-	_thread.wait_to_finish()
-	_thread = null
 	loaded.emit()
 
 
