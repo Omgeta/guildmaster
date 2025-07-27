@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://pkuo3cdg0fi5"]
 
-[ext_resource type="Texture2D" uid="uid://b6hershj8xa04" path="res://src/menus/assets/2d/ItemBox/ItemBox_24x24.png" id="1_1que2"]
+[ext_resource type="Texture2D" uid="uid://b5wptn44l824s" path="res://src/menus/assets/2d/ItemBox/ItemBox_24x24.png" id="1_1que2"]
 [ext_resource type="Script" uid="uid://qxbwtt8k0c8q" path="res://src/menus/gallery/ui/main_display/display_card/display_card.gd" id="1_5p1u7"]
 
 [node name="DisplayCard" type="TextureButton"]

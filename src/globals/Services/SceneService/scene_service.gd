@@ -5,9 +5,10 @@ signal scene_changed(current: Node)
 @export var fade_time: float = 0.5
 
 @onready var _fader: ColorRect = $Fader
+@onready var _tween: Tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 
 var _stack: Array[Node] = []
-var _tween: Tween = create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
 var _busy: bool = false
 
 

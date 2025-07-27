@@ -21,6 +21,7 @@ patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
 metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
 
 [node name="BannerImage" type="TextureRect" parent="Mask" index="0"]
 layout_mode = 1

@@ -25,9 +25,9 @@ func _show_one(
 	var c := prefab.instantiate()
 	c.data = data
 	c.cam = _cam
-	c.scale = Vector3.ZERO * 0.01
-	c.position = _spawn.global_position
 	add_child(c)
+	c.scale = Vector3.ZERO * 0.001
+	c.position = _spawn.global_position
 
 	# pop-in and keep there
 	await (
