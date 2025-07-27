@@ -122,13 +122,11 @@ func claim_rewards(id: String) -> void:
 		NotificationService.toast("Item Drops", _ids_to_names(st.pending_rewards), Color.DARK_BLUE)
 	st.pending_rewards.clear()
 
+	var killed_s: String = _ids_to_names(st.pending_killed)
 	for adv_id in st.pending_killed:
 		AdventurerManager.remove(adv_id)
 	if st.pending_killed.size() > 0:
-		NotificationService.toast(
-			"Deaths", "%s died..." % _ids_to_names(st.pending_killed), Color.CRIMSON
-		)
-	st.pending_killed.clear()
+		NotificationService.toast("Deaths", "%s died..." % killed_s, Color.CRIMSON)
 
 	var survived: Array[String] = []
 	for adv_id in st.team_guids:
@@ -143,6 +141,7 @@ func claim_rewards(id: String) -> void:
 			Color.GREEN
 		)
 	st.team_guids.clear()
+	st.pending_killed.clear()
 	st.pending_xp = 0
 
 	if st.pending_gold:

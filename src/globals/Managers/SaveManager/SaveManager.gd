@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_PATH := "user://save_slot0.tres"
 const SAVE_FLAGS := ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS
-const MAX_GOLD := 99999
+const MAX_GOLD := 1000
 
 var _state: GameState = GameState.new()
 var _dirty: bool = false
@@ -76,7 +76,9 @@ func _get_roster(copy := true) -> Array[AdventurerData]:
 
 
 func _find_adventurer(id: String, copy := true) -> AdventurerData:
-	return _state.adventurers[id].duplicate(true) if copy else _state.adventurers[id]
+	if _state.adventurers.has(id):
+		return _state.adventurers[id].duplicate(true) if copy else _state.adventurers[id]
+	return null
 
 
 func _set_adventurer(data: AdventurerData) -> void:

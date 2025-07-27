@@ -72,14 +72,16 @@ func _update_buttons():
 			else:
 				_button.set_label("Start")
 				_button.set_disabled_(false)
-				_button.pressed.connect(_on_button_start, ConnectFlags.CONNECT_ONE_SHOT)
+				if not _button.pressed.is_connected(_on_button_start):
+					_button.pressed.connect(_on_button_start, ConnectFlags.CONNECT_ONE_SHOT)
 		MissionState.Status.IN_PROGRESS:
 			_button.set_label("...")
 			_button.set_disabled_(true)
 		MissionState.Status.SUCCESS, MissionState.Status.FAILED:
 			_button.set_label("Results")
 			_button.set_disabled_(false)
-			_button.pressed.connect(_on_button_results, ConnectFlags.CONNECT_ONE_SHOT)
+			if not _button.pressed.is_connected(_on_button_results):
+				_button.pressed.connect(_on_button_results, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _on_button_start():

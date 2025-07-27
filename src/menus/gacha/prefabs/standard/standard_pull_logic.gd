@@ -35,7 +35,6 @@ func pull(banner: BannerData, count: int) -> Array[AdventurerData]:
 		results.append(c)
 		AdventurerManager.add(c)
 
-	SaveManager.save_sync()
 	return results
 
 
