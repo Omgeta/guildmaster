@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://22g4u3wv2tcy"
 path.s3tc="res://.godot/imported/grotto_cavern_cave_2.png-0012c1412c6e550298f08b6cc70398a6.s3tc.ctex"
+path.etc2="res://.godot/imported/grotto_cavern_cave_2.png-0012c1412c6e550298f08b6cc70398a6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://src/levels/gacha/assets/3d/cave/grotto_cavern_cave_2.png"
-dest_files=["res://.godot/imported/grotto_cavern_cave_2.png-0012c1412c6e550298f08b6cc70398a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/grotto_cavern_cave_2.png-0012c1412c6e550298f08b6cc70398a6.s3tc.ctex", "res://.godot/imported/grotto_cavern_cave_2.png-0012c1412c6e550298f08b6cc70398a6.etc2.ctex"]
 
 [params]
 

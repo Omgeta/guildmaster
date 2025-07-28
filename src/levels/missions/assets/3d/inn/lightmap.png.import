@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://u1gu00y23wj1"
 path.s3tc="res://.godot/imported/lightmap.png-f7720826bdea94d58edcbfaaf0107112.s3tc.ctex"
+path.etc2="res://.godot/imported/lightmap.png-f7720826bdea94d58edcbfaaf0107112.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/levels/missions/assets/3d/inn/lightmap.png"
-dest_files=["res://.godot/imported/lightmap.png-f7720826bdea94d58edcbfaaf0107112.s3tc.ctex"]
+dest_files=["res://.godot/imported/lightmap.png-f7720826bdea94d58edcbfaaf0107112.s3tc.ctex", "res://.godot/imported/lightmap.png-f7720826bdea94d58edcbfaaf0107112.etc2.ctex"]
 
 [params]
 

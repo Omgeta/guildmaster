@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs3v11mbfgb1l"
 path.s3tc="res://.godot/imported/emissive.png-b6704507262281e43b186494ae304668.s3tc.ctex"
+path.etc2="res://.godot/imported/emissive.png-b6704507262281e43b186494ae304668.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/levels/missions/assets/3d/inn/emissive.png"
-dest_files=["res://.godot/imported/emissive.png-b6704507262281e43b186494ae304668.s3tc.ctex"]
+dest_files=["res://.godot/imported/emissive.png-b6704507262281e43b186494ae304668.s3tc.ctex", "res://.godot/imported/emissive.png-b6704507262281e43b186494ae304668.etc2.ctex"]
 
 [params]
 

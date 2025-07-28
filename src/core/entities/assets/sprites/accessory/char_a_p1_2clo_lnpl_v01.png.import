@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm8o8uthhbo8j"
 path.s3tc="res://.godot/imported/char_a_p1_2clo_lnpl_v01.png-ec26b67089f73429f110888463a4fac7.s3tc.ctex"
+path.etc2="res://.godot/imported/char_a_p1_2clo_lnpl_v01.png-ec26b67089f73429f110888463a4fac7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/core/entities/assets/sprites/accessory/char_a_p1_2clo_lnpl_v01.png"
-dest_files=["res://.godot/imported/char_a_p1_2clo_lnpl_v01.png-ec26b67089f73429f110888463a4fac7.s3tc.ctex"]
+dest_files=["res://.godot/imported/char_a_p1_2clo_lnpl_v01.png-ec26b67089f73429f110888463a4fac7.s3tc.ctex", "res://.godot/imported/char_a_p1_2clo_lnpl_v01.png-ec26b67089f73429f110888463a4fac7.etc2.ctex"]
 
 [params]
 

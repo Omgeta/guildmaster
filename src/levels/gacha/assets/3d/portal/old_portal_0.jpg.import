@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ooyouppmyix0"
 path.s3tc="res://.godot/imported/old_portal_0.jpg-344b11a45a6c503b1df1a58953c22033.s3tc.ctex"
+path.etc2="res://.godot/imported/old_portal_0.jpg-344b11a45a6c503b1df1a58953c22033.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://src/levels/gacha/assets/3d/portal/old_portal_0.jpg"
-dest_files=["res://.godot/imported/old_portal_0.jpg-344b11a45a6c503b1df1a58953c22033.s3tc.ctex"]
+dest_files=["res://.godot/imported/old_portal_0.jpg-344b11a45a6c503b1df1a58953c22033.s3tc.ctex", "res://.godot/imported/old_portal_0.jpg-344b11a45a6c503b1df1a58953c22033.etc2.ctex"]
 
 [params]
 

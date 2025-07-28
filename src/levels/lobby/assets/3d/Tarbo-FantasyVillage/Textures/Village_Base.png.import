@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btrfkcfwnwbw2"
 path.s3tc="res://.godot/imported/Village_Base.png-5556d2fc6f0a20223f48ac265191cf91.s3tc.ctex"
+path.etc2="res://.godot/imported/Village_Base.png-5556d2fc6f0a20223f48ac265191cf91.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/levels/lobby/assets/3d/Tarbo-FantasyVillage/Textures/Village_Base.png"
-dest_files=["res://.godot/imported/Village_Base.png-5556d2fc6f0a20223f48ac265191cf91.s3tc.ctex"]
+dest_files=["res://.godot/imported/Village_Base.png-5556d2fc6f0a20223f48ac265191cf91.s3tc.ctex", "res://.godot/imported/Village_Base.png-5556d2fc6f0a20223f48ac265191cf91.etc2.ctex"]
 
 [params]
 

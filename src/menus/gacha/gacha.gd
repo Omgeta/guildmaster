@@ -47,6 +47,7 @@ func _ready() -> void:
 			)
 		)
 		SaveManager.set_flag(GameState.Flag.GACHA_TUTORIAL, true)
+		SaveManager.save_sync()  # force save so we cant dupe the initial pull
 
 
 func _input(event: InputEvent) -> void:
