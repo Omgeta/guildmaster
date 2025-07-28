@@ -60,22 +60,6 @@ func start_mission(id: String, team_guids: Array[String]) -> bool:
 	return true
 
 
-func _check_first_mission(names: String):
-	if not SaveManager.get_flag(GameState.Flag.FIRST_MISSION):
-		(
-			NotificationService
-			. popup(
-				"Missions",
-				(
-					"Congratulations!\n\nYou just started your first ever mission with the party of %s.\n\nWin to gather experience and grow in strength. You also earn bonus rewards for the first clear!."
-					% names
-				),
-				Color.GREEN
-			)
-		)
-		SaveManager.set_flag(GameState.Flag.FIRST_MISSION, true)
-
-
 func _poll_completed() -> void:
 	var now := Time.get_unix_time_from_system()
 	for id in SaveManager._get_mission_states():
@@ -110,10 +94,6 @@ func _finish_mission(id: String):
 
 	# update state
 	st.status = MissionState.Status.SUCCESS if success else MissionState.Status.FAILED
-
-	# unlock next tower level
-	if success:
-		_unlock_next_tower(id)
 
 	SaveManager.set_dirty()
 	NotificationService.toast(
@@ -174,9 +154,29 @@ func claim_rewards(id: String) -> void:
 	elif id == "tower_20":
 		_check_game_clear()
 
+	# unlock next tower level
+	if st.status == MissionState.Status.SUCCESS:
+		_unlock_next_tower(id)
+
 	st.status = MissionState.Status.AVAILABLE
 	mission_claimed.emit(id)
 	SaveManager.save_sync()
+
+
+func _check_first_mission(names: String):
+	if not SaveManager.get_flag(GameState.Flag.FIRST_MISSION):
+		(
+			NotificationService
+			. popup(
+				"Missions",
+				(
+					"Congratulations!\n\nYou just started your first ever mission with the party of %s.\n\nWin to gather experience and grow in strength. You also earn bonus rewards for the first clear!."
+					% names
+				),
+				Color.GREEN
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.FIRST_MISSION, true)
 
 
 func _check_first_fail(names: String):
