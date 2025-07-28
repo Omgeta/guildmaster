@@ -8,7 +8,9 @@ func pull(banner: BannerData, count: int) -> Array[AdventurerData]:
 	if not SaveManager.spend_gold(cost):
 		return []
 
-	var pool := SaveManager.get_origins()
+	var pool := SaveManager.get_origins(
+		true, SaveManager.get_flag(GameState.Flag.FINISHED_FLOOR_10)
+	)
 
 	var results: Array[AdventurerData] = []
 	for i in count:

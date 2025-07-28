@@ -179,6 +179,19 @@ func _check_first_mission(names: String):
 		SaveManager.set_flag(GameState.Flag.FIRST_MISSION, true)
 
 
+func _check_origin_unlock():
+	if not SaveManager.get_flag(GameState.Flag.FINISHED_FLOOR_10):
+		(
+			NotificationService
+			. popup(
+				"Missions",
+				"Congratulations!\n\nYou just reached the halfway point in the demo!\n\nAs a reward, a new rare origin has been added to your origin pool. Use your newfound power wisely.",
+				Color.PURPLE
+			)
+		)
+		SaveManager.set_flag(GameState.Flag.FINISHED_FLOOR_10, true)
+
+
 func _check_first_fail(names: String):
 	if not SaveManager.get_flag(GameState.Flag.FIRST_FAILURE):
 		(
