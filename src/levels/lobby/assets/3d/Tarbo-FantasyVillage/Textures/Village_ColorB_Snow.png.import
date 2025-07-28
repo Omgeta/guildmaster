@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://byli5fh4oo7nf"
 path.s3tc="res://.godot/imported/Village_ColorB_Snow.png-1170e74a765f496d6fdd5657558df71a.s3tc.ctex"
+path.etc2="res://.godot/imported/Village_ColorB_Snow.png-1170e74a765f496d6fdd5657558df71a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/levels/lobby/assets/3d/Tarbo-FantasyVillage/Textures/Village_ColorB_Snow.png"
-dest_files=["res://.godot/imported/Village_ColorB_Snow.png-1170e74a765f496d6fdd5657558df71a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Village_ColorB_Snow.png-1170e74a765f496d6fdd5657558df71a.s3tc.ctex", "res://.godot/imported/Village_ColorB_Snow.png-1170e74a765f496d6fdd5657558df71a.etc2.ctex"]
 
 [params]
 

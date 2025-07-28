@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://doecw6w0aktas"
 path.s3tc="res://.godot/imported/char_a_p1_1out_alch_v01.png-4cbbe5bf0bc56f51a033680b94354316.s3tc.ctex"
+path.etc2="res://.godot/imported/char_a_p1_1out_alch_v01.png-4cbbe5bf0bc56f51a033680b94354316.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/core/entities/assets/sprites/outfit/char_a_p1_1out_alch_v01.png"
-dest_files=["res://.godot/imported/char_a_p1_1out_alch_v01.png-4cbbe5bf0bc56f51a033680b94354316.s3tc.ctex"]
+dest_files=["res://.godot/imported/char_a_p1_1out_alch_v01.png-4cbbe5bf0bc56f51a033680b94354316.s3tc.ctex", "res://.godot/imported/char_a_p1_1out_alch_v01.png-4cbbe5bf0bc56f51a033680b94354316.etc2.ctex"]
 
 [params]
 

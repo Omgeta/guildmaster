@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://de0acblfo3que"
 path.s3tc="res://.godot/imported/tavern_0.jpg-f1410548ef741d1adcd04c1bb57e0c8c.s3tc.ctex"
+path.etc2="res://.godot/imported/tavern_0.jpg-f1410548ef741d1adcd04c1bb57e0c8c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://src/levels/gallery/assets/3d/tavern/tavern_0.jpg"
-dest_files=["res://.godot/imported/tavern_0.jpg-f1410548ef741d1adcd04c1bb57e0c8c.s3tc.ctex"]
+dest_files=["res://.godot/imported/tavern_0.jpg-f1410548ef741d1adcd04c1bb57e0c8c.s3tc.ctex", "res://.godot/imported/tavern_0.jpg-f1410548ef741d1adcd04c1bb57e0c8c.etc2.ctex"]
 
 [params]
 

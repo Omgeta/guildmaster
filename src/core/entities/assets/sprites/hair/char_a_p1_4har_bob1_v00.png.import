@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dudrj000qs2yv"
 path.s3tc="res://.godot/imported/char_a_p1_4har_bob1_v00.png-34c8db85fa31d515710ceafd8cf4bc67.s3tc.ctex"
+path.etc2="res://.godot/imported/char_a_p1_4har_bob1_v00.png-34c8db85fa31d515710ceafd8cf4bc67.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://src/core/entities/assets/sprites/hair/char_a_p1_4har_bob1_v00.png"
-dest_files=["res://.godot/imported/char_a_p1_4har_bob1_v00.png-34c8db85fa31d515710ceafd8cf4bc67.s3tc.ctex"]
+dest_files=["res://.godot/imported/char_a_p1_4har_bob1_v00.png-34c8db85fa31d515710ceafd8cf4bc67.s3tc.ctex", "res://.godot/imported/char_a_p1_4har_bob1_v00.png-34c8db85fa31d515710ceafd8cf4bc67.etc2.ctex"]
 
 [params]
 
