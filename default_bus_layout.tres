@@ -2,12 +2,12 @@
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_g28q7"]
 resource_name = "Compressor"
-threshold = -7.0
+threshold = -20.0
 sidechain = &"SFX"
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_j3pel"]
 resource_name = "Compressor"
-threshold = -10.0
+threshold = -12.0
 
 [resource]
 bus/1/name = &"BGM"

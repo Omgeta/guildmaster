@@ -8,11 +8,6 @@ const Class := AdventurerData.Class
 const MAX_LEVEL := 99
 const BASE_EXP := 100  # base EXP for 1->2
 const EXP_GROWTH := 1.50  # curve multiplier
-const STAT_GROWTHS := {
-	Class.Warrior: {"hp": 1, "atk": 3, "dex": 1, "mag": 1},
-	Class.Rogue: {"hp": 1, "atk": 1, "dex": 3, "mag": 1},
-	Class.Mage: {"hp": 1, "atk": 1, "dex": 1, "mag": 3}
-}
 
 
 ## Getters
@@ -96,6 +91,8 @@ func _exp_needed(level: int) -> int:
 
 
 func _grow_stats(adv: AdventurerData) -> void:
-	var growths = STAT_GROWTHS[adv.class_]
-	for stat in growths:
-		adv.base_stats[stat] += growths[stat]
+	var growths := adv.stat_growths
+	adv.base_stats.hp += growths.hp
+	adv.base_stats.atk += growths.atk
+	adv.base_stats.dex += growths.dex
+	adv.base_stats.mag += growths.mag

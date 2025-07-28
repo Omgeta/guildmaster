@@ -8,11 +8,6 @@ const FIRST_NAME_ONLY_CHANCE := 0.30
 const NAMES := preload("res://src/core/entities/assets/data/character_names.json").data
 
 const Class = AdventurerData.Class
-const BASE_STATS: Dictionary[Class, Dictionary] = {
-	Class.Warrior: {"hp": 100, "atk": 25, "dex": 15, "mag": 15},
-	Class.Mage: {"hp": 100, "atk": 15, "dex": 15, "mag": 25},
-	Class.Rogue: {"hp": 100, "atk": 15, "dex": 25, "mag": 15}
-}
 
 const MAX_RARITY = 5
 const MIN_RARITY = 1
@@ -29,12 +24,13 @@ static func create_from_origin(origin: OriginData) -> AdventurerData:
 	data.display_name = _random_name()
 	data.character_sprites = _random_sprite_resource()
 	data.tags = _get_tags_subset(origin.tags)
+	data.base_stats = _compute_stats(data.rarity)
 
 	# adventurer data
 	data.level = 1
 	data.rarity = _get_rarity(origin.base_rank)
 	data.class_ = _random_class(origin.class_dist)
-	data.base_stats = _compute_stats(data.class_, data.rarity)
+	data.stat_growths = _compute_stat_growths(data.rarity)
 	data.alignment = origin.alignment
 	data.origin = origin
 
@@ -99,13 +95,26 @@ static func _random_sprite_id(category: String) -> String:
 	return SpriteDB.get_random_in_category(category)
 
 
-static func _compute_stats(char_class: Class, rarity: int) -> CharacterStats:
-	var factor := pow(rarity, log(2.5) / log(5))
-	var base := BASE_STATS[char_class]
+static func _compute_stats(rarity: int) -> CharacterStats:
 	var s := CharacterStats.new()
-	for stat in base:
-		s[stat] = int(base[stat] * factor)
+	var f := _get_rarity_factor(rarity)
+	s.hp = floor(RNG.randi_range(80, 120) * f)
+	for stat in ["atk", "dex", "mag"]:
+		s[stat] = floor(RNG.randi_range(10, 30) * f)
 	return s
+
+
+static func _compute_stat_growths(rarity: int) -> CharacterStats:
+	var s := CharacterStats.new()
+	var f := _get_rarity_factor(rarity)
+	s.hp = floor(RNG.randi_range(2, 6) * f)
+	for stat in ["atk", "dex", "mag"]:
+		s[stat] = floor(RNG.randi_range(1, 3) * f)
+	return s
+
+
+static func _get_rarity_factor(rarity) -> float:
+	return pow(rarity, log(2.5) / log(5))
 
 
 static func _random_class(class_dist: Dictionary[Class, int]) -> Class:
