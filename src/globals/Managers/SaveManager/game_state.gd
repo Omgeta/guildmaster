@@ -20,6 +20,7 @@ enum Flag {
 @export var mission_states: Dictionary[String, MissionState] = {}
 @export var flags: Dictionary[Flag, bool] = {}
 @export var rng_seed: int = 0
+@export var version: int
 
 
 func _init():

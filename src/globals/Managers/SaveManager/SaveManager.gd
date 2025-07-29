@@ -3,6 +3,7 @@ extends Node
 const SAVE_PATH := "user://save_slot0.tres"
 const SAVE_FLAGS := ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS
 const MAX_GOLD := 1000
+const GAME_VERSION := 1
 
 var _state: GameState = GameState.new()
 var _dirty: bool = false
@@ -120,6 +121,7 @@ func save_sync() -> void:
 	if not _dirty:  # if nothing changed, skip
 		return
 	_dirty = false
+	_state.version = GAME_VERSION
 	var err := ResourceSaver.save(_state, SAVE_PATH, SAVE_FLAGS)
 	_on_save_done.call_deferred(err)
 
@@ -132,30 +134,37 @@ func _on_save_done(err: int) -> void:
 func load_slot(path := SAVE_PATH) -> bool:
 	if FileAccess.file_exists(path):  # old game loaded
 		_state = ResourceLoader.load(path)
+		if _state.version != GAME_VERSION:
+			_new_game()
+			return false
 		RNG.set_seed(_state.rng_seed)
-		print("SaveManager: loaded from %s" % path)
+		print("SaveManager: loaded v%d from %s" % [_state.version, path])
 		return true
 	else:  # new game
-		_state = GameState.new()
-
-		for mission in MissionDB.all():
-			var st := MissionState.new()
-			st.mission_id = mission.id
-			st.status = (
-				MissionState.Status.AVAILABLE
-				if (mission.prerequisite_id == "")
-				else MissionState.Status.LOCKED
-			)
-			_state.mission_states[mission.id] = st
-
-		var origin_fac = load("res://src/core/origins/origin_factory.gd").new()
-		_state.origins = origin_fac.create_random_origins()
-		RNG.set_seed(int(Time.get_unix_time_from_system()))
-		_state.rng_seed = RNG.get_seed()
-
-		_dirty = true
-		print("SaveManager: loaded new game")
+		_new_game()
 		return false
+
+
+func _new_game() -> void:
+	_state = GameState.new()
+
+	for mission in MissionDB.all():
+		var st := MissionState.new()
+		st.mission_id = mission.id
+		st.status = (
+			MissionState.Status.AVAILABLE
+			if (mission.prerequisite_id == "")
+			else MissionState.Status.LOCKED
+		)
+		_state.mission_states[mission.id] = st
+
+	var origin_fac = load("res://src/core/origins/origin_factory.gd").new()
+	_state.origins = origin_fac.create_random_origins()
+	RNG.set_seed(int(Time.get_unix_time_from_system()))
+	_state.rng_seed = RNG.get_seed()
+
+	_dirty = true
+	print("SaveManager: loaded new game")
 
 
 # auto-save on quitting window
