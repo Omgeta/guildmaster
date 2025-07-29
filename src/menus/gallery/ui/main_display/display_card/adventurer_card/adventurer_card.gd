@@ -26,6 +26,8 @@ func setup(adv: AdventurerData, _c = null) -> void:
 	self_modulate = COLOR_UTIL.new().get_rarity_color(adv.rarity)
 	_new.visible = not adv.seen
 	_lvl.text = "Lv%s" % str(adv.level)
+	modulate = Color.DIM_GRAY if adv.in_mission else Color.WHITE
+	set_locked(adv.in_mission)
 
 
 func notify_seen():

@@ -2,6 +2,8 @@ extends TextureButton
 
 const SFX := preload("res://src/menus/assets/music/sfx/click.mp3")
 
+var _locked := false
+
 
 func setup(_item, _c = null) -> void:
 	push_error("Class %s did not override abstract setup()" % self)
@@ -12,16 +14,23 @@ func get_search_id() -> String:
 	return ""
 
 
+func set_locked(val: bool):
+	_locked = val
+
+
 func _on_button_down() -> void:
-	modulate = Color(0.7, 0.7, 0.7)
+	if not _locked:
+		modulate = Color(0.7, 0.7, 0.7)
 
 
 func _on_button_up() -> void:
-	modulate = Color.WHITE
+	if not _locked:
+		modulate = Color.WHITE
 
 
 func _on_mouse_entered() -> void:
-	modulate = Color(0.85, 0.85, 0.85)
+	if not _locked:
+		modulate = Color(0.85, 0.85, 0.85)
 
 
 func _on_pressed() -> void:

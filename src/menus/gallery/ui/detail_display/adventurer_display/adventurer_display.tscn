@@ -115,6 +115,17 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 18
 text = "0 XP"
 
+[node name="InMission" type="Label" parent="VBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_nrkia")
+theme_override_font_sizes/font_size = 21
+text = "IN MISSION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
 
