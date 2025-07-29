@@ -75,3 +75,5 @@ theme_override_font_sizes/font_size = 19
 text = "Details"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="equip_requested" from="MarginContainer/ItemDisplay" to="." method="_on_item_display_equip_requested"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv8bngfvi7sq0" path="res://src/menus/gallery/ui/detail_display/item_display/item_display.gd" id="1_6hiu1"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="2_mioxg"]
-[ext_resource type="Texture2D" uid="uid://d4axdw0pank6x" path="res://src/core/items/prefabs/weapon/admin_sword/admin_sword.png" id="3_6hiu1"]
+[ext_resource type="Texture2D" uid="uid://d4axdw0pank6x" path="res://src/core/items/prefabs/weapon/iron_sword/iron_sword.png" id="3_6hiu1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qle3"]
 bg_color = Color(0.319383, 0.263427, 0.300741, 1)
@@ -110,17 +110,17 @@ theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 18
 text = "WEAPON"
 
-[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Stats" type="VBoxContainer" parent="VBoxContainer/VSplitContainer"]
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="HEAL" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="HEAL" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HEAL"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/HEAL"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.769432, 0.769432, 0.769432, 1)
 theme_override_constants/outline_size = 6
@@ -128,17 +128,17 @@ theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "HEAL:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HEAL"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/HEAL"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "+0"
 
-[node name="HP" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="HP" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HP"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/HP"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.866667, 0.772549, 0.27451, 1)
 theme_override_constants/outline_size = 6
@@ -146,17 +146,17 @@ theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "HP:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HP"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/HP"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "+0"
 
-[node name="ATK" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="ATK" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/ATK"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/ATK"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.735647, 0, 0.20217, 1)
 theme_override_constants/outline_size = 6
@@ -164,17 +164,17 @@ theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "ATK: "
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/ATK"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/ATK"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "+0"
 
-[node name="MAG" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="MAG" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/MAG"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/MAG"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.448084, 0.318182, 0.999965, 1)
 theme_override_constants/outline_size = 6
@@ -182,17 +182,17 @@ theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "MAG:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/MAG"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/MAG"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "+0"
 
-[node name="DEX" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="DEX" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/DEX"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/DEX"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.547789, 0.131819, 1)
 theme_override_constants/outline_size = 6
@@ -200,9 +200,20 @@ theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "DEX:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/DEX"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/DEX"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_mioxg")
 theme_override_font_sizes/font_size = 16
 text = "+0"
+
+[node name="Equip" type="Button" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_mioxg")
+text = "EQUIP"
+
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/Equip" to="." method="_on_equip_pressed"]

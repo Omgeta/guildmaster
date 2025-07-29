@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=3 format=3 uid="uid://q064d38fvtaj"]
+
+[ext_resource type="Script" uid="uid://cjsveser3stbx" path="res://src/core/items/equipment_data.gd" id="1_fud6c"]
+[ext_resource type="Texture2D" uid="uid://dhnhxpbsv7mty" path="res://src/core/items/prefabs/armor/iron_armor/iron_armor.png" id="1_h42l7"]
+
+[resource]
+script = ExtResource("1_fud6c")
+slot = 0
+hp_bonus = 10
+atk_bonus = 0
+dex_bonus = 0
+mag_bonus = 0
+id = "iron_armor"
+name = "Iron Armor"
+description = "A set of iron armor."
+icon = ExtResource("1_h42l7")
+rarity = 1
+stack_limit = 9
+metadata/_custom_type_script = "uid://cjsveser3stbx"

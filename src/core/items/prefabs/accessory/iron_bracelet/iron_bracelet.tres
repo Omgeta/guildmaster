@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=3 format=3 uid="uid://g8f5igktdrrv"]
+
+[ext_resource type="Script" uid="uid://cjsveser3stbx" path="res://src/core/items/equipment_data.gd" id="1_1frga"]
+[ext_resource type="Texture2D" uid="uid://uqodesgoj7b8" path="res://src/core/items/prefabs/accessory/iron_bracelet/iron_bracelet.png" id="1_a0j1p"]
+
+[resource]
+script = ExtResource("1_1frga")
+slot = 2
+hp_bonus = 5
+atk_bonus = 2
+dex_bonus = 2
+mag_bonus = 2
+id = "iron_bracelet"
+name = "Iron Bracelet"
+description = "A basic iron bracelet."
+icon = ExtResource("1_a0j1p")
+rarity = 1
+stack_limit = 9
+metadata/_custom_type_script = "uid://cjsveser3stbx"

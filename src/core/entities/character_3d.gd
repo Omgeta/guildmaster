@@ -35,7 +35,8 @@ func set_character(c: CharacterData):
 
 
 func _physics_process(delta: float) -> void:
-	_update_sprite_animation()
+	if data:
+		_update_sprite_animation()
 
 	if _agent.is_navigation_finished():
 		_travel_time = 0.0

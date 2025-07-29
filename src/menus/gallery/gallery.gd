@@ -5,6 +5,8 @@ const MainDisplay = preload("res://src/menus/gallery/ui/main_display/main_displa
 @onready var _main := $Main
 @onready var _details := $Details
 
+var _equipping: ItemData = null
+
 
 func _ready() -> void:
 	if not SaveManager.get_flag(GameState.Flag.GALLERY_TUTORIAL):
@@ -32,8 +34,21 @@ func _on_button_back_pressed() -> void:
 
 
 func _on_select_adventurer(adv: AdventurerData) -> void:
-	_details.show_adventurer(adv)
+	if _equipping:
+		AdventurerManager.equip_item(adv.id, _equipping)
+		_equipping = null
+		_details.clear()
+	else:
+		_details.show_adventurer(adv)
 
 
 func _on_select_item(item: ItemData, c: int) -> void:
 	_details.show_item(item, c)
+
+
+func _on_equip_requested(item: ItemData) -> void:
+	_equipping = item
+	NotificationService.toast(
+		"Equipping", "Choose an Adventurer to equip %s" % item.name, Color.BLUE
+	)
+	_main.set_mode(MainDisplay.Mode.Adventurer)

@@ -2,6 +2,7 @@ extends Node
 
 signal roster_changed
 signal level_up(adventurer: AdventurerData)
+signal equipment_changed(adventurer: AdventurerData)
 
 const Class := AdventurerData.Class
 
@@ -83,6 +84,48 @@ func reward_exp(id: String, amount: int) -> void:
 			"Level Up", "%s leveled up to level %d" % [adv.display_name, adv.level], Color.BLUE
 		)
 	SaveManager.set_dirty()
+
+
+## Equipment
+func equip_item(adv_id: String, item: EquipmentData) -> bool:
+	var adv := SaveManager._find_adventurer(adv_id, false)
+	if adv == null or item == null:
+		return false
+
+	var slot := item.slot
+
+	# move equipped weapon back out
+	if adv.equipment[slot] != "":
+		SaveManager.add_item(adv.equipment[slot])
+
+	# take out one item if its available
+	if not SaveManager.remove_item(item.id):
+		return false
+
+	# equip item
+	adv.equipment[slot] = item.id
+	SaveManager.set_dirty()
+	equipment_changed.emit(adv)
+	NotificationService.toast(
+		"Equipped", "%s equipped with %s" % [adv.display_name, item.name], Color.BLUE
+	)
+	return true
+
+
+func unequip(adv_id: String, slot: EquipmentData.Slot):
+	var adv := SaveManager._find_adventurer(adv_id, false)
+	if adv and adv.equipment[slot] != "":
+		var item_id := adv.equipment[slot]
+		if item_id != "":
+			SaveManager.add_item(item_id)
+			adv.equipment[slot] = ""
+			SaveManager.set_dirty()
+			equipment_changed.emit(adv)
+			NotificationService.toast(
+				"Unequipped",
+				"%s unequipped from %s" % [ItemDB.get_by_id(item_id).name, adv.display_name],
+				Color.BLUE
+			)
 
 
 ## Private
