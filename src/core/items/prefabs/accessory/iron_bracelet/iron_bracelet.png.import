@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4axdw0pank6x"
-path="res://.godot/imported/admin_sword.png-ae8d63cdb1c62aa49617acd6a3754c98.ctex"
+uid="uid://uqodesgoj7b8"
+path="res://.godot/imported/iron_bracelet.png-919d384978ea27114592694cb26d9918.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/core/items/prefabs/weapon/admin_sword/admin_sword.png"
-dest_files=["res://.godot/imported/admin_sword.png-ae8d63cdb1c62aa49617acd6a3754c98.ctex"]
+source_file="res://src/core/items/prefabs/accessory/iron_bracelet/iron_bracelet.png"
+dest_files=["res://.godot/imported/iron_bracelet.png-919d384978ea27114592694cb26d9918.ctex"]
 
 [params]
 

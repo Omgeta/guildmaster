@@ -15,6 +15,6 @@ enum Alignment { Orderly, Neutral, Chaotic }
 @export var in_mission: bool = false
 @export var seen: bool = false
 
-@export var weapon_id: String = ""
-@export var armor_id: String = ""
-@export var accessory_id: String = ""
+@export var equipment: Dictionary[EquipmentData.Slot, String] = {
+	EquipmentData.Slot.Weapon: "", EquipmentData.Slot.Armor: "", EquipmentData.Slot.Accessory: ""
+}

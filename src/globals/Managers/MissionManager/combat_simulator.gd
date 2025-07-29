@@ -15,24 +15,14 @@ static func simulate(
 	var party_dmg := 0
 	var party_hp := 0
 	for adv in party:
-		party_hp += adv.base_stats.hp
-		match adv.class_:
-			AdventurerData.Class.Warrior:
-				party_dmg += adv.base_stats.atk
-			AdventurerData.Class.Rogue:
-				party_dmg += adv.base_stats.dex
-			AdventurerData.Class.Mage:
-				party_dmg += adv.base_stats.mag
-
+		party_hp += _get_health(adv)
+		party_dmg += _get_attack(adv)
 	var enemy_dmg := 0
 	var enemy_hp := 0
 	for spawn in mission.enemy_spawns:
 		var enemy := spawn.enemy_data
-		enemy_hp += enemy.base_stats.hp * spawn.count
-		enemy_dmg += (
-			RNG.choose([enemy.base_stats.atk, enemy.base_stats.dex, enemy.base_stats.mag])
-			* spawn.count
-		)
+		enemy_hp += _get_health(enemy) * spawn.count
+		enemy_dmg += _get_attack(enemy) * spawn.count
 
 	# Stat check flags
 	var beat_enemies := party_dmg >= enemy_hp
@@ -81,6 +71,55 @@ static func simulate(
 	return {
 		"success": full_success or partial_success, "killed": killed, "rewards": rewards, "xp": xp
 	}
+
+
+static func _get_health(chara: CharacterData) -> int:
+	# get base
+	var hp := chara.base_stats.hp
+
+	if chara is AdventurerData:
+		for eq in chara.equipment.values():
+			var item := ItemDB.get_by_id(eq)
+			if item:
+				hp += item.hp
+
+	return hp
+
+
+static func _get_attack(chara: CharacterData) -> int:
+	# get sum total of each stat
+	var atk := chara.base_stats.atk
+	var dex := chara.base_stats.dex
+	var mag := chara.base_stats.mag
+
+	if chara is AdventurerData:
+		for eq in chara.equipment.values():
+			var item := ItemDB.get_by_id(eq)
+			if item:
+				atk += item.atk
+				dex += item.dex
+				mag += item.dex
+
+	# weight by class
+	# TODO: in future, allow enemies to have classes too
+	if chara is AdventurerData:
+		match chara.class_:
+			AdventurerData.Class.Warrior:
+				# warriors hit hardest with ATK, but get some benefit from DEX / MAG
+				return int(atk * 0.75 + dex * 0.15 + mag * 0.10)
+
+			AdventurerData.Class.Rogue:
+				# rogues favour DEX
+				return int(dex * 0.75 + mag * 0.15 + atk * 0.10)
+
+			AdventurerData.Class.Mage:
+				# mages favour MAG
+				return int(mag * 0.75 + dex * 0.15 + atk * 0.10)
+
+			_:
+				return atk
+	else:
+		return RNG.choose([atk, dex, mag])
 
 
 static func _roll_enemy_drops(enemy: EnemyData) -> Array[String]:

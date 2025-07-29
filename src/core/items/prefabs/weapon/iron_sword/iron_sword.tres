@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentData" load_steps=3 format=3 uid="uid://cvvya58idgkof"]
+
+[ext_resource type="Script" uid="uid://cjsveser3stbx" path="res://src/core/items/equipment_data.gd" id="1_g7p1k"]
+[ext_resource type="Texture2D" uid="uid://d4axdw0pank6x" path="res://src/core/items/prefabs/weapon/iron_sword/iron_sword.png" id="1_srjkk"]
+
+[resource]
+script = ExtResource("1_g7p1k")
+slot = 1
+hp = 0
+atk = 10
+dex = 0
+mag = 0
+id = "iron_sword"
+name = "Iron Sword"
+description = "A basic iron sword."
+icon = ExtResource("1_srjkk")
+rarity = 1
+stack_limit = 9
+metadata/_custom_type_script = "uid://cjsveser3stbx"

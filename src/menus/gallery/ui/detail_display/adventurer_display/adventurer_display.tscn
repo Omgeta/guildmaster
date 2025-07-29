@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8w3p753tj5ku"]
+[gd_scene load_steps=8 format=3 uid="uid://c8w3p753tj5ku"]
 
 [ext_resource type="Script" uid="uid://dsrvr8d128x5t" path="res://src/menus/gallery/ui/detail_display/adventurer_display/adventurer_display.gd" id="1_0rl80"]
 [ext_resource type="FontFile" uid="uid://bgghai1n1k3qk" path="res://assets/fonts/SimplySerif.ttf" id="1_nrkia"]
 [ext_resource type="PackedScene" uid="uid://fv7ckbpapn2j" path="res://src/core/entities/character_3d.tscn" id="2_nrkia"]
+[ext_resource type="Texture2D" uid="uid://uqodesgoj7b8" path="res://src/core/items/prefabs/accessory/iron_bracelet/iron_bracelet.png" id="4_gh2e3"]
+[ext_resource type="Texture2D" uid="uid://dhnhxpbsv7mty" path="res://src/core/items/prefabs/armor/iron_armor/iron_armor.png" id="5_4w1ph"]
+[ext_resource type="Texture2D" uid="uid://d4axdw0pank6x" path="res://src/core/items/prefabs/weapon/iron_sword/iron_sword.png" id="6_4w1ph"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qle3"]
 bg_color = Color(0.319383, 0.263427, 0.300741, 1)
@@ -112,17 +115,17 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 18
 text = "0 XP"
 
-[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Stats" type="VBoxContainer" parent="VBoxContainer/VSplitContainer"]
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Class" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="Class" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/Class"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/Class"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.769432, 0.769432, 0.769432, 1)
 theme_override_constants/outline_size = 6
@@ -130,17 +133,17 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "Class: "
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/Class"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/Class"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "Warrior"
 
-[node name="HP" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="HP" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HP"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/HP"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.866667, 0.772549, 0.27451, 1)
 theme_override_constants/outline_size = 6
@@ -148,17 +151,17 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "HP:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/HP"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/HP"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="ATK" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="ATK" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/ATK"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/ATK"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.735647, 0, 0.20217, 1)
 theme_override_constants/outline_size = 6
@@ -166,17 +169,17 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "ATK: "
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/ATK"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/ATK"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "5"
 
-[node name="MAG" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="MAG" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/MAG"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/MAG"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.448084, 0.318182, 0.999965, 1)
 theme_override_constants/outline_size = 6
@@ -184,17 +187,17 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "MAG:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/MAG"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/MAG"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "5"
 
-[node name="DEX" type="HBoxContainer" parent="VBoxContainer/VSplitContainer/Stats"]
+[node name="DEX" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/Stats"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer/VSplitContainer/Stats/DEX"]
+[node name="Title" type="Label" parent="VBoxContainer/HSplitContainer/Stats/DEX"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.547789, 0.131819, 1)
 theme_override_constants/outline_size = 6
@@ -202,9 +205,81 @@ theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "DEX:"
 
-[node name="Value" type="Label" parent="VBoxContainer/VSplitContainer/Stats/DEX"]
+[node name="Value" type="Label" parent="VBoxContainer/HSplitContainer/Stats/DEX"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_nrkia")
 theme_override_font_sizes/font_size = 16
 text = "5"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/MarginContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Accessory" type="Button" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/Accessory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("4_gh2e3")
+expand_mode = 5
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Armor" type="Button" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/Armor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("5_4w1ph")
+expand_mode = 5
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Weapon" type="Button" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Image" type="TextureRect" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/Weapon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("6_4w1ph")
+expand_mode = 5
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/Accessory" to="." method="_on_accessory_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/Armor" to="." method="_on_armor_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/Weapon" to="." method="_on_weapon_pressed"]
