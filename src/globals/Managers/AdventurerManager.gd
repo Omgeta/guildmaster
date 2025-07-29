@@ -92,6 +92,12 @@ func equip_item(adv_id: String, item: EquipmentData) -> bool:
 	if adv == null or item == null:
 		return false
 
+	if adv.in_mission:
+		NotificationService.toast(
+			"Cannot Equip", "Cannot equip items onto an Adventurer already on a mission!", Color.RED
+		)
+		return false
+
 	var slot := item.slot
 
 	# move equipped weapon back out
@@ -121,9 +127,7 @@ func unequip(adv_id: String, slot: EquipmentData.Slot):
 		SaveManager.set_dirty()
 		equipment_changed.emit(adv)
 		NotificationService.toast(
-			"Unequipped",
-			"%s unequipped from %s" % [item.name, adv.display_name],
-			Color.BLUE
+			"Unequipped", "%s unequipped from %s" % [item.name, adv.display_name], Color.BLUE
 		)
 
 

@@ -7,6 +7,7 @@ extends Control
 var _char: Character3D = $VBoxContainer/MarginContainer/SpriteContainer/SubViewportContainer/SubViewport/Character3D
 @onready var _level: Label = $VBoxContainer/MarginContainer/SpriteContainer/MarginContainer/Level
 @onready var _xp: Label = $VBoxContainer/MarginContainer/SpriteContainer/MarginContainer/XP
+@onready var _in_mission: Label = $VBoxContainer/MarginContainer/InMission
 @onready var _class: Label = $VBoxContainer/HSplitContainer/Stats/Class/Value
 @onready var _hp: Label = $VBoxContainer/HSplitContainer/Stats/HP/Value
 @onready var _atk: Label = $VBoxContainer/HSplitContainer/Stats/ATK/Value
@@ -30,6 +31,7 @@ func populate(adv: AdventurerData):
 	_origin.text = adv.origin.display_name
 	_bg.self_modulate = ColorUtil.new().get_rarity_color(adv.rarity)
 	_char.set_character(adv)
+	_in_mission.visible = adv.in_mission
 	_level.text = "Lv. %d" % adv.level
 	_xp.text = "%d XP" % adv.experience
 	_class.text = AdventurerData.Class.find_key(adv.class_)
@@ -38,6 +40,8 @@ func populate(adv: AdventurerData):
 	_assign_equipment_tex(EquipmentData.Slot.Accessory, _accessory)
 	_assign_equipment_tex(EquipmentData.Slot.Armor, _armor)
 	_assign_equipment_tex(EquipmentData.Slot.Weapon, _weapon)
+
+	modulate = Color.DIM_GRAY if adv.in_mission else Color.WHITE
 
 
 func _update_stats() -> void:
@@ -69,21 +73,21 @@ func _assign_equipment_tex(slot: EquipmentData.Slot, node: TextureRect) -> void:
 
 
 func _on_accessory_pressed() -> void:
-	if _accessory.texture:
+	if _accessory.texture and not _adv.in_mission:
 		AdventurerManager.unequip(_adv.id, EquipmentData.Slot.Accessory)
 		_accessory.texture = null
 		_update_stats()
 
 
 func _on_armor_pressed() -> void:
-	if _armor.texture:
+	if _armor.texture and not _adv.in_mission:
 		AdventurerManager.unequip(_adv.id, EquipmentData.Slot.Armor)
 		_armor.texture = null
 		_update_stats()
 
 
 func _on_weapon_pressed() -> void:
-	if _weapon.texture:
+	if _weapon.texture and not _adv.in_mission:
 		AdventurerManager.unequip(_adv.id, EquipmentData.Slot.Weapon)
 		_weapon.texture = null
 		_update_stats()
