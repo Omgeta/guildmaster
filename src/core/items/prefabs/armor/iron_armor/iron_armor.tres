@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_fud6c")
 slot = 0
-hp_bonus = 10
-atk_bonus = 0
-dex_bonus = 0
-mag_bonus = 0
+hp = 10
+atk = 0
+dex = 0
+mag = 0
 id = "iron_armor"
 name = "Iron Armor"
 description = "A set of iron armor."

@@ -32,15 +32,21 @@ func populate(item: ItemData, count: int):
 	if item.stack_limit != 1:
 		_stack.text = "x %d" % count
 
+	_heal.text = "+0"
+	_hp.text = "+0"
+	_atk.text = "+0"
+	_mag.text = "+0"
+	_dex.text = "+0"
 	if item is ConsumableData:
 		_slot.text = "CONSUM."
 		_heal.text = "+%d" % item.heal_hp
+
 	elif item is EquipmentData:
 		_slot.text = _short_name(EquipmentData.Slot.find_key(item.slot))
-		_hp.text = "+%d" % item.hp_bonus
-		_atk.text = "+%d" % item.atk_bonus
-		_mag.text = "+%d" % item.mag_bonus
-		_dex.text = "+%d" % item.dex_bonus
+		_hp.text = "+%d" % item.hp
+		_atk.text = "+%d" % item.atk
+		_mag.text = "+%d" % item.mag
+		_dex.text = "+%d" % item.dex
 		_equip.visible = true
 
 

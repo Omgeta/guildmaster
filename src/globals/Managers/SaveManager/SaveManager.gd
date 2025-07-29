@@ -42,18 +42,18 @@ func get_inventory(copy := true) -> Dictionary[String, int]:
 	return _state.inventory.duplicate(true) if copy else _state.inventory
 
 
-func add_item(item_id: String, amount := 1) -> bool:
+func add_item(item_id: String, amount := 1) -> ItemData:
 	if amount <= 0:
-		return false
+		return
 	var data := ItemDB.get_by_id(item_id)
 	if data == null:
 		push_warning("Unknown item: %s" % item_id)
-		return false
+		return
 	var new_qty := clampi(_state.inventory.get(item_id, 0) + amount, 0, data.stack_limit)
 	_state.inventory[item_id] = new_qty
 	_dirty = true
 	inventory_changed.emit(item_id, new_qty)
-	return true
+	return data
 
 
 func remove_item(item_id: String, amount := 1) -> bool:

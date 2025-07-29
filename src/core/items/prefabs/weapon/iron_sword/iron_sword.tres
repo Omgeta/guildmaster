@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_g7p1k")
 slot = 1
-hp_bonus = 0
-atk_bonus = 10
-dex_bonus = 0
-mag_bonus = 0
+hp = 0
+atk = 10
+dex = 0
+mag = 0
 id = "iron_sword"
 name = "Iron Sword"
 description = "A basic iron sword."

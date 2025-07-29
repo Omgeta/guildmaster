@@ -33,14 +33,31 @@ func populate(adv: AdventurerData):
 	_level.text = "Lv. %d" % adv.level
 	_xp.text = "%d XP" % adv.experience
 	_class.text = AdventurerData.Class.find_key(adv.class_)
-	_hp.text = str(adv.base_stats.hp)
-	_atk.text = str(adv.base_stats.atk)
-	_mag.text = str(adv.base_stats.mag)
-	_dex.text = str(adv.base_stats.dex)
+	_update_stats()
 
 	_assign_equipment_tex(EquipmentData.Slot.Accessory, _accessory)
 	_assign_equipment_tex(EquipmentData.Slot.Armor, _armor)
 	_assign_equipment_tex(EquipmentData.Slot.Weapon, _weapon)
+
+
+func _update_stats() -> void:
+	_hp.text = _get_total_stat_str("hp")
+	_atk.text = _get_total_stat_str("atk")
+	_mag.text = _get_total_stat_str("mag")
+	_dex.text = _get_total_stat_str("dex")
+
+
+func _get_total_stat_str(stat: String) -> String:
+	var base: int = _adv.base_stats[stat]
+	var total_buffs: int = 0
+	for e in _adv.equipment.values():
+		var item := ItemDB.get_by_id(e)
+		if item:
+			total_buffs += item[stat]
+	if total_buffs != 0:
+		return "%d (+%d)" % [base + total_buffs, total_buffs]
+	else:
+		return "%d" % base
 
 
 func _assign_equipment_tex(slot: EquipmentData.Slot, node: TextureRect) -> void:
@@ -55,15 +72,18 @@ func _on_accessory_pressed() -> void:
 	if _accessory.texture:
 		AdventurerManager.unequip(_adv.id, EquipmentData.Slot.Accessory)
 		_accessory.texture = null
+		_update_stats()
 
 
 func _on_armor_pressed() -> void:
 	if _armor.texture:
 		AdventurerManager.unequip(_adv.id, EquipmentData.Slot.Armor)
 		_armor.texture = null
+		_update_stats()
 
 
 func _on_weapon_pressed() -> void:
 	if _weapon.texture:
 		AdventurerManager.unequip(_adv.id, EquipmentData.Slot.Weapon)
 		_weapon.texture = null
+		_update_stats()

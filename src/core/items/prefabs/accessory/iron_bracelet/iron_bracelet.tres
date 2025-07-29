@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_1frga")
 slot = 2
-hp_bonus = 5
-atk_bonus = 2
-dex_bonus = 2
-mag_bonus = 2
+hp = 3
+atk = 3
+dex = 3
+mag = 3
 id = "iron_bracelet"
 name = "Iron Bracelet"
 description = "A basic iron bracelet."

@@ -116,16 +116,15 @@ func unequip(adv_id: String, slot: EquipmentData.Slot):
 	var adv := SaveManager._find_adventurer(adv_id, false)
 	if adv and adv.equipment[slot] != "":
 		var item_id := adv.equipment[slot]
-		if item_id != "":
-			SaveManager.add_item(item_id)
-			adv.equipment[slot] = ""
-			SaveManager.set_dirty()
-			equipment_changed.emit(adv)
-			NotificationService.toast(
-				"Unequipped",
-				"%s unequipped from %s" % [ItemDB.get_by_id(item_id).name, adv.display_name],
-				Color.BLUE
-			)
+		var item := SaveManager.add_item(item_id)
+		adv.equipment[slot] = ""
+		SaveManager.set_dirty()
+		equipment_changed.emit(adv)
+		NotificationService.toast(
+			"Unequipped",
+			"%s unequipped from %s" % [item.name, adv.display_name],
+			Color.BLUE
+		)
 
 
 ## Private
