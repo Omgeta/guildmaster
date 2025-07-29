@@ -12,7 +12,7 @@ Guildmaster is a gacha idle RPG built in Godot for Orbital 2025.
 
 Pre-built packages can be found in [Releases](https://github.com/omgeta/guildmaster/releases/).
 
-Play the latest Web release at [itch.io](omgeta.itch.io/guildmaster)
+Play the latest Web release at [itch.io](https://omgeta.itch.io/guildmaster)
 
 ## Deploy from Source
 
