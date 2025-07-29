@@ -9,7 +9,7 @@ const BOUND := 10
 @export var smooth_speed := 8.0
 @export_range(0.1, 2.0, 0.05) var zoom_speed := 0.2
 @export_range(0.1, 5.0, 0.05) var mouse_rot_sens := 0.75
-@export_range(0.1, 5.0, 0.05) var mouse_pan_sens := 0.07
+@export_range(0.1, 5.0, 0.05) var mouse_pan_sens := 0.06
 @export_range(10, 100, 1) var orbit_speed_deg: float = 70.0  # deg/s
 @export_range(0.1, 10, 0.1) var pan_speed: float = 15.0  # units/s
 
